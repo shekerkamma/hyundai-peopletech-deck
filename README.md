@@ -1,8 +1,15 @@
 # Hyundai × PeopleTech — AI for Plant Operations
 
-A 15-slide HTML pitch deck for PeopleTech's pre-sales engagement with Hyundai, covering 8 AI use cases for plant operations: visual inspection, variant confirmation, seating validation, SOP compliance, predictive quality, predictive maintenance, safety monitoring, and digital traceability.
+A 15-slide pre-sales pitch deck for PeopleTech's engagement with Hyundai, covering 8 AI use cases for plant operations: visual inspection, variant confirmation, seating validation, SOP compliance, predictive quality, predictive maintenance, safety monitoring, and digital traceability.
 
-Self-contained single-file deck. No build step, no dependencies.
+Two formats, same content:
+
+| File | Use it for |
+|------|-----------|
+| `index.html` | Browser preview, live demo, PDF export (best fidelity) |
+| `Hyundai_PeopleTech_AI_Plant_Operations.pptx` | PowerPoint — email around, edit in MS Office / Keynote / Google Slides |
+
+The HTML deck is the design source of truth; the .pptx mirrors it in editable native PowerPoint shapes.
 
 ## View
 
