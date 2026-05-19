@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="draw.io" modified="2026-05-19T00:00:00.000Z" agent="Architecture Pipeline" version="24.0.0" type="device">
+  <diagram id="plant-ops-arch" name="AI Plant Operations Platform">
+    <mxGraphModel dx="2200" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- ===== TITLE ===== -->
+        <mxCell id="title" value="Hyundai × PeopleTech — AI Plant Operations Platform Architecture" style="text;html=1;fontSize=20;fontStyle=1;fontFamily=Calibri;fontColor=#1A1A1A;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="40" y="15" width="700" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="Edge-to-Cloud · 8 Use Cases · Integration-First" style="text;html=1;fontSize=12;fontFamily=Calibri;fontColor=#6B7280;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="40" y="48" width="400" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== ZONE 1: PLANT FLOOR / EDGE CAPTURE (left) ===== -->
+        <mxCell id="zone_edge" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F9FF;strokeColor=#BAE6FD;strokeWidth=1;dashed=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="310" height="780" as="geometry"/>
+        </mxCell>
+        <mxCell id="zone_edge_label" value="PLANT FLOOR — EDGE CAPTURE" style="text;html=1;fontSize=11;fontStyle=1;fontFamily=Calibri;fontColor=#0369A1;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="40" y="85" width="310" height="25" as="geometry"/>
+        </mxCell>
+
+        <!-- Edge components -->
+        <mxCell id="cameras" value="&lt;b&gt;Vision Cameras&lt;/b&gt;&lt;br&gt;Cognex · Basler · Keyence&lt;br&gt;Multi-angle, high-res" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="70" y="120" width="250" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="iot_sensors" value="&lt;b&gt;IoT Sensors&lt;/b&gt;&lt;br&gt;Vibration · Acoustic · Thermal&lt;br&gt;Pressure · Temperature" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="70" y="200" width="250" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="rfid_barcode" value="&lt;b&gt;RFID &amp; Barcode Scanners&lt;/b&gt;&lt;br&gt;UHF RFID · Datalogic · DataMan&lt;br&gt;VIN/component tracking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="70" y="280" width="250" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="safety_cameras" value="&lt;b&gt;Safety / SOP Cameras&lt;/b&gt;&lt;br&gt;Wide-FOV IP cameras&lt;br&gt;Privacy-aware blurring" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="70" y="360" width="250" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="torque_tools" value="&lt;b&gt;Smart Torque Tools&lt;/b&gt;&lt;br&gt;IIoT telemetry&lt;br&gt;Fastening verification" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="70" y="440" width="250" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Edge Compute -->
+        <mxCell id="edge_compute" value="&lt;b&gt;Edge Compute&lt;/b&gt;&lt;br&gt;NVIDIA Jetson · Hailo · Intel&lt;br&gt;AWS IoT Greengrass / Azure IoT Edge&lt;br&gt;&lt;i&gt;&amp;lt;200ms inference latency&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3B6E;strokeColor=#1F3B6E;fontColor=#FFFFFF;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="70" y="530" width="250" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- OPC-UA Bus -->
+        <mxCell id="opcua" value="&lt;b&gt;OPC-UA Bus&lt;/b&gt;&lt;br&gt;Machine signals · PLC data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="70" y="640" width="250" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Edge gateway -->
+        <mxCell id="edge_gateway" value="&lt;b&gt;Edge Gateway&lt;/b&gt;&lt;br&gt;Data aggregation · Local cache · Protocol translation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E7FF;strokeColor=#818CF8;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="70" y="720" width="250" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== ZONE 2: STREAMING / INTEGRATION (middle-left) ===== -->
+        <mxCell id="zone_stream" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#FED7AA;strokeWidth=1;dashed=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="390" y="80" width="260" height="780" as="geometry"/>
+        </mxCell>
+        <mxCell id="zone_stream_label" value="STREAMING &amp; INTEGRATION" style="text;html=1;fontSize=11;fontStyle=1;fontFamily=Calibri;fontColor=#C2410C;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="390" y="85" width="260" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="kafka" value="&lt;b&gt;Kafka / Event Stream&lt;/b&gt;&lt;br&gt;Real-time event bus&lt;br&gt;Quality · Maintenance · Safety events" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="410" y="120" width="220" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="mes_connector" value="&lt;b&gt;MES / SAP Connector Library&lt;/b&gt;&lt;br&gt;Line-hold · Work-order gen&lt;br&gt;Quality event schemas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="410" y="215" width="220" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="sap_mes" value="&lt;b&gt;SAP MES / ERP&lt;/b&gt;&lt;br&gt;Production orders · BOM&lt;br&gt;Quality records" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3B6E;strokeColor=#1F3B6E;fontColor=#FFFFFF;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="410" y="310" width="220" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="sap_pm" value="&lt;b&gt;SAP PM / CMMS (Maximo)&lt;/b&gt;&lt;br&gt;Work orders · Asset registry&lt;br&gt;Maintenance scheduling" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3B6E;strokeColor=#1F3B6E;fontColor=#FFFFFF;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="410" y="400" width="220" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="historian" value="&lt;b&gt;Historian&lt;/b&gt;&lt;br&gt;AVEVA PI · Aspen IP21&lt;br&gt;Time-series storage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="410" y="490" width="220" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="quality_db" value="&lt;b&gt;Quality &amp; Defect DB&lt;/b&gt;&lt;br&gt;PostgreSQL · Defect records&lt;br&gt;Rework tracking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="410" y="575" width="220" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="neo4j" value="&lt;b&gt;Neo4j Genealogy Graph&lt;/b&gt;&lt;br&gt;Component traceability&lt;br&gt;Recall scope calculator" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="410" y="660" width="220" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="ehs_system" value="&lt;b&gt;EHS Compliance System&lt;/b&gt;&lt;br&gt;Incident mgmt · Audit trail" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="410" y="745" width="220" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== ZONE 3: AI / ML COMPUTE (middle-right) ===== -->
+        <mxCell id="zone_ai" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FDF4;strokeColor=#BBF7D0;strokeWidth=1;dashed=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="690" y="80" width="350" height="780" as="geometry"/>
+        </mxCell>
+        <mxCell id="zone_ai_label" value="AI / ML COMPUTE — CLOUD" style="text;html=1;fontSize=11;fontStyle=1;fontFamily=Calibri;fontColor=#15803D;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="690" y="85" width="350" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cloud_platform" value="&lt;b&gt;AWS SageMaker / Azure ML&lt;/b&gt;&lt;br&gt;Training · Hyperparameter tuning&lt;br&gt;Feature store · Model registry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3B6E;strokeColor=#1F3B6E;fontColor=#FFFFFF;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="710" y="120" width="310" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Use Case Model Groups -->
+        <mxCell id="uc_vision" value="&lt;b&gt;UC-01 Visual Inspection&lt;/b&gt;&lt;br&gt;ResNet50 · EfficientNet · PatchCore&lt;br&gt;CNN anomaly scoring" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#14A085;strokeWidth=2;fontSize=10;fontFamily=Calibri;verticalAlign=middle;spacingLeft=6;spacingRight=6;align=center;" vertex="1" parent="1">
+          <mxGeometry x="710" y="210" width="150" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_variant" value="&lt;b&gt;UC-02 Variant Confirmation&lt;/b&gt;&lt;br&gt;YOLOv8 · PaddleOCR&lt;br&gt;BOM-match rules engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D97706;strokeWidth=2;fontSize=10;fontFamily=Calibri;verticalAlign=middle;spacingLeft=6;spacingRight=6;align=center;" vertex="1" parent="1">
+          <mxGeometry x="870" y="210" width="150" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_seating" value="&lt;b&gt;UC-03 Seating Validation&lt;/b&gt;&lt;br&gt;YOLOv8 + keypoint head&lt;br&gt;Fitment classifier" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7C3AED;strokeWidth=2;fontSize=10;fontFamily=Calibri;verticalAlign=middle;spacingLeft=6;spacingRight=6;align=center;" vertex="1" parent="1">
+          <mxGeometry x="710" y="295" width="150" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_sop" value="&lt;b&gt;UC-04 SOP Compliance&lt;/b&gt;&lt;br&gt;MoveNet · SlowFast&lt;br&gt;SOP graph matcher" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0E7B6A;strokeWidth=2;fontSize=10;fontFamily=Calibri;verticalAlign=middle;spacingLeft=6;spacingRight=6;align=center;" vertex="1" parent="1">
+          <mxGeometry x="870" y="295" width="150" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_pred_quality" value="&lt;b&gt;UC-05 Predictive Quality&lt;/b&gt;&lt;br&gt;XGBoost · LSTM&lt;br&gt;SHAP explainability" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#DC2626;strokeWidth=2;fontSize=10;fontFamily=Calibri;verticalAlign=middle;spacingLeft=6;spacingRight=6;align=center;" vertex="1" parent="1">
+          <mxGeometry x="710" y="380" width="150" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_pred_maint" value="&lt;b&gt;UC-06 Predictive Maint.&lt;/b&gt;&lt;br&gt;Autoencoder · DeepSurv&lt;br&gt;Audio CNN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1A2754;strokeWidth=2;fontSize=10;fontFamily=Calibri;verticalAlign=middle;spacingLeft=6;spacingRight=6;align=center;" vertex="1" parent="1">
+          <mxGeometry x="870" y="380" width="150" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_safety" value="&lt;b&gt;UC-07 Safety Monitoring&lt;/b&gt;&lt;br&gt;YOLOv8 PPE detector&lt;br&gt;Zone-violation engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#14A085;strokeWidth=2;fontSize=10;fontFamily=Calibri;verticalAlign=middle;spacingLeft=6;spacingRight=6;align=center;" vertex="1" parent="1">
+          <mxGeometry x="710" y="465" width="150" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc_trace" value="&lt;b&gt;UC-08 Traceability&lt;/b&gt;&lt;br&gt;Genealogy graph · Flink&lt;br&gt;Supplier risk scoring" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0E7B6A;strokeWidth=2;fontSize=10;fontFamily=Calibri;verticalAlign=middle;spacingLeft=6;spacingRight=6;align=center;" vertex="1" parent="1">
+          <mxGeometry x="870" y="465" width="150" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- MLOps -->
+        <mxCell id="mlops" value="&lt;b&gt;MLOps Pipeline&lt;/b&gt;&lt;br&gt;MLflow · CI/CD · Model registry&lt;br&gt;Drift detection · Auto-retraining&lt;br&gt;TensorRT / ONNX optimization → Edge OTA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E7FF;strokeColor=#818CF8;fontSize=10;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="710" y="560" width="310" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Data Lake -->
+        <mxCell id="data_lake" value="&lt;b&gt;Data Lake / Feature Store&lt;/b&gt;&lt;br&gt;S3 / ADLS · Parquet · Delta Lake&lt;br&gt;Training datasets · Inference logs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="710" y="660" width="310" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- IoT Platform -->
+        <mxCell id="iot_platform" value="&lt;b&gt;AWS IoT / Azure IoT Hub&lt;/b&gt;&lt;br&gt;Device management · Telemetry ingestion · Rules engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="710" y="745" width="310" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== ZONE 4: APPLICATION / UX (right) ===== -->
+        <mxCell id="zone_ux" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDF2F8;strokeColor=#FBCFE8;strokeWidth=1;dashed=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="80" width="290" height="780" as="geometry"/>
+        </mxCell>
+        <mxCell id="zone_ux_label" value="APPLICATION &amp; UX LAYER" style="text;html=1;fontSize=11;fontStyle=1;fontFamily=Calibri;fontColor=#BE185D;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="85" width="290" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="quality_dashboard" value="&lt;b&gt;Quality Dashboard&lt;/b&gt;&lt;br&gt;Real-time defect monitoring&lt;br&gt;Drill-down by station/shift" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="120" width="250" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="operator_ui" value="&lt;b&gt;Operator Station UI&lt;/b&gt;&lt;br&gt;Pass/fail visual cues&lt;br&gt;Hold-station controls" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="200" width="250" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="asset_health" value="&lt;b&gt;Asset Health Dashboard&lt;/b&gt;&lt;br&gt;Risk-prioritized work queue&lt;br&gt;Failure-cause analytics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="280" width="250" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="ehs_wall" value="&lt;b&gt;EHS Live Wall&lt;/b&gt;&lt;br&gt;PPE compliance · Zone alerts&lt;br&gt;Incident reports + video clips" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="360" width="250" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="sop_feed" value="&lt;b&gt;SOP Compliance Scorecard&lt;/b&gt;&lt;br&gt;Live deviation feed&lt;br&gt;Operator coaching overlay" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="440" width="250" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="traceability_viewer" value="&lt;b&gt;Vehicle Genealogy Viewer&lt;/b&gt;&lt;br&gt;Root-cause drill-down&lt;br&gt;Recall scope calculator" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="520" width="250" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="mobile_app" value="&lt;b&gt;Mobile Technician App&lt;/b&gt;&lt;br&gt;Work order push · Photo capture&lt;br&gt;Maintenance confirmation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="600" width="250" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="alerts" value="&lt;b&gt;Alerting &amp; Notifications&lt;/b&gt;&lt;br&gt;Slack · Teams · SMS · Andon&lt;br&gt;Escalation rules by severity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E31837;strokeColor=#E31837;fontColor=#FFFFFF;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="680" width="250" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="exec_bi" value="&lt;b&gt;Executive BI / ROI Reporting&lt;/b&gt;&lt;br&gt;Power BI · Tableau · Weekly digest" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;fontSize=11;fontFamily=Calibri;verticalAlign=middle;spacingLeft=8;spacingRight=8;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="755" width="250" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== NUMBERED FLOW ARROWS ===== -->
+        <!-- 1: Sensors → Edge Compute -->
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#1F3B6E;strokeWidth=2;fontSize=10;fontFamily=Calibri;fontColor=#1F3B6E;" edge="1" parent="1" source="cameras" target="edge_compute">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow1_label" value="①" style="edgeLabel;html=1;fontSize=14;fontStyle=1;fontColor=#E31837;fontFamily=Calibri;labelBackgroundColor=#FFFFFF;" vertex="1" connectable="0" parent="arrow1">
+          <mxGeometry x="-0.2" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- 2: Edge Compute → Kafka -->
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#1F3B6E;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="edge_compute" target="kafka">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow2_label" value="②" style="edgeLabel;html=1;fontSize=14;fontStyle=1;fontColor=#E31837;fontFamily=Calibri;labelBackgroundColor=#FFFFFF;" vertex="1" connectable="0" parent="arrow2">
+          <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- 3: Kafka → AI Models -->
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#1F3B6E;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="kafka" target="cloud_platform">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow3_label" value="③" style="edgeLabel;html=1;fontSize=14;fontStyle=1;fontColor=#E31837;fontFamily=Calibri;labelBackgroundColor=#FFFFFF;" vertex="1" connectable="0" parent="arrow3">
+          <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- 4: MES Connector → SAP MES -->
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#1F3B6E;strokeWidth=1.5;" edge="1" parent="1" source="mes_connector" target="sap_mes">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- 5: AI → Dashboards -->
+        <mxCell id="arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#1F3B6E;strokeWidth=2;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="uc_vision" target="quality_dashboard">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="arrow5_label" value="④" style="edgeLabel;html=1;fontSize=14;fontStyle=1;fontColor=#E31837;fontFamily=Calibri;labelBackgroundColor=#FFFFFF;" vertex="1" connectable="0" parent="arrow5">
+          <mxGeometry x="-0.1" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- 6: MLOps → Edge (retraining loop) -->
+        <mxCell id="arrow6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#818CF8;strokeWidth=2;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="mlops" target="edge_compute">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="670" y="600"/>
+              <mxPoint x="670" y="700"/>
+              <mxPoint x="370" y="700"/>
+              <mxPoint x="370" y="590"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow6_label" value="⑤ OTA" style="edgeLabel;html=1;fontSize=11;fontStyle=1;fontColor=#818CF8;fontFamily=Calibri;labelBackgroundColor=#FFFFFF;" vertex="1" connectable="0" parent="arrow6">
+          <mxGeometry x="0.3" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry>
+        </mxCell>
+
+        <!-- Maintenance flow -->
+        <mxCell id="arrow_maint" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#1A2754;strokeWidth=1.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="uc_pred_maint" target="asset_health">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Safety flow -->
+        <mxCell id="arrow_safety" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#14A085;strokeWidth=1.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="uc_safety" target="ehs_wall">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Traceability flow -->
+        <mxCell id="arrow_trace" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#0E7B6A;strokeWidth=1.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="uc_trace" target="traceability_viewer">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Edge → OPC-UA -->
+        <mxCell id="arrow_opcua" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#F59E0B;strokeWidth=1.5;" edge="1" parent="1" source="iot_sensors" target="edge_compute">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- RFID → Edge -->
+        <mxCell id="arrow_rfid" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#D0D5DD;strokeWidth=1.5;" edge="1" parent="1" source="rfid_barcode" target="edge_compute">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Edge Gateway → Kafka -->
+        <mxCell id="arrow_gw" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#818CF8;strokeWidth=1.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.8;entryDx=0;entryDy=0;" edge="1" parent="1" source="edge_gateway" target="kafka">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Pred Maint → SAP PM -->
+        <mxCell id="arrow_pm" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#1A2754;strokeWidth=1.5;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="uc_pred_maint" target="sap_pm">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Trace → Neo4j -->
+        <mxCell id="arrow_neo4j" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;strokeColor=#0E7B6A;strokeWidth=1.5;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="uc_trace" target="neo4j">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== LEGEND ===== -->
+        <mxCell id="legend_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="80" width="180" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_title" value="&lt;b&gt;Data Flow&lt;/b&gt;" style="text;html=1;fontSize=11;fontFamily=Calibri;fontColor=#1A1A1A;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="85" width="160" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend1" value="① Capture → Edge inference" style="text;html=1;fontSize=9;fontFamily=Calibri;fontColor=#6B7280;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="110" width="160" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend2" value="② Edge → Event stream" style="text;html=1;fontSize=9;fontFamily=Calibri;fontColor=#6B7280;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="130" width="160" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend3" value="③ Stream → Cloud AI" style="text;html=1;fontSize=9;fontFamily=Calibri;fontColor=#6B7280;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="150" width="160" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend4" value="④ AI → Application/UX" style="text;html=1;fontSize=9;fontFamily=Calibri;fontColor=#6B7280;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="170" width="160" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend5" value="⑤ MLOps → Edge OTA update" style="text;html=1;fontSize=9;fontFamily=Calibri;fontColor=#6B7280;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="190" width="160" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend6" value="- - - Integration / write-back" style="text;html=1;fontSize=9;fontFamily=Calibri;fontColor=#6B7280;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="210" width="160" height="18" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend7" value="■ Hyundai enterprise system" style="text;html=1;fontSize=9;fontFamily=Calibri;fontColor=#1F3B6E;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="235" width="160" height="18" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== HYUNDAI PLANT ANCHORS ===== -->
+        <mxCell id="plants_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="280" width="180" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="plants_title" value="&lt;b&gt;Hyundai Plants&lt;/b&gt;" style="text;html=1;fontSize=11;fontFamily=Calibri;fontColor=#1A1A1A;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="285" width="160" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="plants_list" value="Ulsan (1.6M/yr)&lt;br&gt;Asan · HMGMA&lt;br&gt;HMMA · HMMC · HMI&lt;br&gt;&lt;i&gt;Pilot: HMGMA + Ulsan&lt;/i&gt;" style="text;html=1;fontSize=10;fontFamily=Calibri;fontColor=#6B7280;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="310" width="160" height="80" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
