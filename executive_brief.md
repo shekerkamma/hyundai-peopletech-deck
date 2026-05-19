@@ -34,6 +34,8 @@ These are not projections. They are outcome ranges from in-production AI deploym
 
 Three reasons PeopleTech is the right partner for this engagement:
 
+**A complement, not a replacement, for Hyundai's AI bets.** Hyundai Motor Group already operates **HMGICS Singapore** as a smart-factory testbed and has invested in AI through **AIRS Company** and **Boston Dynamics**. PeopleTech's role is to bring those innovations to production scale at high-volume plants — **Ulsan, Asan, HMGMA Metaplant America, HMMA, HMMC, HMI** — and operationalize AI on lines already running today.
+
 **Manufacturing domain depth.** Our engineers have shipped vision QA, predictive maintenance, and traceability stacks for Tier-1 OEMs, EV manufacturers, aerospace suppliers, and heavy equipment makers across Asia, Europe, and North America. We do not bring a generic AI team — we bring people who know what a Cognex camera mount looks like, how an OPC-UA bus behaves under load, and where line-side latency budgets matter.
 
 **Reusable accelerators that cut time-to-pilot 40–60%.** Our Vision-AI Starter Kit, Industrial IoT Reference Architecture, MES/SAP Integration Connector Library, MLOps Blueprint, and Edge Deployment Toolkit are field-proven, productized, and licensed under the engagement. We are not building from zero on Day 1.
@@ -53,9 +55,9 @@ Three reasons PeopleTech is the right partner for this engagement:
 
 We recommend Hyundai greenlight a **12-week pilot** on a single line, covering two use cases:
 
-**Pilot 1 — AI-based Visual Inspection.** Edge-deployed CNN models on paint or final inspection. Success criteria: **≥30% reduction in escape defects** vs baseline, **<2 s** detection latency, MES line-hold integration validated.
+**Pilot 1 — AI-based Visual Inspection at HMGMA Metaplant America.** Edge-deployed CNN models on the IONIQ 5 / IONIQ 9 paint line. Success criteria: **≥30% reduction in escape defects** vs baseline, **<2 s** detection latency, MES line-hold integration validated. Fast-follow on Tucson / Santa Fe paint at HMMA.
 
-**Pilot 2 — Predictive Maintenance.** Vibration + acoustic sensor mesh on 3–5 high-criticality assets. Success criteria: **≥25% reduction in unplanned downtime**, work-order auto-generation in SAP PM, **at least one predicted failure validated** with measured lead time.
+**Pilot 2 — Predictive Maintenance on Ulsan stamping + Asan welding.** Vibration + acoustic sensor mesh on 3–5 high-criticality assets at the world's largest auto plant. Success criteria: **≥25% reduction in unplanned downtime**, work-order auto-generation in SAP PM, **at least one predicted failure validated** with measured lead time.
 
 **Pilot team.** PeopleTech embedded pod — solution architect, ML lead, vision engineer, DevOps, plant-floor integration specialist — co-located with a Hyundai owner team from week one.
 

@@ -96,7 +96,7 @@ def add_bullets(slide, x, y, w, h, bullets, *,
         run.font.color.rgb = color
     return tb
 
-def slide_footer(slide, slide_num, total=15, brand="PeopleTech · AI Manufacturing Practice"):
+def slide_footer(slide, slide_num, total=17, brand="PeopleTech · AI Manufacturing Practice"):
     add_rect(slide, 0, Inches(7.0), SLIDE_W, Inches(0.5), NAVY_900)
     add_text(slide, Inches(0.5), Inches(7.05), Inches(8), Inches(0.4),
              brand, font_size=9, color=SLATE_300, anchor=MSO_ANCHOR.MIDDLE, bold=True)
@@ -206,6 +206,7 @@ USE_CASES = [
             ("INTEGRATION", "MES connector · OPC-UA bus · Defect database (PostgreSQL) · Kafka event stream"),
             ("UX / DECISION", "Real-time quality dashboard · Operator hold-station UI · Defect drill-down portal · Slack/Teams alerts"),
         ],
+        "hyundai_start": "Paint shop · IONIQ 5 / IONIQ 9 line at Metaplant America (HMGMA) — newest line, highest variant complexity, premium-segment defect sensitivity. Fast-follow on Tucson / Santa Fe paint at HMMA.",
     },
     {
         "n": "02",
@@ -326,6 +327,7 @@ USE_CASES = [
             ("INTEGRATION", "SAP PM · CMMS (Maximo) · Asset historian · Work-order auto-generation API"),
             ("UX / DECISION", "Asset health dashboard · Risk-prioritized work queue · Mobile technician app · Failure-cause analytics"),
         ],
+        "hyundai_start": "Ulsan stamping presses + Asan welding cells — high-criticality assets where one unplanned hour ripples across the world's largest auto plant. 3–5 assets in pilot, scale to all critical lines on validation.",
     },
     {
         "n": "07",
@@ -423,7 +425,7 @@ add_text(s, Inches(0.8), Inches(6.1), Inches(12), Inches(0.3),
          "8 AI Use Cases · Visual Inspection · Predictive Maintenance · Safety · Quality & Traceability",
          font_size=10, color=SLATE_400)
 add_text(s, Inches(11.5), Inches(7.05), Inches(1.5), Inches(0.4),
-         "01 / 15", font_size=9, color=SLATE_400,
+         "01 / 17", font_size=9, color=SLATE_400,
          align=PP_ALIGN.RIGHT, anchor=MSO_ANCHOR.MIDDLE)
 
 # ---------- SLIDE 2: WHY PEOPLETECH ----------
@@ -434,9 +436,16 @@ std_header(s, "PRE-SALES POSITIONING", "Why PeopleTech for Hyundai",
 add_text(s, Inches(0.5), Inches(1.2), Inches(7.5), Inches(0.9),
          "A delivery partner built for industrial AI at plant scale.",
          font_size=24, color=NAVY_800, bold=True, line_spacing=1.15)
-add_text(s, Inches(0.5), Inches(2.2), Inches(7.5), Inches(1.0),
+add_text(s, Inches(0.5), Inches(2.2), Inches(7.5), Inches(0.9),
          "PeopleTech is a global services company with deep practices across data engineering, computer vision, MLOps, and enterprise integration. We bring proven accelerators and a delivery model tuned for the realities of automotive manufacturing — uptime pressure, line-side latency, and zero-tolerance for defects reaching customers.",
-         font_size=11, color=INK_SOFT, line_spacing=1.4)
+         font_size=10.5, color=INK_SOFT, line_spacing=1.4)
+# Hyundai-specific callout
+add_rect(s, Inches(0.5), Inches(3.15), Inches(7.5), Inches(0.5), RGBColor(0xEC, 0xFD, 0xF5))
+add_rect(s, Inches(0.5), Inches(3.15), Inches(0.06), Inches(0.5), TEAL)
+add_text(s, Inches(0.68), Inches(3.15), Inches(7.2), Inches(0.5),
+         "Hyundai already operates HMGICS Singapore as a smart-factory hub and has invested in AI via AIRS Company and Boston Dynamics. PeopleTech brings these innovations to production scale at Ulsan, Asan, HMGMA, HMMA, HMMC, HMI.",
+         font_size=9.5, color=RGBColor(0x0D, 0x8A, 0x72), italic=True,
+         line_spacing=1.35, anchor=MSO_ANCHOR.MIDDLE)
 strengths = [
     ("End-to-end AI delivery, not just models",
      "Data pipelines, model training, edge deployment, integration with MES/ERP, dashboards, and Day-2 operations — under one accountable team."),
@@ -446,7 +455,7 @@ strengths = [
      "AWS & Azure advanced partners. Pre-built integrations with SAP MES/ERP, OPC-UA, AVEVA PI, RFID, and major vision-camera ecosystems."),
 ]
 for i, (h, p) in enumerate(strengths):
-    y = Inches(3.7 + i * 0.95)
+    y = Inches(3.85 + i * 0.95)
     add_rect(s, Inches(0.5), y, Inches(7.5), Inches(0.85), WHITE)
     add_rect(s, Inches(0.5), y, Inches(0.06), Inches(0.85), TEAL)
     add_text(s, Inches(0.68), y + Inches(0.08), Inches(7.2), Inches(0.3),
@@ -478,8 +487,8 @@ std_header(s, "ENGAGEMENT MODEL", "Four-Phase Delivery Approach",
 add_text(s, Inches(0.5), Inches(1.2), Inches(12), Inches(0.55),
          "De-risked path from first use case to plant-wide rollout",
          font_size=22, color=NAVY_800, bold=True)
-add_text(s, Inches(0.5), Inches(1.85), Inches(12), Inches(0.7),
-         "We never start with a multi-quarter program. We start by proving one use case end-to-end on a real line, then we scale what works. Each phase has fixed scope, fixed KPIs, and a go/no-go gate before the next.",
+add_text(s, Inches(0.5), Inches(1.85), Inches(12), Inches(0.85),
+         "We never start with a multi-quarter program. We start by proving one use case end-to-end on a real line, then we scale what works. Each phase has fixed scope, fixed KPIs, and a go/no-go gate before the next. Designed for the scale of Ulsan (~1.6M vehicles/year, world's largest auto plant) and the production cadence of Metaplant America (IONIQ 5 / IONIQ 9 line).",
          font_size=11, color=INK_SOFT, line_spacing=1.4)
 phase_colors = [TEAL, ORANGE, PURPLE, NAVY_700]
 phases = [
@@ -545,10 +554,19 @@ for idx, uc in enumerate(USE_CASES):
         tx = rx + (tile_w + Inches(0.1)) * (mi % 2)
         ty = Inches(1.4) + (tile_h + Inches(0.1)) * (mi // 2)
         metric_tile(s, tx, ty, tile_w, tile_h, val, lbl, uc["color"])
-    meta_card(s, rx, Inches(3.55), rw, Inches(0.9),
+    meta_card(s, rx, Inches(3.55), rw, Inches(0.85),
               "SYSTEMS INTEGRATED", uc["systems"])
-    meta_card(s, rx, Inches(4.55), rw, Inches(0.75),
+    meta_card(s, rx, Inches(4.5), rw, Inches(0.65),
               "TARGET USERS", uc["users"])
+    # Optional Hyundai start card (UC-01 and UC-06 only)
+    if uc.get("hyundai_start"):
+        add_rect(s, rx, Inches(5.25), rw, Inches(0.45), RGBColor(0xEC, 0xFD, 0xF5))
+        add_rect(s, rx, Inches(5.25), Inches(0.06), Inches(0.45), TEAL)
+        add_text(s, rx + Inches(0.15), Inches(5.27), rw - Inches(0.2), Inches(0.18),
+                 "RECOMMENDED HYUNDAI START", font_size=8,
+                 color=RGBColor(0x0D, 0x8A, 0x72), bold=True)
+        add_text(s, rx + Inches(0.15), Inches(5.43), rw - Inches(0.2), Inches(0.27),
+                 uc["hyundai_start"], font_size=8.5, color=INK, line_spacing=1.3)
     # BOTTOM STRIP: solution stack
     stack_strip(s, Inches(0.5), Inches(5.75), Inches(12.3), Inches(1.15), uc["stack"])
     slide_footer(s, n)
@@ -720,7 +738,7 @@ bullets = [
     "8 use cases mapped to Hyundai's stated key areas — visual inspection, predictive quality, maintenance, safety, traceability.",
     "Edge AI + cloud architecture on AWS / Azure — production-ready, line-side latency <200ms, scalable from one line to enterprise.",
     "Integration-first: MES, ERP, RFID, IoT, and vision stacks — no rip-and-replace, no parallel systems of record.",
-    "Start with 2 pilots — recommend Visual Inspection + Predictive Maintenance. ROI proven in 12 weeks, then scale across plants.",
+    "Start with 2 pilots — Visual Inspection at HMGMA (IONIQ paint) + Predictive Maintenance at Ulsan stamping / Asan welding. ROI proven in 12 weeks, then scale across the global Hyundai plant network.",
 ]
 for i, b in enumerate(bullets):
     y = Inches(3.4 + i * 0.6)
@@ -735,8 +753,43 @@ add_text(s, Inches(0.8), Inches(6.5), Inches(12), Inches(0.35),
          "Next step: Pilot scoping workshop with PeopleTech's AI Manufacturing practice.",
          font_size=12, color=SLATE_300)
 add_text(s, Inches(11.5), Inches(7.05), Inches(1.5), Inches(0.4),
-         "15 / 15", font_size=9, color=SLATE_400,
+         "15 / 17", font_size=9, color=SLATE_400,
          align=PP_ALIGN.RIGHT, anchor=MSO_ANCHOR.MIDDLE)
+
+# ---------- SLIDE 16: VISUAL INSPECTION ARCHITECTURE (APPENDIX) ----------
+s = new_slide()
+add_rect(s, 0, 0, SLIDE_W, Inches(0.7), NAVY_800)
+add_text(s, Inches(0.5), 0, Inches(2.5), Inches(0.7),
+         "APPENDIX · PILOT 1", font_size=10, color=SLATE_300, bold=True,
+         anchor=MSO_ANCHOR.MIDDLE)
+add_text(s, Inches(3), 0, Inches(7), Inches(0.7),
+         "Visual Inspection — Reference Architecture", font_size=18, color=WHITE, bold=True,
+         align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+add_text(s, Inches(10), 0, Inches(2.8), Inches(0.7),
+         "HMGMA · IONIQ paint shop", font_size=10, color=SLATE_300,
+         align=PP_ALIGN.RIGHT, anchor=MSO_ANCHOR.MIDDLE, italic=True)
+# Architecture diagram image
+s.shapes.add_picture("architecture_visual_inspection.png",
+                     Inches(0.4), Inches(0.85),
+                     width=Inches(12.5), height=Inches(6.1))
+slide_footer(s, 16)
+
+# ---------- SLIDE 17: PREDICTIVE MAINTENANCE ARCHITECTURE (APPENDIX) ----------
+s = new_slide()
+add_rect(s, 0, 0, SLIDE_W, Inches(0.7), NAVY_800)
+add_text(s, Inches(0.5), 0, Inches(2.5), Inches(0.7),
+         "APPENDIX · PILOT 2", font_size=10, color=SLATE_300, bold=True,
+         anchor=MSO_ANCHOR.MIDDLE)
+add_text(s, Inches(3), 0, Inches(7), Inches(0.7),
+         "Predictive Maintenance — Reference Architecture", font_size=18, color=WHITE, bold=True,
+         align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+add_text(s, Inches(10), 0, Inches(2.8), Inches(0.7),
+         "Ulsan stamping · Asan welding", font_size=10, color=SLATE_300,
+         align=PP_ALIGN.RIGHT, anchor=MSO_ANCHOR.MIDDLE, italic=True)
+s.shapes.add_picture("architecture_predictive_maintenance.png",
+                     Inches(0.4), Inches(0.85),
+                     width=Inches(12.5), height=Inches(6.1))
+slide_footer(s, 17)
 
 # ============================================================================
 # SAVE

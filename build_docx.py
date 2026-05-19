@@ -176,6 +176,10 @@ add_para(
 # ============================================================================
 add_section_header("Why PeopleTech")
 add_mixed_para([
+    ("A complement, not a replacement, for Hyundai's AI bets. ", True),
+    ("Hyundai Motor Group already operates HMGICS Singapore as a smart-factory testbed and has invested in AI through AIRS Company and Boston Dynamics. PeopleTech's role is to bring those innovations to production scale at high-volume plants — Ulsan, Asan, HMGMA Metaplant America, HMMA, HMMC, HMI — and operationalize AI on lines already running today.", False),
+])
+add_mixed_para([
     ("Manufacturing domain depth. ", True),
     ("Our engineers have shipped vision QA, predictive maintenance, and traceability stacks for Tier-1 OEMs, EV manufacturers, aerospace suppliers, and heavy equipment makers across Asia, Europe, and North America. We do not bring a generic AI team — we bring people who know what a Cognex camera mount looks like and how an OPC-UA bus behaves under load.", False),
 ])
@@ -202,12 +206,12 @@ add_bullet([("Heavy equipment — RFID + vision traceability. ", True),
 # ============================================================================
 add_section_header("Recommendation: Two Pilots, 12 Weeks, Fixed Scope")
 add_mixed_para([
-    ("Pilot 1 — AI-based Visual Inspection. ", True),
-    ("Edge-deployed CNN models on paint or final inspection. Success criteria: ≥30% reduction in escape defects vs baseline, <2s detection latency, MES line-hold integration validated.", False),
+    ("Pilot 1 — AI-based Visual Inspection at HMGMA Metaplant America. ", True),
+    ("Edge-deployed CNN models on the IONIQ 5 / IONIQ 9 paint line. Success criteria: ≥30% reduction in escape defects vs baseline, <2s detection latency, MES line-hold integration validated. Fast-follow on Tucson / Santa Fe paint at HMMA.", False),
 ])
 add_mixed_para([
-    ("Pilot 2 — Predictive Maintenance. ", True),
-    ("Vibration + acoustic sensor mesh on 3–5 high-criticality assets. Success criteria: ≥25% reduction in unplanned downtime, work-order auto-generation in SAP PM, at least one predicted failure validated with measured lead time.", False),
+    ("Pilot 2 — Predictive Maintenance on Ulsan stamping + Asan welding. ", True),
+    ("Vibration + acoustic sensor mesh on 3–5 high-criticality assets at the world's largest auto plant. Success criteria: ≥25% reduction in unplanned downtime, work-order auto-generation in SAP PM, at least one predicted failure validated with measured lead time.", False),
 ])
 add_mixed_para([
     ("Pilot team. ", True),
