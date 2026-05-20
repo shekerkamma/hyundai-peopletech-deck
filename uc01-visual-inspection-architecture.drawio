@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="cli-anything" agent="cli-anything-drawio/1.0.0" version="24.0.0">
+  <diagram id="diagram_1779241420052531" name="Page-1">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="UC-01: AI-based Visual Inspection" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=18;fontStyle=1;fontColor=#1F3B6E;" vertex="1" parent="1">
+          <mxGeometry x="40.0" y="10.0" width="500.0" height="30.0" as="geometry" />
+        </mxCell>
+        <mxCell id="cam" value="High-Res Cameras (Cognex/Basler) + LED Light Tunnel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="60.0" width="140.0" height="65.0" as="geometry" />
+        </mxCell>
+        <mxCell id="edge" value="Edge GPU (Jetson) TensorRT CNN &lt;2s" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3B6E;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="150.0" width="140.0" height="65.0" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn" value="CNN Anomaly (ResNet50, EfficientNet)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#14A085;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="60.0" width="150.0" height="60.0" as="geometry" />
+        </mxCell>
+        <mxCell id="sage" value="SageMaker Training Pipeline" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3B6E;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="145.0" width="150.0" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="mlops" value="MLOps + OTA Deploy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E7FF;strokeColor=#818CF8;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="225.0" width="150.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="kafka" value="Kafka Event Stream" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="440.0" y="60.0" width="130.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="mes" value="MES Connector → SAP Line-Hold" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3B6E;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="440.0" y="130.0" width="130.0" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="Defect DB (PostgreSQL)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="440.0" y="210.0" width="130.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="dash" value="Quality Dashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="620.0" y="60.0" width="120.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="opui" value="Operator Station Pass/Fail" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="620.0" y="125.0" width="120.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="alerts" value="Alerts (Slack/Teams)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DC2626;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="620.0" y="190.0" width="120.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241423708513" value="1 Capture" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="cam" target="edge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241423855321" value="2 Infer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="edge" target="cnn">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241423997606" value="3 Score" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="cnn" target="kafka">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241424123723" value="4 Line-Hold" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="kafka" target="mes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241424252870" value="Persist" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="kafka" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241424362446" value="Retrain" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="cnn" target="sage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241424493330" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="sage" target="mlops">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241424629076" value="5 OTA" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=1;" edge="1" parent="1" source="mlops" target="edge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241424763996" value="6 Display" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="cnn" target="dash">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241424863180" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=1;" edge="1" parent="1" source="edge" target="opui">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241424988505" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=1;" edge="1" parent="1" source="kafka" target="alerts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

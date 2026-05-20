@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="cli-anything" agent="cli-anything-drawio/1.0.0" version="24.0.0">
+  <diagram id="diagram_1779241460218723" name="Page-1">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="UC-07: AI Safety Monitoring" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=18;fontStyle=1;fontColor=#1F3B6E;" vertex="1" parent="1">
+          <mxGeometry x="40.0" y="10.0" width="500.0" height="30.0" as="geometry" />
+        </mxCell>
+        <mxCell id="safecam" value="Wide-FOV Safety Cameras" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="60.0" width="140.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="forklift" value="Forklift Onboard Cams" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="130.0" width="140.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="Edge AI (Hailo/Jetson)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3B6E;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="195.0" width="140.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="anon" value="Person Anonymization" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="265.0" width="140.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="ppe" value="YOLOv8 PPE Detector" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#14A085;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="60.0" width="150.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="prox" value="Person-Vehicle Proximity Tracker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#14A085;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="130.0" width="150.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="zone" value="Zone-Violation Rule Engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#14A085;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="200.0" width="150.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="ehs2" value="EHS Platform" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="440.0" y="60.0" width="130.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="incident" value="Incident Mgmt System" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="440.0" y="130.0" width="130.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="andon" value="Andon / PA Siren" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DC2626;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="440.0" y="195.0" width="130.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="access" value="Access Control System" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="440.0" y="265.0" width="130.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="wall" value="EHS Live Wall" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="620.0" y="60.0" width="120.0" height="42.0" as="geometry" />
+        </mxCell>
+        <mxCell id="report2" value="Auto-Incident Report + Video" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="620.0" y="122.0" width="120.0" height="48.0" as="geometry" />
+        </mxCell>
+        <mxCell id="scorecard" value="Compliance Scorecard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="620.0" y="190.0" width="120.0" height="42.0" as="geometry" />
+        </mxCell>
+        <mxCell id="auditexp" value="Audit Export" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="620.0" y="252.0" width="120.0" height="42.0" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241466362272" value="1 Video" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="safecam" target="edge2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241466450044" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="forklift" target="edge2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241466561543" value="2 Detect" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="edge2" target="ppe">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241466672299" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="edge2" target="prox">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241466785883" value="3 Rules" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="ppe" target="zone">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241466904938" value="4 Siren" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="zone" target="andon">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241467100241" value="5 Log" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="zone" target="ehs2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241467250176" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="ehs2" target="incident">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241467407479" value="6 Display" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="ppe" target="wall">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241467545766" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="incident" target="report2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241467666906" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="ehs2" target="scorecard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241467771204" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="scorecard" target="auditexp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

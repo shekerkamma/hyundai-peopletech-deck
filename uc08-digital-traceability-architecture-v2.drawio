@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="cli-anything" agent="cli-anything-drawio/1.0.0" version="24.0.0">
+  <diagram id="diagram_1779241467995134" name="Page-1">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="UC-08: Digital Traceability &amp; Tracking" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=18;fontStyle=1;fontColor=#1F3B6E;" vertex="1" parent="1">
+          <mxGeometry x="40.0" y="10.0" width="500.0" height="30.0" as="geometry" />
+        </mxCell>
+        <mxCell id="rfid" value="RFID Readers (UHF)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="60.0" width="140.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="barcode2" value="Barcode / DataMatrix" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="125.0" width="140.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="iot" value="IoT Sensors" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="190.0" width="140.0" height="40.0" as="geometry" />
+        </mxCell>
+        <mxCell id="vocr" value="Vision OCR Stations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="250.0" width="140.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="neo4j" value="Neo4j Genealogy Graph" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0E7B6A;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="60.0" width="155.0" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="flink" value="Apache Flink Stream Processing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0E7B6A;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="135.0" width="155.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="defml" value="Defect Propagation ML" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0E7B6A;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="205.0" width="155.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="supplier" value="Supplier Risk Scoring" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0E7B6A;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="270.0" width="155.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="sap2" value="SAP MES / ERP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3B6E;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="445.0" y="60.0" width="130.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="portals" value="Supplier Portals" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="445.0" y="130.0" width="130.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="qdb2" value="Quality DB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="445.0" y="195.0" width="130.0" height="42.0" as="geometry" />
+        </mxCell>
+        <mxCell id="recall" value="Recall Mgmt System" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DC2626;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="445.0" y="257.0" width="130.0" height="48.0" as="geometry" />
+        </mxCell>
+        <mxCell id="viewer" value="Vehicle Genealogy Viewer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="625.0" y="60.0" width="120.0" height="48.0" as="geometry" />
+        </mxCell>
+        <mxCell id="rootcause" value="Root-Cause Drill-Down" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="625.0" y="128.0" width="120.0" height="42.0" as="geometry" />
+        </mxCell>
+        <mxCell id="scope" value="Recall Scope Calculator" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="625.0" y="190.0" width="120.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="auditor" value="Auditor Export Portal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="625.0" y="255.0" width="120.0" height="42.0" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241475310950" value="1 Scan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="rfid" target="flink">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241475461879" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="barcode2" target="flink">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241475602403" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="iot" target="flink">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241475733430" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="vocr" target="flink">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241475855054" value="2 Build Graph" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="flink" target="neo4j">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241476011898" value="3 Analyze" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="neo4j" target="defml">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241476174134" value="4 Score" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="defml" target="supplier">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241476323709" value="5 Sync" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="neo4j" target="sap2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241476463015" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="supplier" target="portals">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241476579598" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="defml" target="qdb2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241476721379" value="6 Display" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="neo4j" target="viewer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241476844177" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="defml" target="rootcause">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241476982044" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="recall" target="scope">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241477107903" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="qdb2" target="auditor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

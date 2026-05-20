@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="cli-anything" agent="cli-anything-drawio/1.0.0" version="24.0.0">
+  <diagram id="diagram_1779241431734563" name="Page-1">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="UC-03: Seating &amp; Component Validation" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=18;fontStyle=1;fontColor=#1F3B6E;" vertex="1" parent="1">
+          <mxGeometry x="40.0" y="10.0" width="500.0" height="30.0" as="geometry" />
+        </mxCell>
+        <mxCell id="cam" value="Multi-Angle Station Cameras" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="60.0" width="140.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="torque" value="Smart Torque Wrenches (IIoT)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="130.0" width="140.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="edge" value="Edge Inference (Jetson Orin)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3B6E;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="200.0" width="140.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="yolo" value="YOLOv8 + Keypoint Head" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7C3AED;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="60.0" width="150.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="fitment" value="Fitment Classifier" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7C3AED;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="130.0" width="150.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="rules" value="Variant Rule Engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7C3AED;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="200.0" width="150.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="mes" value="MES / Variant Config DB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3B6E;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="440.0" y="60.0" width="130.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="tgw" value="Torque Tool Gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="440.0" y="130.0" width="130.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="bus" value="Quality Event Bus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="440.0" y="200.0" width="130.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="tablet" value="Operator Tablet Pass/Fail" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="620.0" y="60.0" width="120.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="review" value="Engineer Review Queue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="620.0" y="125.0" width="120.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="report" value="Fitment Report" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="620.0" y="190.0" width="120.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241436656362" value="1 Image" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="cam" target="yolo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241436798683" value="2 Torque" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="torque" target="fitment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241436914173" value="3 Pose" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="yolo" target="fitment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241437035728" value="4 Check" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="fitment" target="rules">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241437169681" value="5 Verify" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="rules" target="mes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241437305900" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="torque" target="tgw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241437446808" value="6 Event" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="rules" target="bus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241437567002" value="7 Result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="fitment" target="tablet">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241437657559" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="bus" target="review">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241437745059" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="review" target="report">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

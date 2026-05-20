@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="cli-anything" agent="cli-anything-drawio/1.0.0" version="24.0.0">
+  <diagram id="diagram_1779241452067342" name="Page-1">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="UC-06: Predictive Maintenance" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=18;fontStyle=1;fontColor=#1F3B6E;" vertex="1" parent="1">
+          <mxGeometry x="40.0" y="10.0" width="500.0" height="30.0" as="geometry" />
+        </mxCell>
+        <mxCell id="vib" value="Vibration Accelerometers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="60.0" width="140.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="acoustic" value="Acoustic Emission Sensors" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="125.0" width="140.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="thermal" value="Thermal Cameras" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="190.0" width="140.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="edge" value="Edge Concentrator (IoT Greengrass)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3B6E;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="255.0" width="140.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="ae" value="Autoencoder Anomaly Detection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0D3B5E;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="60.0" width="155.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="surv" value="DeepSurv Survival Analysis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0D3B5E;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="130.0" width="155.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="audio" value="Audio CNN Acoustic ML" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0D3B5E;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="200.0" width="155.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="mlflow" value="MLflow Model Registry" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E7FF;strokeColor=#818CF8;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="270.0" width="155.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="sappm" value="SAP PM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3B6E;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="445.0" y="60.0" width="130.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="cmms" value="CMMS (Maximo)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3B6E;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="445.0" y="125.0" width="130.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="hist" value="Asset Historian" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="445.0" y="190.0" width="130.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="woapi" value="Work-Order Auto-Gen API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="445.0" y="255.0" width="130.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="health" value="Asset Health Dashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="625.0" y="60.0" width="120.0" height="42.0" as="geometry" />
+        </mxCell>
+        <mxCell id="queue" value="Risk-Prioritized Work Queue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="625.0" y="122.0" width="120.0" height="42.0" as="geometry" />
+        </mxCell>
+        <mxCell id="mobile" value="Mobile Technician App" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="625.0" y="184.0" width="120.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="analytics" value="Failure-Cause Analytics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="625.0" y="249.0" width="120.0" height="42.0" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241458675034" value="1 Sense" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="vib" target="edge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241458793507" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="acoustic" target="edge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241458922496" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="thermal" target="edge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241459070020" value="2 Analyze" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="edge" target="ae">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241459179339" value="3 RUL" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="ae" target="surv">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241459286820" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="acoustic" target="audio">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241459389332" value="4 Work Order" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="surv" target="sappm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241459486154" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="surv" target="woapi">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241459592614" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="woapi" target="cmms">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241459698588" value="5 Display" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="ae" target="health">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241459798220" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="surv" target="queue">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241459913471" value="6 Push" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="woapi" target="mobile">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241460018535" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="audio" target="analytics">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

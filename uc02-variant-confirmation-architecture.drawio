@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="cli-anything" agent="cli-anything-drawio/1.0.0" version="24.0.0">
+  <diagram id="diagram_1779241425189876" name="Page-1">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="UC-02: Model &amp; Variant Confirmation" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=18;fontStyle=1;fontColor=#1F3B6E;" vertex="1" parent="1">
+          <mxGeometry x="40.0" y="10.0" width="500.0" height="30.0" as="geometry" />
+        </mxCell>
+        <mxCell id="cam" value="Vision Cameras + VIN Scanner" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="60.0" width="140.0" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="barcode" value="Barcode / DataMatrix" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="135.0" width="140.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="gw" value="Edge Gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E7FF;strokeColor=#818CF8;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="205.0" width="140.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="yolo" value="YOLOv8 Object Detection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D97706;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="60.0" width="150.0" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="ocr" value="PaddleOCR VIN Reader" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D97706;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="135.0" width="150.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="bom" value="BOM-Match Rules Engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D97706;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="205.0" width="150.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="sap" value="SAP MES + BOM Database" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3B6E;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="440.0" y="60.0" width="130.0" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="plc" value="PLC / Line Controller" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;" vertex="1" parent="1">
+          <mxGeometry x="440.0" y="135.0" width="130.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="variant" value="Variant Config Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="440.0" y="205.0" width="130.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="console" value="Mismatch Console" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="620.0" y="60.0" width="120.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="hold" value="Auto Line-Hold" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DC2626;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="620.0" y="125.0" width="120.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="audit" value="Variant Audit Report" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="620.0" y="190.0" width="120.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241430490360" value="1 Scan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="cam" target="yolo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241430642530" value="2 Read" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="barcode" target="ocr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241430770721" value="3 Match" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="yolo" target="bom">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241430876557" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="ocr" target="bom">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241430983545" value="4 Verify BOM" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="bom" target="sap">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241431159770" value="5 Signal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="bom" target="plc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241431301658" value="Block" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="plc" target="hold">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241431427369" value="6 Alert" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="bom" target="console">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241431537931" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="console" target="audit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

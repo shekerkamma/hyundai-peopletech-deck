@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="cli-anything" agent="cli-anything-drawio/1.0.0" version="24.0.0">
+  <diagram id="diagram_1779241437930902" name="Page-1">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="UC-04: SOP Compliance Monitoring" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=18;fontStyle=1;fontColor=#1F3B6E;" vertex="1" parent="1">
+          <mxGeometry x="40.0" y="10.0" width="500.0" height="30.0" as="geometry" />
+        </mxCell>
+        <mxCell id="cam" value="Station IP Cameras (Fisheye)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="60.0" width="140.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="blur" value="Privacy-Aware On-Device Blur" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="130.0" width="140.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="edge" value="Edge GPU" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3B6E;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="50.0" y="195.0" width="140.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="pose" value="MoveNet/MMPose (Pose)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0E7B6A;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="60.0" width="150.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="action" value="SlowFast (Action Recog.)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0E7B6A;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="130.0" width="150.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="sop" value="SOP Graph Sequence Matcher" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0E7B6A;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240.0" y="200.0" width="150.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="lib" value="SOP Digital Library" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="440.0" y="60.0" width="130.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="mes" value="MES Work-Order Context" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3B6E;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="440.0" y="130.0" width="130.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="ehs" value="EHS Compliance System" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="440.0" y="195.0" width="130.0" height="50.0" as="geometry" />
+        </mxCell>
+        <mxCell id="feed" value="Live Deviation Feed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="620.0" y="60.0" width="120.0" height="42.0" as="geometry" />
+        </mxCell>
+        <mxCell id="coach" value="Coaching Overlay" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="620.0" y="122.0" width="120.0" height="42.0" as="geometry" />
+        </mxCell>
+        <mxCell id="score" value="Compliance Scorecard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;" vertex="1" parent="1">
+          <mxGeometry x="620.0" y="184.0" width="120.0" height="45.0" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241443948836" value="1 Video" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="cam" target="blur">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241444135649" value="2 Anonymize" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="blur" target="edge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241444263471" value="3 Infer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="edge" target="pose">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241444379346" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="pose" target="action">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241444485706" value="4 Match SOP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="action" target="sop">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241444632865" value="5 Lookup" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="sop" target="lib">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241444732609" value="6 Log" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="sop" target="ehs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241444826562" value="7 Alert" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="sop" target="feed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241444942542" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="feed" target="coach">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_1779241445043108" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" parent="1" source="ehs" target="score">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
