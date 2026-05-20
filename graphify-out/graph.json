@@ -1,0 +1,926 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "claude_code_skills_ecosystem",
+        "label": "Claude Code Skills Ecosystem",
+        "nodes": [
+          "github_bidah_skill_set_claude_code",
+          "github_bidah_skill_set_create_onboarding_video",
+          "youtube_claude_video_skill_brad_watch_skill",
+          "github_bidah_skill_set_skill_md_format",
+          "web_ruben_claude_code_guide_claude_md"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "github/bidah-skill-set.md"
+      },
+      {
+        "id": "onboarding_video_pipeline",
+        "label": "Onboarding Video Production Pipeline",
+        "nodes": [
+          "github_bidah_skill_set_create_onboarding_video",
+          "github_bidah_skill_set_remotion",
+          "github_bidah_skill_set_spring_animation",
+          "github_bidah_skill_set_cursor_animation",
+          "github_bidah_skill_set_pieces_not_screens"
+        ],
+        "relation": "implement",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "github/bidah-skill-set.md"
+      },
+      {
+        "id": "video_watch_pipeline",
+        "label": "Video Watch Pipeline",
+        "nodes": [
+          "youtube_claude_video_skill_brad_watch_skill",
+          "youtube_claude_video_skill_brad_yt_dlp",
+          "youtube_claude_video_skill_brad_ffmpeg",
+          "youtube_claude_video_skill_brad_groq_whisper",
+          "youtube_claude_video_skill_brad_frames_plus_transcript"
+        ],
+        "relation": "implement",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "youtube/claude-video-skill-brad.md"
+      },
+      {
+        "id": "content_research_cross_source_cluster",
+        "label": "Content Research Cross-Source Cluster (May 2026)",
+        "nodes": [
+          "_index_content_research_moc",
+          "github_bidah_skill_set_repo",
+          "linkedin_bidah_create_onboarding_video_skill_post",
+          "web_ruben_claude_code_guide_article",
+          "youtube_claude_video_skill_brad_video"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "_index/Content Research MOC.md"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "bidah/skill-set GitHub Repository",
+      "file_type": "document",
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": null,
+      "source_url": "https://github.com/bidah/skill-set",
+      "captured_at": "2026-05-20",
+      "author": "bidah",
+      "contributor": null,
+      "id": "github_bidah_skill_set_repo",
+      "community": 3,
+      "norm_label": "bidah/skill-set github repository"
+    },
+    {
+      "label": "create-onboarding-video Skill",
+      "file_type": "concept",
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": "line 21-30",
+      "source_url": "https://github.com/bidah/skill-set",
+      "captured_at": "2026-05-20",
+      "author": "bidah",
+      "contributor": null,
+      "id": "github_bidah_skill_set_create_onboarding_video",
+      "community": 0,
+      "norm_label": "create-onboarding-video skill"
+    },
+    {
+      "label": "Remotion (React Video Framework)",
+      "file_type": "concept",
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": "line 33",
+      "source_url": "https://github.com/bidah/skill-set",
+      "captured_at": "2026-05-20",
+      "author": "bidah",
+      "contributor": null,
+      "id": "github_bidah_skill_set_remotion",
+      "community": 0,
+      "norm_label": "remotion (react video framework)"
+    },
+    {
+      "label": "Pieces Not Screens Philosophy",
+      "file_type": "rationale",
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": "line 55",
+      "source_url": "https://github.com/bidah/skill-set",
+      "captured_at": "2026-05-20",
+      "author": "bidah",
+      "contributor": null,
+      "rationale": "Each beat shows a cropped UI component, not a full screenshot. The viewer sees the feature in action, not a screen tour. This isolates the meaningful interaction and avoids visual overload.",
+      "id": "github_bidah_skill_set_pieces_not_screens",
+      "community": 0,
+      "norm_label": "pieces not screens philosophy"
+    },
+    {
+      "label": "SKILL.md Skill Definition Format",
+      "file_type": "rationale",
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": "line 67",
+      "source_url": "https://github.com/bidah/skill-set",
+      "captured_at": "2026-05-20",
+      "author": "bidah",
+      "contributor": null,
+      "rationale": "Detailed operating rules, workflow steps, and forbidden patterns in a single markdown file make an excellent template for writing Claude Code skills.",
+      "id": "github_bidah_skill_set_skill_md_format",
+      "community": 0,
+      "norm_label": "skill.md skill definition format"
+    },
+    {
+      "label": "Claude Code",
+      "file_type": "concept",
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": "line 73",
+      "source_url": "https://github.com/bidah/skill-set",
+      "captured_at": "2026-05-20",
+      "author": "bidah",
+      "contributor": null,
+      "id": "github_bidah_skill_set_claude_code",
+      "community": 1,
+      "norm_label": "claude code"
+    },
+    {
+      "label": "Spring-Based Animation",
+      "file_type": "concept",
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": "line 29",
+      "source_url": "https://github.com/bidah/skill-set",
+      "captured_at": "2026-05-20",
+      "author": "bidah",
+      "contributor": null,
+      "id": "github_bidah_skill_set_spring_animation",
+      "community": 0,
+      "norm_label": "spring-based animation"
+    },
+    {
+      "label": "Cursor Animation Rules",
+      "file_type": "concept",
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": "line 27",
+      "source_url": "https://github.com/bidah/skill-set",
+      "captured_at": "2026-05-20",
+      "author": "bidah",
+      "contributor": null,
+      "id": "github_bidah_skill_set_cursor_animation",
+      "community": 0,
+      "norm_label": "cursor animation rules"
+    },
+    {
+      "label": "Intake-First Workflow",
+      "file_type": "rationale",
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": "line 59",
+      "source_url": "https://github.com/bidah/skill-set",
+      "captured_at": "2026-05-20",
+      "author": "bidah",
+      "contributor": null,
+      "rationale": "Won't start rendering until it has stills + intent for every screen. Ensures completeness before execution.",
+      "id": "github_bidah_skill_set_intake_first_workflow",
+      "community": 0,
+      "norm_label": "intake-first workflow"
+    },
+    {
+      "label": "Screenshots to Animated Onboarding Video LinkedIn Post",
+      "file_type": "document",
+      "source_file": "linkedin/bidah-create-onboarding-video-skill.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2026-05-20",
+      "author": null,
+      "contributor": null,
+      "id": "linkedin_bidah_create_onboarding_video_skill_post",
+      "community": 3,
+      "norm_label": "screenshots to animated onboarding video linkedin post"
+    },
+    {
+      "label": "Claude Code Skills as Distribution Channel",
+      "file_type": "rationale",
+      "source_file": "linkedin/bidah-create-onboarding-video-skill.md",
+      "source_location": "line 60",
+      "source_url": null,
+      "captured_at": "2026-05-20",
+      "author": null,
+      "contributor": null,
+      "rationale": "Claude Code skills are becoming a distribution channel: creators build, curators share, non-technical users adopt. The 'install in 60 seconds' framing removes friction.",
+      "id": "linkedin_bidah_create_onboarding_video_skill_skills_as_distribution",
+      "community": 3,
+      "norm_label": "claude code skills as distribution channel"
+    },
+    {
+      "label": "Screenshot-to-Video Workflow",
+      "file_type": "concept",
+      "source_file": "linkedin/bidah-create-onboarding-video-skill.md",
+      "source_location": "line 17-20",
+      "source_url": null,
+      "captured_at": "2026-05-20",
+      "author": null,
+      "contributor": null,
+      "id": "linkedin_bidah_create_onboarding_video_skill_screenshot_to_video",
+      "community": 5,
+      "norm_label": "screenshot-to-video workflow"
+    },
+    {
+      "label": "Claude Code Guide by Ruben Hassid",
+      "file_type": "document",
+      "source_file": "web/ruben-claude-code-guide.md",
+      "source_location": null,
+      "source_url": "https://ruben.substack.com/p/claude-code",
+      "captured_at": "2026-05-20",
+      "author": "Ruben Hassid",
+      "contributor": null,
+      "id": "web_ruben_claude_code_guide_article",
+      "community": 2,
+      "norm_label": "claude code guide by ruben hassid"
+    },
+    {
+      "label": "Ruben Hassid",
+      "file_type": "concept",
+      "source_file": "web/ruben-claude-code-guide.md",
+      "source_location": null,
+      "source_url": "https://ruben.substack.com/p/claude-code",
+      "captured_at": "2026-05-20",
+      "author": "Ruben Hassid",
+      "contributor": null,
+      "id": "web_ruben_claude_code_guide_ruben_hassid",
+      "community": 2,
+      "norm_label": "ruben hassid"
+    },
+    {
+      "label": "Screenshot-Based Prompting",
+      "file_type": "rationale",
+      "source_file": "web/ruben-claude-code-guide.md",
+      "source_location": "line 26",
+      "source_url": "https://ruben.substack.com/p/claude-code",
+      "captured_at": "2026-05-20",
+      "author": "Ruben Hassid",
+      "contributor": null,
+      "rationale": "Paste images of desired designs and Claude recreates them. The most powerful technique for non-coders: show, don't describe.",
+      "id": "web_ruben_claude_code_guide_screenshot_prompting",
+      "community": 5,
+      "norm_label": "screenshot-based prompting"
+    },
+    {
+      "label": "Vibecoding Method",
+      "file_type": "concept",
+      "source_file": "web/ruben-claude-code-guide.md",
+      "source_location": "line 29",
+      "source_url": "https://ruben.substack.com/p/claude-code",
+      "captured_at": "2026-05-20",
+      "author": "Ruben Hassid",
+      "contributor": null,
+      "id": "web_ruben_claude_code_guide_vibecoding",
+      "community": 2,
+      "norm_label": "vibecoding method"
+    },
+    {
+      "label": "CLAUDE.md Memory File",
+      "file_type": "rationale",
+      "source_file": "web/ruben-claude-code-guide.md",
+      "source_location": "line 28",
+      "source_url": "https://ruben.substack.com/p/claude-code",
+      "captured_at": "2026-05-20",
+      "author": "Ruben Hassid",
+      "contributor": null,
+      "rationale": "CLAUDE.md is the key persistence mechanism across sessions. Create project documentation so Claude remembers design choices.",
+      "id": "web_ruben_claude_code_guide_claude_md",
+      "community": 2,
+      "norm_label": "claude.md memory file"
+    },
+    {
+      "label": "Outcome-Focused Briefs",
+      "file_type": "concept",
+      "source_file": "web/ruben-claude-code-guide.md",
+      "source_location": "line 27",
+      "source_url": "https://ruben.substack.com/p/claude-code",
+      "captured_at": "2026-05-20",
+      "author": "Ruben Hassid",
+      "contributor": null,
+      "id": "web_ruben_claude_code_guide_outcome_focused_briefs",
+      "community": 2,
+      "norm_label": "outcome-focused briefs"
+    },
+    {
+      "label": "My Claude Code Can INSTANTLY Watch Any Video",
+      "file_type": "document",
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": null,
+      "source_url": "https://www.youtube.com/watch?v=QZMljuD10sU",
+      "captured_at": "2026-05-20",
+      "author": "Brad | AI & Automation",
+      "contributor": null,
+      "id": "youtube_claude_video_skill_brad_video",
+      "community": 4,
+      "norm_label": "my claude code can instantly watch any video"
+    },
+    {
+      "label": "Brad (AI & Automation)",
+      "file_type": "concept",
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": null,
+      "source_url": "https://www.youtube.com/watch?v=QZMljuD10sU",
+      "captured_at": "2026-05-20",
+      "author": "Brad | AI & Automation",
+      "contributor": null,
+      "id": "youtube_claude_video_skill_brad_brad",
+      "community": 4,
+      "norm_label": "brad (ai & automation)"
+    },
+    {
+      "label": "/watch Video Analysis Skill",
+      "file_type": "concept",
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": "line 12",
+      "source_url": "https://www.youtube.com/watch?v=QZMljuD10sU",
+      "captured_at": "2026-05-20",
+      "author": "Brad | AI & Automation",
+      "contributor": null,
+      "id": "youtube_claude_video_skill_brad_watch_skill",
+      "community": 1,
+      "norm_label": "/watch video analysis skill"
+    },
+    {
+      "label": "yt-dlp (Video Downloader)",
+      "file_type": "concept",
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": "line 17",
+      "source_url": "https://www.youtube.com/watch?v=QZMljuD10sU",
+      "captured_at": "2026-05-20",
+      "author": "Brad | AI & Automation",
+      "contributor": null,
+      "id": "youtube_claude_video_skill_brad_yt_dlp",
+      "community": 1,
+      "norm_label": "yt-dlp (video downloader)"
+    },
+    {
+      "label": "ffmpeg (Frame/Audio Extraction)",
+      "file_type": "concept",
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": "line 18",
+      "source_url": "https://www.youtube.com/watch?v=QZMljuD10sU",
+      "captured_at": "2026-05-20",
+      "author": "Brad | AI & Automation",
+      "contributor": null,
+      "id": "youtube_claude_video_skill_brad_ffmpeg",
+      "community": 1,
+      "norm_label": "ffmpeg (frame/audio extraction)"
+    },
+    {
+      "label": "Groq Whisper Transcription",
+      "file_type": "concept",
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": "line 48",
+      "source_url": "https://www.youtube.com/watch?v=QZMljuD10sU",
+      "captured_at": "2026-05-20",
+      "author": "Brad | AI & Automation",
+      "contributor": null,
+      "id": "youtube_claude_video_skill_brad_groq_whisper",
+      "community": 1,
+      "norm_label": "groq whisper transcription"
+    },
+    {
+      "label": "Frames + Transcript Decomposition",
+      "file_type": "rationale",
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": "line 12-13",
+      "source_url": "https://www.youtube.com/watch?v=QZMljuD10sU",
+      "captured_at": "2026-05-20",
+      "author": "Brad | AI & Automation",
+      "contributor": null,
+      "rationale": "Since Anthropic has no native video model, decompose video into frames + transcript \u2014 two modalities Claude already understands. Half of interesting stuff in video isn't said out loud, it happens on screen, so transcript-only tools miss critical context.",
+      "id": "youtube_claude_video_skill_brad_frames_plus_transcript",
+      "community": 1,
+      "norm_label": "frames + transcript decomposition"
+    },
+    {
+      "label": "Second Brain Auto-Feed Use Case",
+      "file_type": "concept",
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": "line 69-74",
+      "source_url": "https://www.youtube.com/watch?v=QZMljuD10sU",
+      "captured_at": "2026-05-20",
+      "author": "Brad | AI & Automation",
+      "contributor": null,
+      "id": "youtube_claude_video_skill_brad_second_brain",
+      "community": 4,
+      "norm_label": "second brain auto-feed use case"
+    },
+    {
+      "label": "OpenAI Whisper (Fallback)",
+      "file_type": "concept",
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": "line 44",
+      "source_url": "https://www.youtube.com/watch?v=QZMljuD10sU",
+      "captured_at": "2026-05-20",
+      "author": "Brad | AI & Automation",
+      "contributor": null,
+      "id": "youtube_claude_video_skill_brad_openai_whisper",
+      "community": 1,
+      "norm_label": "openai whisper (fallback)"
+    },
+    {
+      "label": "Content Research Map of Content",
+      "file_type": "document",
+      "source_file": "_index/Content Research MOC.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2026-05-20",
+      "author": null,
+      "contributor": null,
+      "id": "_index_content_research_moc",
+      "community": 3,
+      "norm_label": "content research map of content"
+    }
+  ],
+  "links": [
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": "line 16",
+      "weight": 1.0,
+      "source": "github_bidah_skill_set_repo",
+      "target": "github_bidah_skill_set_create_onboarding_video"
+    },
+    {
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "linkedin/bidah-create-onboarding-video-skill.md",
+      "source_location": "line 29",
+      "weight": 1.0,
+      "source": "linkedin_bidah_create_onboarding_video_skill_post",
+      "target": "github_bidah_skill_set_repo"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "web/ruben-claude-code-guide.md",
+      "source_location": "line 53",
+      "weight": 0.8,
+      "source": "web_ruben_claude_code_guide_article",
+      "target": "github_bidah_skill_set_repo"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "_index/Content Research MOC.md",
+      "source_location": "line 25",
+      "weight": 1.0,
+      "source": "_index_content_research_moc",
+      "target": "github_bidah_skill_set_repo"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": "line 33",
+      "weight": 1.0,
+      "source": "github_bidah_skill_set_create_onboarding_video",
+      "target": "github_bidah_skill_set_remotion"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": "line 18",
+      "weight": 1.0,
+      "source": "github_bidah_skill_set_create_onboarding_video",
+      "target": "github_bidah_skill_set_claude_code"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": "line 55",
+      "weight": 0.9,
+      "source": "github_bidah_skill_set_create_onboarding_video",
+      "target": "github_bidah_skill_set_pieces_not_screens"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": "line 49",
+      "weight": 0.9,
+      "source": "github_bidah_skill_set_create_onboarding_video",
+      "target": "github_bidah_skill_set_skill_md_format"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": "line 29",
+      "weight": 0.8,
+      "source": "github_bidah_skill_set_create_onboarding_video",
+      "target": "github_bidah_skill_set_spring_animation"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": "line 27",
+      "weight": 0.8,
+      "source": "github_bidah_skill_set_create_onboarding_video",
+      "target": "github_bidah_skill_set_cursor_animation"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": "line 59",
+      "weight": 0.8,
+      "source": "github_bidah_skill_set_create_onboarding_video",
+      "target": "github_bidah_skill_set_intake_first_workflow"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": null,
+      "weight": 0.8,
+      "source": "youtube_claude_video_skill_brad_watch_skill",
+      "target": "github_bidah_skill_set_create_onboarding_video"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "linkedin/bidah-create-onboarding-video-skill.md",
+      "source_location": "line 77",
+      "weight": 0.7,
+      "source": "linkedin_bidah_create_onboarding_video_skill_post",
+      "target": "github_bidah_skill_set_remotion"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": "Key Design Decisions",
+      "weight": 0.8,
+      "source": "github_bidah_skill_set_pieces_not_screens",
+      "target": "github_bidah_skill_set_cursor_animation"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "github_bidah_skill_set_skill_md_format",
+      "target": "web_ruben_claude_code_guide_claude_md"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "linkedin/bidah-create-onboarding-video-skill.md",
+      "source_location": "line 76",
+      "weight": 0.9,
+      "source": "linkedin_bidah_create_onboarding_video_skill_post",
+      "target": "github_bidah_skill_set_claude_code"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "web/ruben-claude-code-guide.md",
+      "source_location": "line 54",
+      "weight": 1.0,
+      "source": "web_ruben_claude_code_guide_article",
+      "target": "github_bidah_skill_set_claude_code"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": "line 12",
+      "weight": 1.0,
+      "source": "youtube_claude_video_skill_brad_watch_skill",
+      "target": "github_bidah_skill_set_claude_code"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.55,
+      "source_file": "github/bidah-skill-set.md",
+      "source_location": null,
+      "weight": 0.5,
+      "source": "github_bidah_skill_set_intake_first_workflow",
+      "target": "web_ruben_claude_code_guide_outcome_focused_briefs"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "web/ruben-claude-code-guide.md",
+      "source_location": "line 52",
+      "weight": 0.8,
+      "source": "web_ruben_claude_code_guide_article",
+      "target": "linkedin_bidah_create_onboarding_video_skill_post"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "linkedin/bidah-create-onboarding-video-skill.md",
+      "source_location": "line 17",
+      "weight": 0.9,
+      "source": "linkedin_bidah_create_onboarding_video_skill_post",
+      "target": "linkedin_bidah_create_onboarding_video_skill_screenshot_to_video"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "linkedin/bidah-create-onboarding-video-skill.md",
+      "source_location": "line 60",
+      "weight": 0.9,
+      "source": "linkedin_bidah_create_onboarding_video_skill_post",
+      "target": "linkedin_bidah_create_onboarding_video_skill_skills_as_distribution"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "_index/Content Research MOC.md",
+      "source_location": "line 24",
+      "weight": 1.0,
+      "source": "_index_content_research_moc",
+      "target": "linkedin_bidah_create_onboarding_video_skill_post"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "linkedin/bidah-create-onboarding-video-skill.md",
+      "source_location": null,
+      "weight": 0.6,
+      "source": "linkedin_bidah_create_onboarding_video_skill_skills_as_distribution",
+      "target": "web_ruben_claude_code_guide_vibecoding"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": null,
+      "weight": 0.6,
+      "source": "youtube_claude_video_skill_brad_second_brain",
+      "target": "linkedin_bidah_create_onboarding_video_skill_skills_as_distribution"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "web/ruben-claude-code-guide.md",
+      "source_location": null,
+      "weight": 0.8,
+      "source": "web_ruben_claude_code_guide_screenshot_prompting",
+      "target": "linkedin_bidah_create_onboarding_video_skill_screenshot_to_video"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "web/ruben-claude-code-guide.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "web_ruben_claude_code_guide_article",
+      "target": "web_ruben_claude_code_guide_ruben_hassid"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "web/ruben-claude-code-guide.md",
+      "source_location": "line 26",
+      "weight": 0.9,
+      "source": "web_ruben_claude_code_guide_article",
+      "target": "web_ruben_claude_code_guide_screenshot_prompting"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "web/ruben-claude-code-guide.md",
+      "source_location": "line 29",
+      "weight": 0.9,
+      "source": "web_ruben_claude_code_guide_article",
+      "target": "web_ruben_claude_code_guide_vibecoding"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "web/ruben-claude-code-guide.md",
+      "source_location": "line 28",
+      "weight": 0.9,
+      "source": "web_ruben_claude_code_guide_article",
+      "target": "web_ruben_claude_code_guide_claude_md"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "web/ruben-claude-code-guide.md",
+      "source_location": "line 27",
+      "weight": 0.8,
+      "source": "web_ruben_claude_code_guide_article",
+      "target": "web_ruben_claude_code_guide_outcome_focused_briefs"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "_index/Content Research MOC.md",
+      "source_location": "line 26",
+      "weight": 1.0,
+      "source": "_index_content_research_moc",
+      "target": "web_ruben_claude_code_guide_article"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "youtube_claude_video_skill_brad_video",
+      "target": "youtube_claude_video_skill_brad_brad"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": "line 12",
+      "weight": 1.0,
+      "source": "youtube_claude_video_skill_brad_video",
+      "target": "youtube_claude_video_skill_brad_watch_skill"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": "line 69",
+      "weight": 0.9,
+      "source": "youtube_claude_video_skill_brad_video",
+      "target": "youtube_claude_video_skill_brad_second_brain"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "_index/Content Research MOC.md",
+      "source_location": "line 23",
+      "weight": 1.0,
+      "source": "_index_content_research_moc",
+      "target": "youtube_claude_video_skill_brad_video"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": "line 17",
+      "weight": 1.0,
+      "source": "youtube_claude_video_skill_brad_watch_skill",
+      "target": "youtube_claude_video_skill_brad_yt_dlp"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": "line 18",
+      "weight": 1.0,
+      "source": "youtube_claude_video_skill_brad_watch_skill",
+      "target": "youtube_claude_video_skill_brad_ffmpeg"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": "line 48",
+      "weight": 0.9,
+      "source": "youtube_claude_video_skill_brad_watch_skill",
+      "target": "youtube_claude_video_skill_brad_groq_whisper"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": "line 44",
+      "weight": 0.7,
+      "source": "youtube_claude_video_skill_brad_watch_skill",
+      "target": "youtube_claude_video_skill_brad_openai_whisper"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": "line 12-13",
+      "weight": 1.0,
+      "source": "youtube_claude_video_skill_brad_watch_skill",
+      "target": "youtube_claude_video_skill_brad_frames_plus_transcript"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "youtube/claude-video-skill-brad.md",
+      "source_location": null,
+      "weight": 0.8,
+      "source": "youtube_claude_video_skill_brad_groq_whisper",
+      "target": "youtube_claude_video_skill_brad_openai_whisper"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "claude_code_skills_ecosystem",
+      "label": "Claude Code Skills Ecosystem",
+      "nodes": [
+        "github_bidah_skill_set_claude_code",
+        "github_bidah_skill_set_create_onboarding_video",
+        "youtube_claude_video_skill_brad_watch_skill",
+        "github_bidah_skill_set_skill_md_format",
+        "web_ruben_claude_code_guide_claude_md"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "github/bidah-skill-set.md"
+    },
+    {
+      "id": "onboarding_video_pipeline",
+      "label": "Onboarding Video Production Pipeline",
+      "nodes": [
+        "github_bidah_skill_set_create_onboarding_video",
+        "github_bidah_skill_set_remotion",
+        "github_bidah_skill_set_spring_animation",
+        "github_bidah_skill_set_cursor_animation",
+        "github_bidah_skill_set_pieces_not_screens"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "github/bidah-skill-set.md"
+    },
+    {
+      "id": "video_watch_pipeline",
+      "label": "Video Watch Pipeline",
+      "nodes": [
+        "youtube_claude_video_skill_brad_watch_skill",
+        "youtube_claude_video_skill_brad_yt_dlp",
+        "youtube_claude_video_skill_brad_ffmpeg",
+        "youtube_claude_video_skill_brad_groq_whisper",
+        "youtube_claude_video_skill_brad_frames_plus_transcript"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "youtube/claude-video-skill-brad.md"
+    },
+    {
+      "id": "content_research_cross_source_cluster",
+      "label": "Content Research Cross-Source Cluster (May 2026)",
+      "nodes": [
+        "_index_content_research_moc",
+        "github_bidah_skill_set_repo",
+        "linkedin_bidah_create_onboarding_video_skill_post",
+        "web_ruben_claude_code_guide_article",
+        "youtube_claude_video_skill_brad_video"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "_index/Content Research MOC.md"
+    }
+  ],
+  "built_at_commit": "26694092be4c78c42e6e4e1513135588ee8d54d6"
+}
