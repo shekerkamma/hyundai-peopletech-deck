@@ -1,0 +1,16 @@
+{
+  "name": "helpline-tooling",
+  "owner": {
+    "name": "Helpline Platform Team"
+  },
+  "metadata": {
+    "description": "Internal marketplace for Helpline's Claude Code tooling."
+  },
+  "plugins": [
+    {
+      "name": "helpline-ai-layer",
+      "source": "./helpline-ai-layer",
+      "description": "The portable Helpline AI Layer — scoped-tests skill, the self-improving CLAUDE.md hook, the read-only explorer subagent, and the codebase-search MCP server."
+    }
+  ]
+}

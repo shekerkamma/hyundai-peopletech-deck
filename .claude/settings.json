@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(python build_*.py:*)",
+      "Bash(python build_*.js:*)",
+      "Bash(node build_*.js:*)",
+      "Bash(bash build_*.sh:*)",
+      "Bash(python build_roi.py:*)",
+      "Bash(python build_docx.py:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf:*)",
+      "Read(./**/.env)",
+      "Read(./**/*.pem)",
+      "Read(./**/credentials*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/session_start_context.py\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/propose_claude_md.py\""
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+# Files Claude Code should not load into context.
+# Generated artifacts, dependencies, and caches.
+
+# Node
+node_modules/
+package-lock.json
+
+# Python caches
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Generated binary outputs — large, not useful to read
+*.pptx
+*.docx
+*.xlsx
+*.png
+*.svg
+
+# Office lock files
+.~lock.*
+~$*
+
+# Knowledge graph outputs (large JSON/HTML)
+graphify-out/cache/
+graphify-out/graph.html
+graphify-out/graph.json
+
+# Helpline reference repo internals
+helpline-reference/.git/
+helpline-reference/uv.lock
+helpline-reference/node_modules/
+
+# Workspace files
+*.code-workspace

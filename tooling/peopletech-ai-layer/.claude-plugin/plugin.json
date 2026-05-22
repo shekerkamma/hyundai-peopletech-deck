@@ -1,0 +1,16 @@
+{
+  "name": "peopletech-ai-layer",
+  "version": "0.1.0",
+  "description": "Portable PeopleTech AI Layer: customer-facing review skill, self-improving CLAUDE.md review hook, read-only explorer subagent, and codebase-search MCP server. Install this and any deck workspace gets the team's baseline Claude Code setup on day one.",
+  "author": {
+    "name": "PeopleTech AI Engineering"
+  },
+  "mcpServers": {
+    "codebase-search": {
+      "command": "python",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/mcp/codebase_search.py"
+      ]
+    }
+  }
+}

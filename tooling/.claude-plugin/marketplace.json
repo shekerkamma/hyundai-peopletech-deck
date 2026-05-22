@@ -1,0 +1,9 @@
+{
+  "plugins": [
+    {
+      "name": "peopletech-ai-layer",
+      "path": "../peopletech-ai-layer",
+      "description": "PeopleTech baseline AI Layer: customer-facing review, self-improving hooks, explorer subagent, codebase-search MCP"
+    }
+  ]
+}

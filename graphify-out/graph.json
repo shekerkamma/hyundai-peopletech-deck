@@ -4,64 +4,48 @@
   "graph": {
     "hyperedges": [
       {
+        "id": "ai_coding_tool_ecosystem",
+        "label": "AI Coding Tool Ecosystem",
+        "nodes": [
+          "github_openhands_ai_driven_development_openhands",
+          "github_openhands_ai_driven_development_claude_code",
+          "github_openhands_ai_driven_development_codex",
+          "github_openhands_ai_driven_development_devin",
+          "github_openhands_ai_driven_development_jules",
+          "github_openhands_ai_driven_development_cursor"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "content-research/github/openhands-ai-driven-development.md"
+      },
+      {
         "id": "claude_code_skills_ecosystem",
         "label": "Claude Code Skills Ecosystem",
         "nodes": [
+          "github_bidah_skill_set_bidah_skill_set",
           "github_bidah_skill_set_claude_code",
-          "github_bidah_skill_set_create_onboarding_video",
-          "youtube_claude_video_skill_brad_watch_skill",
           "github_bidah_skill_set_skill_md_format",
-          "web_ruben_claude_code_guide_claude_md"
-        ],
-        "relation": "participate_in",
-        "confidence": "INFERRED",
-        "confidence_score": 0.85,
-        "source_file": "github/bidah-skill-set.md"
-      },
-      {
-        "id": "onboarding_video_pipeline",
-        "label": "Onboarding Video Production Pipeline",
-        "nodes": [
-          "github_bidah_skill_set_create_onboarding_video",
-          "github_bidah_skill_set_remotion",
-          "github_bidah_skill_set_spring_animation",
-          "github_bidah_skill_set_cursor_animation",
-          "github_bidah_skill_set_pieces_not_screens"
+          "github_bidah_skill_set_create_onboarding_video"
         ],
         "relation": "implement",
         "confidence": "EXTRACTED",
         "confidence_score": 1.0,
-        "source_file": "github/bidah-skill-set.md"
+        "source_file": "content-research/github/bidah-skill-set.md"
       },
       {
-        "id": "video_watch_pipeline",
-        "label": "Video Watch Pipeline",
+        "id": "openhands_product_surface",
+        "label": "OpenHands Modular Product Surface",
         "nodes": [
-          "youtube_claude_video_skill_brad_watch_skill",
-          "youtube_claude_video_skill_brad_yt_dlp",
-          "youtube_claude_video_skill_brad_ffmpeg",
-          "youtube_claude_video_skill_brad_groq_whisper",
-          "youtube_claude_video_skill_brad_frames_plus_transcript"
-        ],
-        "relation": "implement",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": "youtube/claude-video-skill-brad.md"
-      },
-      {
-        "id": "content_research_cross_source_cluster",
-        "label": "Content Research Cross-Source Cluster (May 2026)",
-        "nodes": [
-          "_index_content_research_moc",
-          "github_bidah_skill_set_repo",
-          "linkedin_bidah_create_onboarding_video_skill_post",
-          "web_ruben_claude_code_guide_article",
-          "youtube_claude_video_skill_brad_video"
+          "github_openhands_ai_driven_development_openhands",
+          "github_openhands_ai_driven_development_software_agent_sdk",
+          "github_openhands_ai_driven_development_product_ladder",
+          "github_openhands_ai_driven_development_llm_agnostic"
         ],
         "relation": "form",
         "confidence": "EXTRACTED",
         "confidence_score": 1.0,
-        "source_file": "_index/Content Research MOC.md"
+        "source_file": "content-research/github/openhands-ai-driven-development.md"
       }
     ]
   },
@@ -75,9 +59,9 @@
       "captured_at": "2026-05-20",
       "author": "bidah",
       "contributor": null,
-      "id": "github_bidah_skill_set_repo",
-      "community": 3,
-      "norm_label": "bidah/skill-set github repository"
+      "community": 4,
+      "norm_label": "bidah/skill-set github repository",
+      "id": "github_bidah_skill_set_repo"
     },
     {
       "label": "create-onboarding-video Skill",
@@ -88,9 +72,9 @@
       "captured_at": "2026-05-20",
       "author": "bidah",
       "contributor": null,
-      "id": "github_bidah_skill_set_create_onboarding_video",
-      "community": 0,
-      "norm_label": "create-onboarding-video skill"
+      "community": 2,
+      "norm_label": "create-onboarding-video skill",
+      "id": "github_bidah_skill_set_create_onboarding_video"
     },
     {
       "label": "Remotion (React Video Framework)",
@@ -101,9 +85,9 @@
       "captured_at": "2026-05-20",
       "author": "bidah",
       "contributor": null,
-      "id": "github_bidah_skill_set_remotion",
-      "community": 0,
-      "norm_label": "remotion (react video framework)"
+      "community": 2,
+      "norm_label": "remotion (react video framework)",
+      "id": "github_bidah_skill_set_remotion"
     },
     {
       "label": "Pieces Not Screens Philosophy",
@@ -115,9 +99,9 @@
       "author": "bidah",
       "contributor": null,
       "rationale": "Each beat shows a cropped UI component, not a full screenshot. The viewer sees the feature in action, not a screen tour. This isolates the meaningful interaction and avoids visual overload.",
-      "id": "github_bidah_skill_set_pieces_not_screens",
-      "community": 0,
-      "norm_label": "pieces not screens philosophy"
+      "community": 2,
+      "norm_label": "pieces not screens philosophy",
+      "id": "github_bidah_skill_set_pieces_not_screens"
     },
     {
       "label": "SKILL.md Skill Definition Format",
@@ -129,9 +113,9 @@
       "author": "bidah",
       "contributor": null,
       "rationale": "Detailed operating rules, workflow steps, and forbidden patterns in a single markdown file make an excellent template for writing Claude Code skills.",
-      "id": "github_bidah_skill_set_skill_md_format",
-      "community": 0,
-      "norm_label": "skill.md skill definition format"
+      "community": 5,
+      "norm_label": "skill.md skill definition format",
+      "id": "github_bidah_skill_set_skill_md_format"
     },
     {
       "label": "Claude Code",
@@ -142,9 +126,9 @@
       "captured_at": "2026-05-20",
       "author": "bidah",
       "contributor": null,
-      "id": "github_bidah_skill_set_claude_code",
-      "community": 1,
-      "norm_label": "claude code"
+      "community": 6,
+      "norm_label": "claude code",
+      "id": "github_bidah_skill_set_claude_code"
     },
     {
       "label": "Spring-Based Animation",
@@ -155,9 +139,9 @@
       "captured_at": "2026-05-20",
       "author": "bidah",
       "contributor": null,
-      "id": "github_bidah_skill_set_spring_animation",
-      "community": 0,
-      "norm_label": "spring-based animation"
+      "community": 2,
+      "norm_label": "spring-based animation",
+      "id": "github_bidah_skill_set_spring_animation"
     },
     {
       "label": "Cursor Animation Rules",
@@ -168,9 +152,9 @@
       "captured_at": "2026-05-20",
       "author": "bidah",
       "contributor": null,
-      "id": "github_bidah_skill_set_cursor_animation",
-      "community": 0,
-      "norm_label": "cursor animation rules"
+      "community": 2,
+      "norm_label": "cursor animation rules",
+      "id": "github_bidah_skill_set_cursor_animation"
     },
     {
       "label": "Intake-First Workflow",
@@ -182,9 +166,9 @@
       "author": "bidah",
       "contributor": null,
       "rationale": "Won't start rendering until it has stills + intent for every screen. Ensures completeness before execution.",
-      "id": "github_bidah_skill_set_intake_first_workflow",
-      "community": 0,
-      "norm_label": "intake-first workflow"
+      "community": 2,
+      "norm_label": "intake-first workflow",
+      "id": "github_bidah_skill_set_intake_first_workflow"
     },
     {
       "label": "Screenshots to Animated Onboarding Video LinkedIn Post",
@@ -195,9 +179,9 @@
       "captured_at": "2026-05-20",
       "author": null,
       "contributor": null,
-      "id": "linkedin_bidah_create_onboarding_video_skill_post",
-      "community": 3,
-      "norm_label": "screenshots to animated onboarding video linkedin post"
+      "community": 4,
+      "norm_label": "screenshots to animated onboarding video linkedin post",
+      "id": "linkedin_bidah_create_onboarding_video_skill_post"
     },
     {
       "label": "Claude Code Skills as Distribution Channel",
@@ -209,9 +193,9 @@
       "author": null,
       "contributor": null,
       "rationale": "Claude Code skills are becoming a distribution channel: creators build, curators share, non-technical users adopt. The 'install in 60 seconds' framing removes friction.",
-      "id": "linkedin_bidah_create_onboarding_video_skill_skills_as_distribution",
-      "community": 3,
-      "norm_label": "claude code skills as distribution channel"
+      "community": 4,
+      "norm_label": "claude code skills as distribution channel",
+      "id": "linkedin_bidah_create_onboarding_video_skill_skills_as_distribution"
     },
     {
       "label": "Screenshot-to-Video Workflow",
@@ -222,9 +206,9 @@
       "captured_at": "2026-05-20",
       "author": null,
       "contributor": null,
-      "id": "linkedin_bidah_create_onboarding_video_skill_screenshot_to_video",
-      "community": 5,
-      "norm_label": "screenshot-to-video workflow"
+      "community": 7,
+      "norm_label": "screenshot-to-video workflow",
+      "id": "linkedin_bidah_create_onboarding_video_skill_screenshot_to_video"
     },
     {
       "label": "Claude Code Guide by Ruben Hassid",
@@ -235,9 +219,9 @@
       "captured_at": "2026-05-20",
       "author": "Ruben Hassid",
       "contributor": null,
-      "id": "web_ruben_claude_code_guide_article",
-      "community": 2,
-      "norm_label": "claude code guide by ruben hassid"
+      "community": 3,
+      "norm_label": "claude code guide by ruben hassid",
+      "id": "web_ruben_claude_code_guide_article"
     },
     {
       "label": "Ruben Hassid",
@@ -248,9 +232,9 @@
       "captured_at": "2026-05-20",
       "author": "Ruben Hassid",
       "contributor": null,
-      "id": "web_ruben_claude_code_guide_ruben_hassid",
-      "community": 2,
-      "norm_label": "ruben hassid"
+      "community": 3,
+      "norm_label": "ruben hassid",
+      "id": "web_ruben_claude_code_guide_ruben_hassid"
     },
     {
       "label": "Screenshot-Based Prompting",
@@ -262,9 +246,9 @@
       "author": "Ruben Hassid",
       "contributor": null,
       "rationale": "Paste images of desired designs and Claude recreates them. The most powerful technique for non-coders: show, don't describe.",
-      "id": "web_ruben_claude_code_guide_screenshot_prompting",
-      "community": 5,
-      "norm_label": "screenshot-based prompting"
+      "community": 7,
+      "norm_label": "screenshot-based prompting",
+      "id": "web_ruben_claude_code_guide_screenshot_prompting"
     },
     {
       "label": "Vibecoding Method",
@@ -275,9 +259,9 @@
       "captured_at": "2026-05-20",
       "author": "Ruben Hassid",
       "contributor": null,
-      "id": "web_ruben_claude_code_guide_vibecoding",
-      "community": 2,
-      "norm_label": "vibecoding method"
+      "community": 3,
+      "norm_label": "vibecoding method",
+      "id": "web_ruben_claude_code_guide_vibecoding"
     },
     {
       "label": "CLAUDE.md Memory File",
@@ -289,9 +273,9 @@
       "author": "Ruben Hassid",
       "contributor": null,
       "rationale": "CLAUDE.md is the key persistence mechanism across sessions. Create project documentation so Claude remembers design choices.",
-      "id": "web_ruben_claude_code_guide_claude_md",
-      "community": 2,
-      "norm_label": "claude.md memory file"
+      "community": 3,
+      "norm_label": "claude.md memory file",
+      "id": "web_ruben_claude_code_guide_claude_md"
     },
     {
       "label": "Outcome-Focused Briefs",
@@ -302,9 +286,9 @@
       "captured_at": "2026-05-20",
       "author": "Ruben Hassid",
       "contributor": null,
-      "id": "web_ruben_claude_code_guide_outcome_focused_briefs",
-      "community": 2,
-      "norm_label": "outcome-focused briefs"
+      "community": 3,
+      "norm_label": "outcome-focused briefs",
+      "id": "web_ruben_claude_code_guide_outcome_focused_briefs"
     },
     {
       "label": "My Claude Code Can INSTANTLY Watch Any Video",
@@ -315,9 +299,9 @@
       "captured_at": "2026-05-20",
       "author": "Brad | AI & Automation",
       "contributor": null,
-      "id": "youtube_claude_video_skill_brad_video",
-      "community": 4,
-      "norm_label": "my claude code can instantly watch any video"
+      "community": 1,
+      "norm_label": "my claude code can instantly watch any video",
+      "id": "youtube_claude_video_skill_brad_video"
     },
     {
       "label": "Brad (AI & Automation)",
@@ -328,9 +312,9 @@
       "captured_at": "2026-05-20",
       "author": "Brad | AI & Automation",
       "contributor": null,
-      "id": "youtube_claude_video_skill_brad_brad",
-      "community": 4,
-      "norm_label": "brad (ai & automation)"
+      "community": 1,
+      "norm_label": "brad (ai & automation)",
+      "id": "youtube_claude_video_skill_brad_brad"
     },
     {
       "label": "/watch Video Analysis Skill",
@@ -341,9 +325,9 @@
       "captured_at": "2026-05-20",
       "author": "Brad | AI & Automation",
       "contributor": null,
-      "id": "youtube_claude_video_skill_brad_watch_skill",
       "community": 1,
-      "norm_label": "/watch video analysis skill"
+      "norm_label": "/watch video analysis skill",
+      "id": "youtube_claude_video_skill_brad_watch_skill"
     },
     {
       "label": "yt-dlp (Video Downloader)",
@@ -354,9 +338,9 @@
       "captured_at": "2026-05-20",
       "author": "Brad | AI & Automation",
       "contributor": null,
-      "id": "youtube_claude_video_skill_brad_yt_dlp",
       "community": 1,
-      "norm_label": "yt-dlp (video downloader)"
+      "norm_label": "yt-dlp (video downloader)",
+      "id": "youtube_claude_video_skill_brad_yt_dlp"
     },
     {
       "label": "ffmpeg (Frame/Audio Extraction)",
@@ -367,9 +351,9 @@
       "captured_at": "2026-05-20",
       "author": "Brad | AI & Automation",
       "contributor": null,
-      "id": "youtube_claude_video_skill_brad_ffmpeg",
       "community": 1,
-      "norm_label": "ffmpeg (frame/audio extraction)"
+      "norm_label": "ffmpeg (frame/audio extraction)",
+      "id": "youtube_claude_video_skill_brad_ffmpeg"
     },
     {
       "label": "Groq Whisper Transcription",
@@ -380,9 +364,9 @@
       "captured_at": "2026-05-20",
       "author": "Brad | AI & Automation",
       "contributor": null,
-      "id": "youtube_claude_video_skill_brad_groq_whisper",
       "community": 1,
-      "norm_label": "groq whisper transcription"
+      "norm_label": "groq whisper transcription",
+      "id": "youtube_claude_video_skill_brad_groq_whisper"
     },
     {
       "label": "Frames + Transcript Decomposition",
@@ -394,9 +378,9 @@
       "author": "Brad | AI & Automation",
       "contributor": null,
       "rationale": "Since Anthropic has no native video model, decompose video into frames + transcript \u2014 two modalities Claude already understands. Half of interesting stuff in video isn't said out loud, it happens on screen, so transcript-only tools miss critical context.",
-      "id": "youtube_claude_video_skill_brad_frames_plus_transcript",
       "community": 1,
-      "norm_label": "frames + transcript decomposition"
+      "norm_label": "frames + transcript decomposition",
+      "id": "youtube_claude_video_skill_brad_frames_plus_transcript"
     },
     {
       "label": "Second Brain Auto-Feed Use Case",
@@ -407,9 +391,9 @@
       "captured_at": "2026-05-20",
       "author": "Brad | AI & Automation",
       "contributor": null,
-      "id": "youtube_claude_video_skill_brad_second_brain",
-      "community": 4,
-      "norm_label": "second brain auto-feed use case"
+      "community": 1,
+      "norm_label": "second brain auto-feed use case",
+      "id": "youtube_claude_video_skill_brad_second_brain"
     },
     {
       "label": "OpenAI Whisper (Fallback)",
@@ -420,9 +404,9 @@
       "captured_at": "2026-05-20",
       "author": "Brad | AI & Automation",
       "contributor": null,
-      "id": "youtube_claude_video_skill_brad_openai_whisper",
       "community": 1,
-      "norm_label": "openai whisper (fallback)"
+      "norm_label": "openai whisper (fallback)",
+      "id": "youtube_claude_video_skill_brad_openai_whisper"
     },
     {
       "label": "Content Research Map of Content",
@@ -433,9 +417,181 @@
       "captured_at": "2026-05-20",
       "author": null,
       "contributor": null,
-      "id": "_index_content_research_moc",
-      "community": 3,
-      "norm_label": "content research map of content"
+      "community": 4,
+      "norm_label": "content research map of content",
+      "id": "_index_content_research_moc"
+    },
+    {
+      "label": "bidah/skill-set",
+      "file_type": "document",
+      "source_file": "content-research/github/bidah-skill-set.md",
+      "source_location": null,
+      "source_url": "https://github.com/bidah/skill-set",
+      "captured_at": "2026-05-20",
+      "author": "bidah",
+      "contributor": null,
+      "id": "github_bidah_skill_set_bidah_skill_set",
+      "community": 5,
+      "norm_label": "bidah/skill-set"
+    },
+    {
+      "label": "ruben-claude-code-guide",
+      "file_type": "document",
+      "source_file": "content-research/github/bidah-skill-set.md",
+      "source_location": null,
+      "source_url": "https://github.com/bidah/skill-set",
+      "captured_at": "2026-05-20",
+      "author": "bidah",
+      "contributor": null,
+      "id": "github_bidah_skill_set_ruben_claude_code_guide",
+      "community": 5,
+      "norm_label": "ruben-claude-code-guide"
+    },
+    {
+      "label": "OpenHands",
+      "file_type": "document",
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "source_url": "https://github.com/shekerkamma/OpenHands",
+      "captured_at": "2026-05-21",
+      "author": "OpenHands (fork by shekerkamma)",
+      "contributor": null,
+      "id": "github_openhands_ai_driven_development_openhands",
+      "community": 0,
+      "norm_label": "openhands"
+    },
+    {
+      "label": "Software Agent SDK",
+      "file_type": "concept",
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "source_url": "https://github.com/shekerkamma/OpenHands",
+      "captured_at": "2026-05-21",
+      "author": "OpenHands (fork by shekerkamma)",
+      "contributor": null,
+      "id": "github_openhands_ai_driven_development_software_agent_sdk",
+      "community": 0,
+      "norm_label": "software agent sdk"
+    },
+    {
+      "label": "SWE-Bench",
+      "file_type": "concept",
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "source_url": "https://github.com/shekerkamma/OpenHands",
+      "captured_at": "2026-05-21",
+      "author": "OpenHands (fork by shekerkamma)",
+      "contributor": null,
+      "id": "github_openhands_ai_driven_development_swe_bench",
+      "community": 0,
+      "norm_label": "swe-bench"
+    },
+    {
+      "label": "Claude Code (OpenHands context)",
+      "file_type": "concept",
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "source_url": "https://github.com/shekerkamma/OpenHands",
+      "captured_at": "2026-05-21",
+      "author": "OpenHands (fork by shekerkamma)",
+      "contributor": null,
+      "id": "github_openhands_ai_driven_development_claude_code",
+      "community": 6,
+      "norm_label": "claude code (openhands context)"
+    },
+    {
+      "label": "Codex",
+      "file_type": "concept",
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "source_url": "https://github.com/shekerkamma/OpenHands",
+      "captured_at": "2026-05-21",
+      "author": "OpenHands (fork by shekerkamma)",
+      "contributor": null,
+      "id": "github_openhands_ai_driven_development_codex",
+      "community": 0,
+      "norm_label": "codex"
+    },
+    {
+      "label": "Devin",
+      "file_type": "concept",
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "source_url": "https://github.com/shekerkamma/OpenHands",
+      "captured_at": "2026-05-21",
+      "author": "OpenHands (fork by shekerkamma)",
+      "contributor": null,
+      "id": "github_openhands_ai_driven_development_devin",
+      "community": 0,
+      "norm_label": "devin"
+    },
+    {
+      "label": "Jules",
+      "file_type": "concept",
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "source_url": "https://github.com/shekerkamma/OpenHands",
+      "captured_at": "2026-05-21",
+      "author": "OpenHands (fork by shekerkamma)",
+      "contributor": null,
+      "id": "github_openhands_ai_driven_development_jules",
+      "community": 0,
+      "norm_label": "jules"
+    },
+    {
+      "label": "Cursor",
+      "file_type": "concept",
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "source_url": "https://github.com/shekerkamma/OpenHands",
+      "captured_at": "2026-05-21",
+      "author": "OpenHands (fork by shekerkamma)",
+      "contributor": null,
+      "id": "github_openhands_ai_driven_development_cursor",
+      "community": 0,
+      "norm_label": "cursor"
+    },
+    {
+      "label": "MIT + Enterprise Dual License Model",
+      "file_type": "rationale",
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "source_url": "https://github.com/shekerkamma/OpenHands",
+      "captured_at": "2026-05-21",
+      "author": "OpenHands (fork by shekerkamma)",
+      "contributor": null,
+      "rationale": "Core is fully open-source MIT while enterprise directory has separate commercial license. Great template for open-source commercialization - keeps core accessible while monetizing enterprise features.",
+      "id": "github_openhands_ai_driven_development_dual_license_model",
+      "community": 0,
+      "norm_label": "mit + enterprise dual license model"
+    },
+    {
+      "label": "Product Ladder Strategy",
+      "file_type": "rationale",
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "source_url": "https://github.com/shekerkamma/OpenHands",
+      "captured_at": "2026-05-21",
+      "author": "OpenHands (fork by shekerkamma)",
+      "contributor": null,
+      "rationale": "SDK -> CLI -> GUI -> Cloud -> Enterprise, each step adds value. Modular product surface where all surfaces share the same core engine.",
+      "id": "github_openhands_ai_driven_development_product_ladder",
+      "community": 0,
+      "norm_label": "product ladder strategy"
+    },
+    {
+      "label": "LLM-Agnostic Design",
+      "file_type": "rationale",
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "source_url": "https://github.com/shekerkamma/OpenHands",
+      "captured_at": "2026-05-21",
+      "author": "OpenHands (fork by shekerkamma)",
+      "contributor": null,
+      "rationale": "Works with Claude, GPT, or any LLM - not locked to one provider. Avoids vendor lock-in and broadens market.",
+      "id": "github_openhands_ai_driven_development_llm_agnostic",
+      "community": 0,
+      "norm_label": "llm-agnostic design"
     }
   ],
   "links": [
@@ -483,8 +639,8 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "github/bidah-skill-set.md",
-      "source_location": "line 33",
+      "source_file": "content-research/github/bidah-skill-set.md",
+      "source_location": null,
       "weight": 1.0,
       "source": "github_bidah_skill_set_create_onboarding_video",
       "target": "github_bidah_skill_set_remotion"
@@ -500,14 +656,14 @@
       "target": "github_bidah_skill_set_claude_code"
     },
     {
-      "relation": "references",
+      "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "github/bidah-skill-set.md",
-      "source_location": "line 55",
-      "weight": 0.9,
-      "source": "github_bidah_skill_set_create_onboarding_video",
-      "target": "github_bidah_skill_set_pieces_not_screens"
+      "source_file": "content-research/github/bidah-skill-set.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_bidah_skill_set_pieces_not_screens",
+      "target": "github_bidah_skill_set_create_onboarding_video"
     },
     {
       "relation": "references",
@@ -560,6 +716,16 @@
       "target": "github_bidah_skill_set_create_onboarding_video"
     },
     {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "content-research/github/bidah-skill-set.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_bidah_skill_set_create_onboarding_video",
+      "target": "github_bidah_skill_set_bidah_skill_set"
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -590,6 +756,16 @@
       "target": "web_ruben_claude_code_guide_claude_md"
     },
     {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "content-research/github/bidah-skill-set.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_bidah_skill_set_skill_md_format",
+      "target": "github_bidah_skill_set_bidah_skill_set"
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -618,6 +794,26 @@
       "weight": 1.0,
       "source": "youtube_claude_video_skill_brad_watch_skill",
       "target": "github_bidah_skill_set_claude_code"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "content-research/github/bidah-skill-set.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_bidah_skill_set_bidah_skill_set",
+      "target": "github_bidah_skill_set_claude_code"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "content-research/github/bidah-skill-set.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_bidah_skill_set_claude_code",
+      "target": "github_openhands_ai_driven_development_claude_code"
     },
     {
       "relation": "conceptually_related_to",
@@ -858,69 +1054,173 @@
       "weight": 0.8,
       "source": "youtube_claude_video_skill_brad_groq_whisper",
       "target": "youtube_claude_video_skill_brad_openai_whisper"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "content-research/github/bidah-skill-set.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_bidah_skill_set_bidah_skill_set",
+      "target": "github_bidah_skill_set_ruben_claude_code_guide"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "content-research/github/bidah-skill-set.md",
+      "source_location": null,
+      "weight": 0.8,
+      "source": "github_bidah_skill_set_bidah_skill_set",
+      "target": "github_openhands_ai_driven_development_openhands"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_openhands_ai_driven_development_openhands",
+      "target": "github_openhands_ai_driven_development_software_agent_sdk"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_openhands_ai_driven_development_openhands",
+      "target": "github_openhands_ai_driven_development_swe_bench"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_openhands_ai_driven_development_openhands",
+      "target": "github_openhands_ai_driven_development_claude_code"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_openhands_ai_driven_development_openhands",
+      "target": "github_openhands_ai_driven_development_codex"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_openhands_ai_driven_development_openhands",
+      "target": "github_openhands_ai_driven_development_devin"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_openhands_ai_driven_development_openhands",
+      "target": "github_openhands_ai_driven_development_jules"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_openhands_ai_driven_development_openhands",
+      "target": "github_openhands_ai_driven_development_cursor"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_openhands_ai_driven_development_dual_license_model",
+      "target": "github_openhands_ai_driven_development_openhands"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_openhands_ai_driven_development_product_ladder",
+      "target": "github_openhands_ai_driven_development_openhands"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "content-research/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_openhands_ai_driven_development_llm_agnostic",
+      "target": "github_openhands_ai_driven_development_openhands"
     }
   ],
   "hyperedges": [
     {
+      "id": "ai_coding_tool_ecosystem",
+      "label": "AI Coding Tool Ecosystem",
+      "nodes": [
+        "github_openhands_ai_driven_development_openhands",
+        "github_openhands_ai_driven_development_claude_code",
+        "github_openhands_ai_driven_development_codex",
+        "github_openhands_ai_driven_development_devin",
+        "github_openhands_ai_driven_development_jules",
+        "github_openhands_ai_driven_development_cursor"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "content-research/github/openhands-ai-driven-development.md"
+    },
+    {
       "id": "claude_code_skills_ecosystem",
       "label": "Claude Code Skills Ecosystem",
       "nodes": [
+        "github_bidah_skill_set_bidah_skill_set",
         "github_bidah_skill_set_claude_code",
-        "github_bidah_skill_set_create_onboarding_video",
-        "youtube_claude_video_skill_brad_watch_skill",
         "github_bidah_skill_set_skill_md_format",
-        "web_ruben_claude_code_guide_claude_md"
-      ],
-      "relation": "participate_in",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "github/bidah-skill-set.md"
-    },
-    {
-      "id": "onboarding_video_pipeline",
-      "label": "Onboarding Video Production Pipeline",
-      "nodes": [
-        "github_bidah_skill_set_create_onboarding_video",
-        "github_bidah_skill_set_remotion",
-        "github_bidah_skill_set_spring_animation",
-        "github_bidah_skill_set_cursor_animation",
-        "github_bidah_skill_set_pieces_not_screens"
+        "github_bidah_skill_set_create_onboarding_video"
       ],
       "relation": "implement",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "github/bidah-skill-set.md"
+      "source_file": "content-research/github/bidah-skill-set.md"
     },
     {
-      "id": "video_watch_pipeline",
-      "label": "Video Watch Pipeline",
+      "id": "openhands_product_surface",
+      "label": "OpenHands Modular Product Surface",
       "nodes": [
-        "youtube_claude_video_skill_brad_watch_skill",
-        "youtube_claude_video_skill_brad_yt_dlp",
-        "youtube_claude_video_skill_brad_ffmpeg",
-        "youtube_claude_video_skill_brad_groq_whisper",
-        "youtube_claude_video_skill_brad_frames_plus_transcript"
-      ],
-      "relation": "implement",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "youtube/claude-video-skill-brad.md"
-    },
-    {
-      "id": "content_research_cross_source_cluster",
-      "label": "Content Research Cross-Source Cluster (May 2026)",
-      "nodes": [
-        "_index_content_research_moc",
-        "github_bidah_skill_set_repo",
-        "linkedin_bidah_create_onboarding_video_skill_post",
-        "web_ruben_claude_code_guide_article",
-        "youtube_claude_video_skill_brad_video"
+        "github_openhands_ai_driven_development_openhands",
+        "github_openhands_ai_driven_development_software_agent_sdk",
+        "github_openhands_ai_driven_development_product_ladder",
+        "github_openhands_ai_driven_development_llm_agnostic"
       ],
       "relation": "form",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "_index/Content Research MOC.md"
+      "source_file": "content-research/github/openhands-ai-driven-development.md"
     }
   ],
-  "built_at_commit": "26694092be4c78c42e6e4e1513135588ee8d54d6"
+  "built_at_commit": "8e10432b49676abe4755bb6c25cfebf5156b8c8b"
 }

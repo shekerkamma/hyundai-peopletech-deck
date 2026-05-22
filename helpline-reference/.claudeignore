@@ -1,0 +1,22 @@
+# Files Claude Code should not load into context.
+# Generated artifacts, dependencies, and caches — never useful to read,
+# and they bloat context / produce false matches in search.
+
+# Python caches & build output
+__pycache__/
+*.pyc
+.pytest_cache/
+dist/
+build/
+*.egg-info/
+
+# Environments & dependencies
+.venv/
+node_modules/
+
+# Lockfiles — large, machine-generated, rarely worth reading
+uv.lock
+
+# Coverage & local data
+.coverage
+*.db

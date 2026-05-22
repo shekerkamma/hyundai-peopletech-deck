@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "codebase-search": {
+      "command": "python",
+      "args": [
+        "tooling/mcp/codebase_search.py"
+      ]
+    }
+  }
+}
