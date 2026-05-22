@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your AI Runs Like a Hotel Chain</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0F1419;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    color: #FFFFFF;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .header {
+    text-align: center;
+    padding: 40px 20px 10px;
+  }
+  .header h1 {
+    font-size: 42px;
+    font-weight: 800;
+    color: #E8C872;
+    letter-spacing: -1px;
+  }
+  .header p {
+    font-size: 16px;
+    color: #9CA3AF;
+    margin-top: 8px;
+  }
+
+  .canvas {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 0.6fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 0 30px;
+  }
+
+  .card {
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  }
+  .card.dimmed {
+    opacity: 0.2;
+    filter: grayscale(0.6);
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .card-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+  .card-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .card-subtitle {
+    font-size: 13px;
+    color: #9CA3AF;
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+
+  /* HQ Card */
+  .hq {
+    background: linear-gradient(135deg, #1a1a0e 0%, #1f1b10 100%);
+    border: 1px solid #E8C87233;
+    grid-row: 1;
+    grid-column: 1;
+  }
+  .hq .card-label { color: #E8C872; }
+  .hq .card-title { color: #E8C872; }
+  .hq .icon-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .hq-item {
+    background: #E8C87212;
+    border: 1px solid #E8C87220;
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .hq-item:hover { background: #E8C87225; }
+  .hq-item .emoji { font-size: 28px; margin-bottom: 6px; }
+  .hq-item .label { font-size: 12px; font-weight: 600; color: #E8C872; }
+  .hq-item .sub { font-size: 10px; color: #9CA3AF; margin-top: 2px; }
+
+  /* Properties Card */
+  .properties {
+    background: linear-gradient(135deg, #0e1a2a 0%, #101f30 100%);
+    border: 1px solid #4A9EDE33;
+    grid-row: 1;
+    grid-column: 2;
+  }
+  .properties .card-label { color: #4A9EDE; }
+  .properties .card-title { color: #4A9EDE; }
+  .hotel-row {
+    display: flex;
+    gap: 12px;
+  }
+  .hotel {
+    flex: 1;
+    background: #4A9EDE10;
+    border: 1px solid #4A9EDE20;
+    border-radius: 12px;
+    padding: 14px;
+    text-align: center;
+    transition: background 0.2s, border-color 0.2s;
+    position: relative;
+  }
+  .hotel:hover { background: #4A9EDE20; border-color: #4A9EDE50; }
+  .hotel .h-icon { font-size: 32px; margin-bottom: 8px; }
+  .hotel .h-name { font-size: 13px; font-weight: 700; color: #4A9EDE; }
+  .hotel .h-desc { font-size: 10px; color: #9CA3AF; margin-top: 4px; line-height: 1.4; }
+  .hotel .h-skills {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 8px;
+  }
+  .hotel .h-skills span {
+    font-size: 9px;
+    background: #4A9EDE20;
+    color: #4A9EDE;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .overwrite-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 8px;
+    background: #F59E0B30;
+    color: #F59E0B;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  /* Arrow between HQ and Properties */
+  .arrow-hq-props {
+    display: none;
+  }
+
+  /* Memory Card */
+  .memory {
+    background: linear-gradient(135deg, #1a0e0e 0%, #201414 100%);
+    border: 1px solid #E5737333;
+    grid-row: 1;
+    grid-column: 3;
+  }
+  .memory .card-label { color: #E57373; }
+  .memory .card-title { color: #E57373; }
+  .mem-section {
+    margin-bottom: 14px;
+  }
+  .mem-section-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #E57373;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #E5737325;
+  }
+  .mem-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    background: #E5737310;
+    border-radius: 6px;
+    margin-bottom: 4px;
+    transition: background 0.2s;
+  }
+  .mem-item:hover { background: #E5737320; }
+  .mem-item .m-icon { font-size: 16px; }
+  .mem-item .m-text { font-size: 11px; color: #ddd; }
+
+  /* Operations Card */
+  .operations {
+    background: linear-gradient(135deg, #0e1a12 0%, #101f16 100%);
+    border: 1px solid #81C78433;
+    grid-row: 2;
+    grid-column: 1 / -1;
+  }
+  .operations .card-label { color: #81C784; }
+  .operations .card-title { color: #81C784; }
+  .ops-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 4px;
+  }
+  .ops-item {
+    background: #81C78410;
+    border: 1px solid #81C78420;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .ops-item:hover { background: #81C78420; }
+  .ops-item .o-icon { font-size: 30px; margin-bottom: 8px; }
+  .ops-item .o-title { font-size: 13px; font-weight: 700; color: #81C784; }
+  .ops-item .o-hotel { font-size: 10px; color: #81C784AA; font-style: italic; margin-top: 2px; }
+  .ops-item .o-desc { font-size: 10px; color: #9CA3AF; margin-top: 4px; line-height: 1.4; }
+
+  /* Callout */
+  .callout {
+    max-width: 1400px;
+    margin: 10px auto 40px;
+    padding: 0 30px;
+  }
+  .callout-inner {
+    background: #E5737315;
+    border: 2px solid #E57373;
+    border-radius: 12px;
+    padding: 20px 28px;
+    text-align: center;
+  }
+  .callout-inner p {
+    font-size: 17px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.6;
+  }
+  .callout-inner span {
+    color: #E8C872;
+  }
+
+  /* Flow arrows between cards */
+  .flow-indicators {
+    max-width: 1400px;
+    margin: -10px auto 0;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 0;
+    position: relative;
+  }
+
+  /* Legend */
+  .legend {
+    max-width: 1400px;
+    margin: 0 auto 30px;
+    padding: 0 30px;
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .legend-text {
+    font-size: 11px;
+    color: #9CA3AF;
+  }
+
+  /* Tooltip */
+  .tooltip {
+    position: fixed;
+    background: #1E2530;
+    border: 1px solid #3A4250;
+    border-radius: 10px;
+    padding: 14px 18px;
+    max-width: 280px;
+    font-size: 12px;
+    color: #ddd;
+    line-height: 1.5;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 100;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  }
+  .tooltip.show { opacity: 1; }
+  .tooltip strong { color: #E8C872; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .canvas {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+    .hq, .properties, .memory, .operations {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .ops-row { grid-template-columns: 1fr 1fr; }
+    .hotel-row { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Your AI Runs Like a Hotel Chain</h1>
+  <p>How an Agentic OS organizes shared standards, client-specific context, memory, and execution</p>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#E8C872"></div><span class="legend-text">HQ / Shared Context</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#4A9EDE"></div><span class="legend-text">Properties / Client Context</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#E57373"></div><span class="legend-text">Concierge / Memory</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#81C784"></div><span class="legend-text">Operations / Execution</span></div>
+</div>
+
+<div class="canvas">
+
+  <!-- HQ / SHARED CONTEXT -->
+  <div class="card hq" data-tooltip="<strong>Shared Context</strong> = Hotel HQ<br><br>CLAUDE.md, SOUL.md, user.md set the brand standards. Skills are your trained staff. Planning frameworks scale like room types. Brand context is your identity kit.<br><br>Every property inherits these — no exceptions.">
+    <div class="card-label">Hotel Headquarters</div>
+    <div class="card-title">Shared Context</div>
+    <div class="card-subtitle">Standards every property follows</div>
+    <div class="icon-row">
+      <div class="hq-item">
+        <div class="emoji">📖</div>
+        <div class="label">Brand Manual</div>
+        <div class="sub">CLAUDE.md + SOUL.md + user.md</div>
+      </div>
+      <div class="hq-item">
+        <div class="emoji">👨‍🍳</div>
+        <div class="label">Trained Staff</div>
+        <div class="sub">research, copywriting, video, cron</div>
+      </div>
+      <div class="hq-item">
+        <div class="emoji">🚪</div>
+        <div class="label">Room Types</div>
+        <div class="sub">quick task, planned project, full biz</div>
+      </div>
+      <div class="hq-item">
+        <div class="emoji">💼</div>
+        <div class="label">Brand Kit</div>
+        <div class="sub">voice, ICP, positioning, assets</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROPERTIES / CLIENT CONTEXT -->
+  <div class="card properties" data-tooltip="<strong>Client Context</strong> = Individual Hotels<br><br>Each client gets their own CLAUDE.md, project plans, and skills. Context Overwrites let a local chef replace the HQ recipe — client-specific skills override shared ones.<br><br>Same brand, local flavor.">
+    <div class="card-label">Your Properties</div>
+    <div class="card-title">Client Context</div>
+    <div class="card-subtitle">Same brand, local flavor</div>
+    <div class="hotel-row">
+      <div class="hotel">
+        <div class="overwrite-badge">Overwrites active</div>
+        <div class="h-icon">🏝️</div>
+        <div class="h-name">Client 1: Luxury Resort</div>
+        <div class="h-desc">Landing pages, copywriting, video production</div>
+        <div class="h-skills">
+          <span>landing-page</span>
+          <span>copywriting</span>
+          <span>video</span>
+        </div>
+      </div>
+      <div class="hotel">
+        <div class="h-icon">🏢</div>
+        <div class="h-name">Client 2: Business Tower</div>
+        <div class="h-desc">Drafting comms, corporate messaging</div>
+        <div class="h-skills">
+          <span>drafting-comms</span>
+          <span>ops</span>
+        </div>
+      </div>
+      <div class="hotel">
+        <div class="overwrite-badge">Custom skills</div>
+        <div class="h-icon">🏨</div>
+        <div class="h-name">Client 3: Boutique Inn</div>
+        <div class="h-desc">"Our design language is unique"</div>
+        <div class="h-skills">
+          <span>taste-skill</span>
+          <span>design-skill</span>
+          <span>web-dev</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEMORY LAYER -->
+  <div class="card memory" data-tooltip="<strong>Memory Layer</strong> = Concierge Desk + Archive<br><br><em>Fed every time:</em> Guest profile cards loaded at check-in — learnings.md, dated memory files, hooks.<br><br><em>Retrieved when needed:</em> The archive room — semantic search, word-for-word recall, knowledge graphs, cross-tool lookup.">
+    <div class="card-label">Concierge Desk</div>
+    <div class="card-title">Memory Layer</div>
+    <div class="card-subtitle">Global &amp; client level</div>
+
+    <div class="mem-section">
+      <div class="mem-section-title">Fed Every Time (Guest Card)</div>
+      <div class="mem-item"><span class="m-icon">📋</span><span class="m-text">learnings.md</span></div>
+      <div class="mem-item"><span class="m-icon">📁</span><span class="m-text">memory/ (dated entries)</span></div>
+      <div class="mem-item"><span class="m-icon">⚡</span><span class="m-text">hooks</span></div>
+    </div>
+
+    <div class="mem-section">
+      <div class="mem-section-title">Retrieved When Needed (Archive)</div>
+      <div class="mem-item"><span class="m-icon">🔍</span><span class="m-text">MCP-SEARCH (semantic)</span></div>
+      <div class="mem-item"><span class="m-icon">📝</span><span class="m-text">MEMHULCE (word-for-word)</span></div>
+      <div class="mem-item"><span class="m-icon">🕸️</span><span class="m-text">LLM Wiki / Obsidian</span></div>
+      <div class="mem-item"><span class="m-icon">🔗</span><span class="m-text">Cross-tool / OpenBrain</span></div>
+    </div>
+  </div>
+
+  <!-- EXECUTION LAYER -->
+  <div class="card operations" data-tooltip="<strong>Execution Layer</strong> = Hotel Operations Floor<br><br>Room service chains = multi-step skill workflows. Night audit = cron jobs running on schedule. Backup generator = always-on UPS, no laptop dependency. Multi-channel booking = accessible from anywhere (desktop, mobile, web).<br><br>Making it modular, accessible, and autonomous.">
+    <div class="card-label">Operations Floor</div>
+    <div class="card-title">Execution Layer</div>
+    <div class="card-subtitle">Modular, accessible, autonomous</div>
+    <div class="ops-row">
+      <div class="ops-item">
+        <div class="o-icon">🍽️</div>
+        <div class="o-title">Room Service Chain</div>
+        <div class="o-hotel">Skill Systems</div>
+        <div class="o-desc">Multiple skills chained together to achieve a "job to be done"</div>
+      </div>
+      <div class="ops-item">
+        <div class="o-icon">🕐</div>
+        <div class="o-title">Night Audit</div>
+        <div class="o-hotel">Cron Jobs</div>
+        <div class="o-desc">Tasks run without asking, on a schedule or event</div>
+      </div>
+      <div class="ops-item">
+        <div class="o-icon">🔋</div>
+        <div class="o-title">Backup Generator</div>
+        <div class="o-hotel">UPS / Always On</div>
+        <div class="o-desc">No dependency on your laptop to run (24/7)</div>
+      </div>
+      <div class="ops-item">
+        <div class="o-icon">📱</div>
+        <div class="o-title">Multi-Channel Booking</div>
+        <div class="o-hotel">Access Anywhere</div>
+        <div class="o-desc">Accessible from anywhere, on your mobile</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- KEY INSIGHT -->
+<div class="callout">
+  <div class="callout-inner">
+    <p><span>Shared standards</span> + local autonomy + persistent memory = an AI that <span>scales like a chain</span> but <span>feels like a boutique</span>.</p>
+  </div>
+</div>
+
+<!-- TOOLTIP -->
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+  const tooltip = document.getElementById('tooltip');
+  const cards = document.querySelectorAll('.card');
+
+  // Hover tooltips
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', e => {
+      const html = card.getAttribute('data-tooltip');
+      if (!html) return;
+      tooltip.innerHTML = html;
+      tooltip.classList.add('show');
+    });
+    card.addEventListener('mousemove', e => {
+      const x = e.clientX + 16;
+      const y = e.clientY + 16;
+      const maxX = window.innerWidth - 300;
+      const maxY = window.innerHeight - 200;
+      tooltip.style.left = Math.min(x, maxX) + 'px';
+      tooltip.style.top = Math.min(y, maxY) + 'px';
+    });
+    card.addEventListener('mouseleave', () => {
+      tooltip.classList.remove('show');
+    });
+  });
+
+  // Click to highlight
+  let activeCard = null;
+  cards.forEach(card => {
+    card.addEventListener('click', e => {
+      e.stopPropagation();
+      if (activeCard === card) {
+        // Deselect
+        cards.forEach(c => c.classList.remove('dimmed'));
+        activeCard = null;
+      } else {
+        cards.forEach(c => c.classList.add('dimmed'));
+        card.classList.remove('dimmed');
+        activeCard = card;
+      }
+    });
+  });
+
+  document.addEventListener('click', () => {
+    cards.forEach(c => c.classList.remove('dimmed'));
+    activeCard = null;
+  });
+</script>
+
+</body>
+</html>
