@@ -4,48 +4,45 @@
   "graph": {
     "hyperedges": [
       {
-        "id": "ai_coding_tool_ecosystem",
-        "label": "AI Coding Tool Ecosystem",
+        "id": "ai_coding_agent_ecosystem",
+        "label": "AI Coding Agent Ecosystem",
         "nodes": [
-          "github_openhands_ai_driven_development_openhands",
-          "github_openhands_ai_driven_development_claude_code",
-          "github_openhands_ai_driven_development_codex",
-          "github_openhands_ai_driven_development_devin",
-          "github_openhands_ai_driven_development_jules",
-          "github_openhands_ai_driven_development_cursor"
+          "github_openhands_openhands_openhands_platform",
+          "github_openhands_openhands_claude_code",
+          "github_openhands_openhands_codeact_agent",
+          "github_openhands_openhands_software_agent_sdk"
         ],
         "relation": "participate_in",
         "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": "content-research/github/openhands-ai-driven-development.md"
+        "confidence_score": 0.95,
+        "source_file": "second-brain/github/openhands-openhands.md"
       },
       {
-        "id": "claude_code_skills_ecosystem",
-        "label": "Claude Code Skills Ecosystem",
+        "id": "skills_markdown_pattern",
+        "label": "Markdown-Based Skills/Microagent Pattern",
         "nodes": [
-          "github_bidah_skill_set_bidah_skill_set",
-          "github_bidah_skill_set_claude_code",
+          "github_openhands_openhands_skills_system",
           "github_bidah_skill_set_skill_md_format",
           "github_bidah_skill_set_create_onboarding_video"
         ],
         "relation": "implement",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": "content-research/github/bidah-skill-set.md"
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "second-brain/github/openhands-openhands.md"
       },
       {
-        "id": "openhands_product_surface",
-        "label": "OpenHands Modular Product Surface",
+        "id": "openhands_product_ladder",
+        "label": "OpenHands Product Ladder (SDK \u2192 CLI \u2192 GUI \u2192 Cloud \u2192 Enterprise)",
         "nodes": [
-          "github_openhands_ai_driven_development_openhands",
-          "github_openhands_ai_driven_development_software_agent_sdk",
-          "github_openhands_ai_driven_development_product_ladder",
-          "github_openhands_ai_driven_development_llm_agnostic"
+          "github_openhands_openhands_software_agent_sdk",
+          "github_openhands_openhands_enterprise_tier",
+          "github_openhands_openhands_sdk_first_architecture",
+          "github_openhands_openhands_dual_license"
         ],
         "relation": "form",
         "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": "content-research/github/openhands-ai-driven-development.md"
+        "confidence_score": 0.95,
+        "source_file": "second-brain/github/openhands-openhands.md"
       }
     ]
   },
@@ -59,7 +56,7 @@
       "captured_at": "2026-05-20",
       "author": "bidah",
       "contributor": null,
-      "community": 4,
+      "community": 2,
       "norm_label": "bidah/skill-set github repository",
       "id": "github_bidah_skill_set_repo"
     },
@@ -72,7 +69,7 @@
       "captured_at": "2026-05-20",
       "author": "bidah",
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "create-onboarding-video skill",
       "id": "github_bidah_skill_set_create_onboarding_video"
     },
@@ -85,7 +82,7 @@
       "captured_at": "2026-05-20",
       "author": "bidah",
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "remotion (react video framework)",
       "id": "github_bidah_skill_set_remotion"
     },
@@ -99,7 +96,7 @@
       "author": "bidah",
       "contributor": null,
       "rationale": "Each beat shows a cropped UI component, not a full screenshot. The viewer sees the feature in action, not a screen tour. This isolates the meaningful interaction and avoids visual overload.",
-      "community": 2,
+      "community": 1,
       "norm_label": "pieces not screens philosophy",
       "id": "github_bidah_skill_set_pieces_not_screens"
     },
@@ -113,7 +110,7 @@
       "author": "bidah",
       "contributor": null,
       "rationale": "Detailed operating rules, workflow steps, and forbidden patterns in a single markdown file make an excellent template for writing Claude Code skills.",
-      "community": 5,
+      "community": 1,
       "norm_label": "skill.md skill definition format",
       "id": "github_bidah_skill_set_skill_md_format"
     },
@@ -126,7 +123,7 @@
       "captured_at": "2026-05-20",
       "author": "bidah",
       "contributor": null,
-      "community": 6,
+      "community": 1,
       "norm_label": "claude code",
       "id": "github_bidah_skill_set_claude_code"
     },
@@ -139,7 +136,7 @@
       "captured_at": "2026-05-20",
       "author": "bidah",
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "spring-based animation",
       "id": "github_bidah_skill_set_spring_animation"
     },
@@ -152,7 +149,7 @@
       "captured_at": "2026-05-20",
       "author": "bidah",
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "cursor animation rules",
       "id": "github_bidah_skill_set_cursor_animation"
     },
@@ -166,7 +163,7 @@
       "author": "bidah",
       "contributor": null,
       "rationale": "Won't start rendering until it has stills + intent for every screen. Ensures completeness before execution.",
-      "community": 2,
+      "community": 1,
       "norm_label": "intake-first workflow",
       "id": "github_bidah_skill_set_intake_first_workflow"
     },
@@ -179,7 +176,7 @@
       "captured_at": "2026-05-20",
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 2,
       "norm_label": "screenshots to animated onboarding video linkedin post",
       "id": "linkedin_bidah_create_onboarding_video_skill_post"
     },
@@ -193,7 +190,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Claude Code skills are becoming a distribution channel: creators build, curators share, non-technical users adopt. The 'install in 60 seconds' framing removes friction.",
-      "community": 4,
+      "community": 2,
       "norm_label": "claude code skills as distribution channel",
       "id": "linkedin_bidah_create_onboarding_video_skill_skills_as_distribution"
     },
@@ -206,7 +203,7 @@
       "captured_at": "2026-05-20",
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 2,
       "norm_label": "screenshot-to-video workflow",
       "id": "linkedin_bidah_create_onboarding_video_skill_screenshot_to_video"
     },
@@ -219,7 +216,7 @@
       "captured_at": "2026-05-20",
       "author": "Ruben Hassid",
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "claude code guide by ruben hassid",
       "id": "web_ruben_claude_code_guide_article"
     },
@@ -232,7 +229,7 @@
       "captured_at": "2026-05-20",
       "author": "Ruben Hassid",
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "ruben hassid",
       "id": "web_ruben_claude_code_guide_ruben_hassid"
     },
@@ -246,7 +243,7 @@
       "author": "Ruben Hassid",
       "contributor": null,
       "rationale": "Paste images of desired designs and Claude recreates them. The most powerful technique for non-coders: show, don't describe.",
-      "community": 7,
+      "community": 2,
       "norm_label": "screenshot-based prompting",
       "id": "web_ruben_claude_code_guide_screenshot_prompting"
     },
@@ -259,7 +256,7 @@
       "captured_at": "2026-05-20",
       "author": "Ruben Hassid",
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "vibecoding method",
       "id": "web_ruben_claude_code_guide_vibecoding"
     },
@@ -273,7 +270,7 @@
       "author": "Ruben Hassid",
       "contributor": null,
       "rationale": "CLAUDE.md is the key persistence mechanism across sessions. Create project documentation so Claude remembers design choices.",
-      "community": 3,
+      "community": 2,
       "norm_label": "claude.md memory file",
       "id": "web_ruben_claude_code_guide_claude_md"
     },
@@ -286,7 +283,7 @@
       "captured_at": "2026-05-20",
       "author": "Ruben Hassid",
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "outcome-focused briefs",
       "id": "web_ruben_claude_code_guide_outcome_focused_briefs"
     },
@@ -299,7 +296,7 @@
       "captured_at": "2026-05-20",
       "author": "Brad | AI & Automation",
       "contributor": null,
-      "community": 1,
+      "community": 4,
       "norm_label": "my claude code can instantly watch any video",
       "id": "youtube_claude_video_skill_brad_video"
     },
@@ -312,7 +309,7 @@
       "captured_at": "2026-05-20",
       "author": "Brad | AI & Automation",
       "contributor": null,
-      "community": 1,
+      "community": 4,
       "norm_label": "brad (ai & automation)",
       "id": "youtube_claude_video_skill_brad_brad"
     },
@@ -325,7 +322,7 @@
       "captured_at": "2026-05-20",
       "author": "Brad | AI & Automation",
       "contributor": null,
-      "community": 1,
+      "community": 4,
       "norm_label": "/watch video analysis skill",
       "id": "youtube_claude_video_skill_brad_watch_skill"
     },
@@ -338,7 +335,7 @@
       "captured_at": "2026-05-20",
       "author": "Brad | AI & Automation",
       "contributor": null,
-      "community": 1,
+      "community": 4,
       "norm_label": "yt-dlp (video downloader)",
       "id": "youtube_claude_video_skill_brad_yt_dlp"
     },
@@ -351,7 +348,7 @@
       "captured_at": "2026-05-20",
       "author": "Brad | AI & Automation",
       "contributor": null,
-      "community": 1,
+      "community": 4,
       "norm_label": "ffmpeg (frame/audio extraction)",
       "id": "youtube_claude_video_skill_brad_ffmpeg"
     },
@@ -364,7 +361,7 @@
       "captured_at": "2026-05-20",
       "author": "Brad | AI & Automation",
       "contributor": null,
-      "community": 1,
+      "community": 4,
       "norm_label": "groq whisper transcription",
       "id": "youtube_claude_video_skill_brad_groq_whisper"
     },
@@ -378,7 +375,7 @@
       "author": "Brad | AI & Automation",
       "contributor": null,
       "rationale": "Since Anthropic has no native video model, decompose video into frames + transcript \u2014 two modalities Claude already understands. Half of interesting stuff in video isn't said out loud, it happens on screen, so transcript-only tools miss critical context.",
-      "community": 1,
+      "community": 4,
       "norm_label": "frames + transcript decomposition",
       "id": "youtube_claude_video_skill_brad_frames_plus_transcript"
     },
@@ -391,7 +388,7 @@
       "captured_at": "2026-05-20",
       "author": "Brad | AI & Automation",
       "contributor": null,
-      "community": 1,
+      "community": 4,
       "norm_label": "second brain auto-feed use case",
       "id": "youtube_claude_video_skill_brad_second_brain"
     },
@@ -404,7 +401,7 @@
       "captured_at": "2026-05-20",
       "author": "Brad | AI & Automation",
       "contributor": null,
-      "community": 1,
+      "community": 4,
       "norm_label": "openai whisper (fallback)",
       "id": "youtube_claude_video_skill_brad_openai_whisper"
     },
@@ -417,7 +414,7 @@
       "captured_at": "2026-05-20",
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 2,
       "norm_label": "content research map of content",
       "id": "_index_content_research_moc"
     },
@@ -430,9 +427,9 @@
       "captured_at": "2026-05-20",
       "author": "bidah",
       "contributor": null,
-      "id": "github_bidah_skill_set_bidah_skill_set",
-      "community": 5,
-      "norm_label": "bidah/skill-set"
+      "community": 1,
+      "norm_label": "bidah/skill-set",
+      "id": "github_bidah_skill_set_bidah_skill_set"
     },
     {
       "label": "ruben-claude-code-guide",
@@ -443,9 +440,9 @@
       "captured_at": "2026-05-20",
       "author": "bidah",
       "contributor": null,
-      "id": "github_bidah_skill_set_ruben_claude_code_guide",
-      "community": 5,
-      "norm_label": "ruben-claude-code-guide"
+      "community": 1,
+      "norm_label": "ruben-claude-code-guide",
+      "id": "github_bidah_skill_set_ruben_claude_code_guide"
     },
     {
       "label": "OpenHands",
@@ -456,9 +453,9 @@
       "captured_at": "2026-05-21",
       "author": "OpenHands (fork by shekerkamma)",
       "contributor": null,
-      "id": "github_openhands_ai_driven_development_openhands",
-      "community": 0,
-      "norm_label": "openhands"
+      "community": 3,
+      "norm_label": "openhands",
+      "id": "github_openhands_ai_driven_development_openhands"
     },
     {
       "label": "Software Agent SDK",
@@ -469,9 +466,9 @@
       "captured_at": "2026-05-21",
       "author": "OpenHands (fork by shekerkamma)",
       "contributor": null,
-      "id": "github_openhands_ai_driven_development_software_agent_sdk",
-      "community": 0,
-      "norm_label": "software agent sdk"
+      "community": 3,
+      "norm_label": "software agent sdk",
+      "id": "github_openhands_ai_driven_development_software_agent_sdk"
     },
     {
       "label": "SWE-Bench",
@@ -482,9 +479,9 @@
       "captured_at": "2026-05-21",
       "author": "OpenHands (fork by shekerkamma)",
       "contributor": null,
-      "id": "github_openhands_ai_driven_development_swe_bench",
-      "community": 0,
-      "norm_label": "swe-bench"
+      "community": 3,
+      "norm_label": "swe-bench",
+      "id": "github_openhands_ai_driven_development_swe_bench"
     },
     {
       "label": "Claude Code (OpenHands context)",
@@ -495,9 +492,9 @@
       "captured_at": "2026-05-21",
       "author": "OpenHands (fork by shekerkamma)",
       "contributor": null,
-      "id": "github_openhands_ai_driven_development_claude_code",
-      "community": 6,
-      "norm_label": "claude code (openhands context)"
+      "community": 1,
+      "norm_label": "claude code (openhands context)",
+      "id": "github_openhands_ai_driven_development_claude_code"
     },
     {
       "label": "Codex",
@@ -508,9 +505,9 @@
       "captured_at": "2026-05-21",
       "author": "OpenHands (fork by shekerkamma)",
       "contributor": null,
-      "id": "github_openhands_ai_driven_development_codex",
-      "community": 0,
-      "norm_label": "codex"
+      "community": 3,
+      "norm_label": "codex",
+      "id": "github_openhands_ai_driven_development_codex"
     },
     {
       "label": "Devin",
@@ -521,9 +518,9 @@
       "captured_at": "2026-05-21",
       "author": "OpenHands (fork by shekerkamma)",
       "contributor": null,
-      "id": "github_openhands_ai_driven_development_devin",
-      "community": 0,
-      "norm_label": "devin"
+      "community": 3,
+      "norm_label": "devin",
+      "id": "github_openhands_ai_driven_development_devin"
     },
     {
       "label": "Jules",
@@ -534,9 +531,9 @@
       "captured_at": "2026-05-21",
       "author": "OpenHands (fork by shekerkamma)",
       "contributor": null,
-      "id": "github_openhands_ai_driven_development_jules",
-      "community": 0,
-      "norm_label": "jules"
+      "community": 3,
+      "norm_label": "jules",
+      "id": "github_openhands_ai_driven_development_jules"
     },
     {
       "label": "Cursor",
@@ -547,9 +544,9 @@
       "captured_at": "2026-05-21",
       "author": "OpenHands (fork by shekerkamma)",
       "contributor": null,
-      "id": "github_openhands_ai_driven_development_cursor",
-      "community": 0,
-      "norm_label": "cursor"
+      "community": 3,
+      "norm_label": "cursor",
+      "id": "github_openhands_ai_driven_development_cursor"
     },
     {
       "label": "MIT + Enterprise Dual License Model",
@@ -561,9 +558,9 @@
       "author": "OpenHands (fork by shekerkamma)",
       "contributor": null,
       "rationale": "Core is fully open-source MIT while enterprise directory has separate commercial license. Great template for open-source commercialization - keeps core accessible while monetizing enterprise features.",
-      "id": "github_openhands_ai_driven_development_dual_license_model",
-      "community": 0,
-      "norm_label": "mit + enterprise dual license model"
+      "community": 3,
+      "norm_label": "mit + enterprise dual license model",
+      "id": "github_openhands_ai_driven_development_dual_license_model"
     },
     {
       "label": "Product Ladder Strategy",
@@ -575,9 +572,9 @@
       "author": "OpenHands (fork by shekerkamma)",
       "contributor": null,
       "rationale": "SDK -> CLI -> GUI -> Cloud -> Enterprise, each step adds value. Modular product surface where all surfaces share the same core engine.",
-      "id": "github_openhands_ai_driven_development_product_ladder",
-      "community": 0,
-      "norm_label": "product ladder strategy"
+      "community": 3,
+      "norm_label": "product ladder strategy",
+      "id": "github_openhands_ai_driven_development_product_ladder"
     },
     {
       "label": "LLM-Agnostic Design",
@@ -589,9 +586,178 @@
       "author": "OpenHands (fork by shekerkamma)",
       "contributor": null,
       "rationale": "Works with Claude, GPT, or any LLM - not locked to one provider. Avoids vendor lock-in and broadens market.",
-      "id": "github_openhands_ai_driven_development_llm_agnostic",
+      "community": 3,
+      "norm_label": "llm-agnostic design",
+      "id": "github_openhands_ai_driven_development_llm_agnostic"
+    },
+    {
+      "label": "OpenHands Platform (Fork Notes)",
+      "file_type": "document",
+      "source_file": "second-brain/github/openhands-ai-driven-development.md",
+      "source_location": null,
+      "source_url": "https://github.com/shekerkamma/OpenHands",
+      "captured_at": "2026-05-21",
+      "author": "shekerk",
+      "contributor": null,
+      "id": "github_openhands_ai_driven_development_openhands_platform",
       "community": 0,
-      "norm_label": "llm-agnostic design"
+      "norm_label": "openhands platform (fork notes)"
+    },
+    {
+      "label": "OpenHands Platform (Upstream)",
+      "file_type": "document",
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": null,
+      "source_url": "https://github.com/OpenHands/OpenHands",
+      "captured_at": "2026-05-22",
+      "author": "shekerk",
+      "contributor": null,
+      "id": "github_openhands_openhands_openhands_platform",
+      "community": 0,
+      "norm_label": "openhands platform (upstream)"
+    },
+    {
+      "label": "bidah/skill-set",
+      "file_type": "document",
+      "source_file": "second-brain/github/bidah-skill-set.md",
+      "source_location": null,
+      "source_url": "https://github.com/bidah/skill-set",
+      "captured_at": "2026-05-20",
+      "author": "shekerk",
+      "contributor": null,
+      "id": "github_bidah_skill_set_skill_set",
+      "community": 0,
+      "norm_label": "bidah/skill-set"
+    },
+    {
+      "label": "CodeAct Agent",
+      "file_type": "concept",
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "Core Agent Architecture",
+      "source_url": null,
+      "captured_at": "2026-05-22",
+      "author": null,
+      "contributor": null,
+      "id": "github_openhands_openhands_codeact_agent",
+      "community": 0,
+      "norm_label": "codeact agent"
+    },
+    {
+      "label": "Software Agent SDK",
+      "file_type": "concept",
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "What It Does",
+      "source_url": null,
+      "captured_at": "2026-05-22",
+      "author": null,
+      "contributor": null,
+      "id": "github_openhands_openhands_software_agent_sdk",
+      "community": 0,
+      "norm_label": "software agent sdk"
+    },
+    {
+      "label": "OpenHands Skills System",
+      "file_type": "rationale",
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "Key Design Decisions",
+      "source_url": null,
+      "captured_at": "2026-05-22",
+      "author": null,
+      "contributor": null,
+      "id": "github_openhands_openhands_skills_system",
+      "community": 0,
+      "norm_label": "openhands skills system"
+    },
+    {
+      "label": "Docker Sandbox Execution",
+      "file_type": "rationale",
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "Key Design Decisions",
+      "source_url": null,
+      "captured_at": "2026-05-22",
+      "author": null,
+      "contributor": null,
+      "id": "github_openhands_openhands_docker_sandbox",
+      "community": 0,
+      "norm_label": "docker sandbox execution"
+    },
+    {
+      "label": "SWE-Bench 77.6%",
+      "file_type": "concept",
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "TL;DR",
+      "source_url": null,
+      "captured_at": "2026-05-22",
+      "author": null,
+      "contributor": null,
+      "id": "github_openhands_openhands_swe_bench",
+      "community": 0,
+      "norm_label": "swe-bench 77.6%"
+    },
+    {
+      "label": "OpenHands Enterprise (K8s Self-Hosted)",
+      "file_type": "concept",
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "What It Does",
+      "source_url": null,
+      "captured_at": "2026-05-22",
+      "author": null,
+      "contributor": null,
+      "id": "github_openhands_openhands_enterprise_tier",
+      "community": 0,
+      "norm_label": "openhands enterprise (k8s self-hosted)"
+    },
+    {
+      "label": "Model-Agnostic LLM Support",
+      "file_type": "rationale",
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "Key Design Decisions",
+      "source_url": null,
+      "captured_at": "2026-05-22",
+      "author": null,
+      "contributor": null,
+      "id": "github_openhands_openhands_model_agnostic",
+      "community": 0,
+      "norm_label": "model-agnostic llm support"
+    },
+    {
+      "label": "Claude Code",
+      "file_type": "concept",
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "Competitor Comparison",
+      "source_url": null,
+      "captured_at": "2026-05-22",
+      "author": null,
+      "contributor": null,
+      "id": "github_openhands_openhands_claude_code",
+      "community": 0,
+      "norm_label": "claude code"
+    },
+    {
+      "label": "SDK-First Architecture",
+      "file_type": "rationale",
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "Key Design Decisions",
+      "source_url": null,
+      "captured_at": "2026-05-22",
+      "author": null,
+      "contributor": null,
+      "id": "github_openhands_openhands_sdk_first_architecture",
+      "community": 0,
+      "norm_label": "sdk-first architecture"
+    },
+    {
+      "label": "MIT + Enterprise Dual License Model",
+      "file_type": "rationale",
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "Key Design Decisions",
+      "source_url": null,
+      "captured_at": "2026-05-22",
+      "author": null,
+      "contributor": null,
+      "id": "github_openhands_openhands_dual_license",
+      "community": 0,
+      "norm_label": "mit + enterprise dual license model"
     }
   ],
   "links": [
@@ -639,8 +805,8 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "content-research/github/bidah-skill-set.md",
-      "source_location": null,
+      "source_file": "second-brain/github/bidah-skill-set.md",
+      "source_location": "Tech Stack",
       "weight": 1.0,
       "source": "github_bidah_skill_set_create_onboarding_video",
       "target": "github_bidah_skill_set_remotion"
@@ -666,14 +832,14 @@
       "target": "github_bidah_skill_set_create_onboarding_video"
     },
     {
-      "relation": "references",
+      "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "github/bidah-skill-set.md",
-      "source_location": "line 49",
-      "weight": 0.9,
-      "source": "github_bidah_skill_set_create_onboarding_video",
-      "target": "github_bidah_skill_set_skill_md_format"
+      "source_file": "second-brain/github/bidah-skill-set.md",
+      "source_location": "Steal-Worthy Elements",
+      "weight": 1.0,
+      "source": "github_bidah_skill_set_skill_md_format",
+      "target": "github_bidah_skill_set_create_onboarding_video"
     },
     {
       "relation": "references",
@@ -726,6 +892,26 @@
       "target": "github_bidah_skill_set_bidah_skill_set"
     },
     {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "second-brain/github/bidah-skill-set.md",
+      "source_location": "What It Does",
+      "weight": 1.0,
+      "source": "github_bidah_skill_set_skill_set",
+      "target": "github_bidah_skill_set_create_onboarding_video"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": null,
+      "weight": 0.75,
+      "source": "github_openhands_openhands_skills_system",
+      "target": "github_bidah_skill_set_create_onboarding_video"
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -764,6 +950,16 @@
       "weight": 1.0,
       "source": "github_bidah_skill_set_skill_md_format",
       "target": "github_bidah_skill_set_bidah_skill_set"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": null,
+      "weight": 0.85,
+      "source": "github_openhands_openhands_skills_system",
+      "target": "github_bidah_skill_set_skill_md_format"
     },
     {
       "relation": "references",
@@ -1174,53 +1370,170 @@
       "weight": 1.0,
       "source": "github_openhands_ai_driven_development_llm_agnostic",
       "target": "github_openhands_ai_driven_development_openhands"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "second-brain/github/openhands-ai-driven-development.md",
+      "source_location": "Fork of upstream repo",
+      "weight": 1.0,
+      "source": "github_openhands_ai_driven_development_openhands_platform",
+      "target": "github_openhands_openhands_openhands_platform"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "Core Agent Architecture",
+      "weight": 1.0,
+      "source": "github_openhands_openhands_openhands_platform",
+      "target": "github_openhands_openhands_codeact_agent"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "What It Does",
+      "weight": 1.0,
+      "source": "github_openhands_openhands_openhands_platform",
+      "target": "github_openhands_openhands_software_agent_sdk"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "Key Design Decisions",
+      "weight": 1.0,
+      "source": "github_openhands_openhands_openhands_platform",
+      "target": "github_openhands_openhands_skills_system"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "Key Design Decisions",
+      "weight": 1.0,
+      "source": "github_openhands_openhands_openhands_platform",
+      "target": "github_openhands_openhands_docker_sandbox"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "TL;DR",
+      "weight": 1.0,
+      "source": "github_openhands_openhands_openhands_platform",
+      "target": "github_openhands_openhands_swe_bench"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "What It Does",
+      "weight": 1.0,
+      "source": "github_openhands_openhands_openhands_platform",
+      "target": "github_openhands_openhands_enterprise_tier"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "Key Design Decisions",
+      "weight": 1.0,
+      "source": "github_openhands_openhands_model_agnostic",
+      "target": "github_openhands_openhands_openhands_platform"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "Competitor Comparison",
+      "weight": 0.8,
+      "source": "github_openhands_openhands_openhands_platform",
+      "target": "github_openhands_openhands_claude_code"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "second-brain/github/bidah-skill-set.md",
+      "source_location": "TL;DR",
+      "weight": 1.0,
+      "source": "github_bidah_skill_set_skill_set",
+      "target": "github_openhands_openhands_claude_code"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "Key Design Decisions",
+      "weight": 1.0,
+      "source": "github_openhands_openhands_sdk_first_architecture",
+      "target": "github_openhands_openhands_software_agent_sdk"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "second-brain/github/openhands-openhands.md",
+      "source_location": "Key Design Decisions",
+      "weight": 1.0,
+      "source": "github_openhands_openhands_dual_license",
+      "target": "github_openhands_openhands_enterprise_tier"
     }
   ],
   "hyperedges": [
     {
-      "id": "ai_coding_tool_ecosystem",
-      "label": "AI Coding Tool Ecosystem",
+      "id": "ai_coding_agent_ecosystem",
+      "label": "AI Coding Agent Ecosystem",
       "nodes": [
-        "github_openhands_ai_driven_development_openhands",
-        "github_openhands_ai_driven_development_claude_code",
-        "github_openhands_ai_driven_development_codex",
-        "github_openhands_ai_driven_development_devin",
-        "github_openhands_ai_driven_development_jules",
-        "github_openhands_ai_driven_development_cursor"
+        "github_openhands_openhands_openhands_platform",
+        "github_openhands_openhands_claude_code",
+        "github_openhands_openhands_codeact_agent",
+        "github_openhands_openhands_software_agent_sdk"
       ],
       "relation": "participate_in",
       "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "content-research/github/openhands-ai-driven-development.md"
+      "confidence_score": 0.95,
+      "source_file": "second-brain/github/openhands-openhands.md"
     },
     {
-      "id": "claude_code_skills_ecosystem",
-      "label": "Claude Code Skills Ecosystem",
+      "id": "skills_markdown_pattern",
+      "label": "Markdown-Based Skills/Microagent Pattern",
       "nodes": [
-        "github_bidah_skill_set_bidah_skill_set",
-        "github_bidah_skill_set_claude_code",
+        "github_openhands_openhands_skills_system",
         "github_bidah_skill_set_skill_md_format",
         "github_bidah_skill_set_create_onboarding_video"
       ],
       "relation": "implement",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "content-research/github/bidah-skill-set.md"
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "second-brain/github/openhands-openhands.md"
     },
     {
-      "id": "openhands_product_surface",
-      "label": "OpenHands Modular Product Surface",
+      "id": "openhands_product_ladder",
+      "label": "OpenHands Product Ladder (SDK \u2192 CLI \u2192 GUI \u2192 Cloud \u2192 Enterprise)",
       "nodes": [
-        "github_openhands_ai_driven_development_openhands",
-        "github_openhands_ai_driven_development_software_agent_sdk",
-        "github_openhands_ai_driven_development_product_ladder",
-        "github_openhands_ai_driven_development_llm_agnostic"
+        "github_openhands_openhands_software_agent_sdk",
+        "github_openhands_openhands_enterprise_tier",
+        "github_openhands_openhands_sdk_first_architecture",
+        "github_openhands_openhands_dual_license"
       ],
       "relation": "form",
       "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "content-research/github/openhands-ai-driven-development.md"
+      "confidence_score": 0.95,
+      "source_file": "second-brain/github/openhands-openhands.md"
     }
   ],
-  "built_at_commit": "8e10432b49676abe4755bb6c25cfebf5156b8c8b"
+  "built_at_commit": "65fa98dfe322f8847c915559c493e98983068873"
 }
