@@ -1,0 +1,23 @@
+{
+  "purpose": "Local source-code and skill references for agentic AI coding experiments.",
+  "recommendedRepos": [
+    {
+      "name": "micky-podcast-agentic-engineering",
+      "url": "https://github.com/pawel-cell/micky-podcast-agentic-engineering",
+      "useFor": [
+        "agentic engineering workflow",
+        "code structure cleanup",
+        "grep loop review workflow"
+      ]
+    },
+    {
+      "name": "michaelshimeles-skills",
+      "url": "https://github.com/michaelshimeles/skills",
+      "useFor": [
+        "personal skill examples",
+        "agent workflow patterns"
+      ]
+    }
+  ],
+  "rule": "Reference the smallest relevant source folder or SKILL.md file before asking an agent to implement code."
+}
