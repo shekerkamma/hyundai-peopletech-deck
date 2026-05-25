@@ -236,40 +236,35 @@ def build_title_slide(prs, total):
 def build_uc_slide(prs, page_num, total, title, photo_key,
                    challenge_lines, solution_lines, results,
                    stack_lines=None, governance_lines=None, yc_lines=None,
-                   systems=None, target_users=None):
-    """Build a use case slide matching the reference design."""
+                   systems=None, target_users=None, how_it_works=None):
+    """Build a use case slide matching the reference design — content-rich layout."""
     slide = prs.slides.add_slide(prs.slide_layouts[6])
 
     # ── Left teal panel ─────────────────────────────────────────────────
     add_rect(slide, 0, 0, PANEL_W, SLIDE_H, TEAL)
 
-    # Title — replace \n with space to avoid overlap, use single-line
+    # Title — single line, clean
     clean_title = title.replace("\n", " — ")
-    add_text_box(slide, Inches(0.4), Inches(0.25), PANEL_W - Inches(0.7), Inches(0.6),
-                 clean_title, font_size=24, color=WHITE, bold=True, font_name="Calibri")
+    add_text_box(slide, Inches(0.4), Inches(0.2), PANEL_W - Inches(0.7), Inches(0.55),
+                 clean_title, font_size=22, color=WHITE, bold=True, font_name="Calibri")
+    add_rect(slide, Inches(0.4), Inches(0.72), Inches(2), Inches(0.03), DARK_NAVY)
 
-    # Accent line under title
-    add_rect(slide, Inches(0.4), Inches(0.85), Inches(2), Inches(0.03), DARK_NAVY)
+    # ── CHALLENGE section (left column) ────────────────────────────────
+    col_w = Inches(3.85)
+    y_section = Inches(0.85)
+    add_text_box(slide, Inches(0.4), y_section, Inches(1.5), Inches(0.2),
+                 "CHALLENGE", font_size=8, color=DARK_NAVY, bold=True, font_name="Calibri")
+    challenge_text = "\n".join(f"• {l}" for l in challenge_lines)
+    add_text_box(slide, Inches(0.4), y_section + Inches(0.2), col_w, Inches(1.4),
+                 challenge_text, font_size=7.5, color=DARK_NAVY, font_name="Calibri")
 
-    # ── CHALLENGE section ───────────────────────────────────────────────
-    y = Inches(1.0)
-    add_text_box(slide, Inches(0.4), y, Inches(1.5), Inches(0.25),
-                 "CHALLENGE", font_size=9, color=DARK_NAVY, bold=True,
-                 font_name="Calibri")
-    y += Inches(0.22)
-    col_w = Inches(3.8)
-    challenge_text = "\n".join(f"• {l}" for l in challenge_lines[:3])
-    add_text_box(slide, Inches(0.4), y, col_w, Inches(1.1),
-                 challenge_text, font_size=8, color=DARK_NAVY, font_name="Calibri")
-
-    # ── SOLUTION section ────────────────────────────────────────────────
+    # ── SOLUTION section (right column) ────────────────────────────────
     sol_x = Inches(4.4)
-    add_text_box(slide, sol_x, Inches(1.0), Inches(1.5), Inches(0.25),
-                 "SOLUTION", font_size=9, color=DARK_NAVY, bold=True,
-                 font_name="Calibri")
-    solution_text = "\n".join(f"• {l}" for l in solution_lines[:3])
-    add_text_box(slide, sol_x, Inches(1.22), col_w, Inches(1.1),
-                 solution_text, font_size=8, color=DARK_NAVY, font_name="Calibri")
+    add_text_box(slide, sol_x, y_section, Inches(1.5), Inches(0.2),
+                 "SOLUTION", font_size=8, color=DARK_NAVY, bold=True, font_name="Calibri")
+    solution_text = "\n".join(f"• {l}" for l in solution_lines)
+    add_text_box(slide, sol_x, y_section + Inches(0.2), col_w, Inches(1.4),
+                 solution_text, font_size=7.5, color=DARK_NAVY, font_name="Calibri")
 
     # ── Results stat boxes ──────────────────────────────────────────────
     stat_y = Inches(2.55)
@@ -278,51 +273,61 @@ def build_uc_slide(prs, page_num, total, title, photo_key,
             stat_x = Inches(0.4) + Inches(i * 2.05)
             add_stat_box(slide, stat_x, stat_y, num, label)
 
+    # ── HOW IT WORKS section (new — fills the gap) ─────────────────────
+    hiw_y = Inches(3.55)
+    if how_it_works:
+        add_text_box(slide, Inches(0.4), hiw_y, Inches(2), Inches(0.2),
+                     "HOW IT WORKS", font_size=8, color=DARK_NAVY, bold=True,
+                     font_name="Calibri")
+        hiw_text = "\n".join(f"→ {l}" for l in how_it_works)
+        add_text_box(slide, Inches(0.4), hiw_y + Inches(0.2), PANEL_W - Inches(0.7), Inches(0.65),
+                     hiw_text, font_size=7, color=DARK_NAVY, font_name="Calibri")
+
     # ── GOVERNANCE / YC section ─────────────────────────────────────────
-    gov_y = Inches(3.65)
+    gov_y = Inches(4.45)
     if governance_lines:
-        add_text_box(slide, Inches(0.4), gov_y, Inches(3.5), Inches(0.22),
-                     "GOVERNANCE & SECURITY", font_size=8, color=DARK_NAVY,
+        add_text_box(slide, Inches(0.4), gov_y, Inches(3.5), Inches(0.2),
+                     "GOVERNANCE & SECURITY", font_size=7.5, color=DARK_NAVY,
                      bold=True, font_name="Calibri")
-        gov_text = "\n".join(f"• {l}" for l in governance_lines[:2])
-        add_text_box(slide, Inches(0.4), gov_y + Inches(0.22), Inches(3.8), Inches(0.7),
+        gov_text = "\n".join(f"• {l}" for l in governance_lines)
+        add_text_box(slide, Inches(0.4), gov_y + Inches(0.2), col_w, Inches(0.85),
                      gov_text, font_size=7, color=DARK_NAVY, font_name="Calibri")
 
     if yc_lines:
-        add_text_box(slide, sol_x, gov_y, Inches(3.5), Inches(0.22),
-                     "YC COMPETITIVE LANDSCAPE", font_size=8, color=DARK_NAVY,
+        add_text_box(slide, sol_x, gov_y, Inches(3.5), Inches(0.2),
+                     "COMPETITIVE LANDSCAPE", font_size=7.5, color=DARK_NAVY,
                      bold=True, font_name="Calibri")
-        yc_text = "\n".join(f"• {l}" for l in yc_lines[:3])
-        add_text_box(slide, sol_x, gov_y + Inches(0.22), Inches(3.8), Inches(0.7),
+        yc_text = "\n".join(f"• {l}" for l in yc_lines)
+        add_text_box(slide, sol_x, gov_y + Inches(0.2), col_w, Inches(0.85),
                      yc_text, font_size=7, color=DARK_NAVY, font_name="Calibri")
 
     # ── Solution stack bar ──────────────────────────────────────────────
-    stack_y = Inches(4.7)
+    stack_y = Inches(5.55)
     if stack_lines:
         add_rect(slide, Inches(0.3), stack_y, PANEL_W - Inches(0.5), Inches(0.85), DARK_NAVY)
-        add_text_box(slide, Inches(0.4), stack_y + Inches(0.05), Inches(2), Inches(0.2),
-                     "SOLUTION STACK", font_size=8, color=TEAL, bold=True,
+        add_text_box(slide, Inches(0.4), stack_y + Inches(0.04), Inches(2), Inches(0.18),
+                     "SOLUTION STACK", font_size=7.5, color=TEAL, bold=True,
                      font_name="Calibri")
         for i, (layer, detail) in enumerate(stack_lines[:4]):
             col_x = Inches(0.4) + Inches(i * 2.05)
-            add_text_box(slide, col_x, stack_y + Inches(0.25), Inches(1.9), Inches(0.2),
+            add_text_box(slide, col_x, stack_y + Inches(0.22), Inches(1.9), Inches(0.18),
                          layer, font_size=7, color=TEAL, bold=True, font_name="Calibri")
-            add_text_box(slide, col_x, stack_y + Inches(0.45), Inches(1.9), Inches(0.35),
-                         detail, font_size=7, color=WHITE, font_name="Calibri")
+            add_text_box(slide, col_x, stack_y + Inches(0.42), Inches(1.9), Inches(0.38),
+                         detail, font_size=6.5, color=WHITE, font_name="Calibri")
 
     # ── Systems + Target Users bar ──────────────────────────────────────
-    bar_y = Inches(5.7)
+    bar_y = Inches(6.5)
     if systems:
         add_rect(slide, Inches(0.3), bar_y, Inches(4), Inches(0.35), ACCENT_TEAL)
-        sys_text = "SYSTEMS: " + "  |  ".join(systems[:4])
+        sys_text = "SYSTEMS: " + "  |  ".join(systems[:5])
         add_text_box(slide, Inches(0.4), bar_y + Inches(0.04), Inches(3.8), Inches(0.28),
-                     sys_text, font_size=7, color=WHITE, bold=True, font_name="Calibri")
+                     sys_text, font_size=6.5, color=WHITE, bold=True, font_name="Calibri")
 
     if target_users:
         add_rect(slide, Inches(4.5), bar_y, Inches(4), Inches(0.35), DARK_TEAL)
         usr_text = "USERS: " + target_users
         add_text_box(slide, Inches(4.6), bar_y + Inches(0.04), Inches(3.8), Inches(0.28),
-                     usr_text, font_size=7, color=WHITE, bold=True, font_name="Calibri")
+                     usr_text, font_size=6.5, color=WHITE, bold=True, font_name="Calibri")
 
     # ── Right photo strip ───────────────────────────────────────────────
     photo = download_photo(photo_key)
@@ -343,23 +348,23 @@ def build_content_slide(prs, page_num, total, title, photo_key,
 
     # Title — flatten multi-line
     clean_title = title.replace("\n", " — ")
-    add_text_box(slide, Inches(0.4), Inches(0.25), PANEL_W - Inches(0.7), Inches(0.55),
+    add_text_box(slide, Inches(0.4), Inches(0.2), PANEL_W - Inches(0.7), Inches(0.5),
                  clean_title, font_size=22, color=WHITE, bold=True, font_name="Calibri")
-    add_rect(slide, Inches(0.4), Inches(0.8), Inches(2), Inches(0.03), DARK_NAVY)
+    add_rect(slide, Inches(0.4), Inches(0.7), Inches(2), Inches(0.03), DARK_NAVY)
 
     # Column 1
-    add_text_box(slide, Inches(0.4), Inches(1.0), Inches(3.5), Inches(0.25),
-                 col1_title, font_size=10, color=DARK_NAVY, bold=True, font_name="Calibri")
+    add_text_box(slide, Inches(0.4), Inches(0.85), Inches(3.5), Inches(0.22),
+                 col1_title, font_size=9, color=DARK_NAVY, bold=True, font_name="Calibri")
     c1_text = "\n".join(f"• {l}" for l in col1_lines)
-    add_text_box(slide, Inches(0.4), Inches(1.25), Inches(3.8), Inches(3.8),
-                 c1_text, font_size=8, color=DARK_NAVY, font_name="Calibri")
+    add_text_box(slide, Inches(0.4), Inches(1.07), Inches(3.85), Inches(4.2),
+                 c1_text, font_size=7.5, color=DARK_NAVY, font_name="Calibri")
 
     # Column 2
-    add_text_box(slide, Inches(4.4), Inches(1.0), Inches(3.5), Inches(0.25),
-                 col2_title, font_size=10, color=DARK_NAVY, bold=True, font_name="Calibri")
+    add_text_box(slide, Inches(4.4), Inches(0.85), Inches(3.5), Inches(0.22),
+                 col2_title, font_size=9, color=DARK_NAVY, bold=True, font_name="Calibri")
     c2_text = "\n".join(f"• {l}" for l in col2_lines)
-    add_text_box(slide, Inches(4.4), Inches(1.25), Inches(3.8), Inches(3.8),
-                 c2_text, font_size=8, color=DARK_NAVY, font_name="Calibri")
+    add_text_box(slide, Inches(4.4), Inches(1.07), Inches(3.85), Inches(4.2),
+                 c2_text, font_size=7.5, color=DARK_NAVY, font_name="Calibri")
 
     # Bottom bar
     if bottom_items:
@@ -393,29 +398,36 @@ USE_CASES = [
             "Inspector fatigue: accuracy degrades after 2-3 hours of repetitive inspection",
             "$2.3M average annual quality cost per plant from missed defects and rework",
             "Inconsistent inspection criteria across shifts and personnel",
+            "Hyundai operates 12+ global plants producing 4M+ vehicles/year — scale demands automation",
         ],
         "solution": [
-            "CNN-based real-time defect detection with edge-deployed YOLOv8 models",
-            "Multi-camera fusion covering 360° component inspection at line speed",
-            "Automated MES feedback loop: defect triggers line-stop within 200ms",
-            "Continuous model retraining from operator-labeled corrections",
+            "CNN-based real-time defect detection with edge-deployed YOLOv8 models (640×640 input, 1.2ms inference)",
+            "Multi-camera fusion covering 360° component inspection at line speed (120 units/hr)",
+            "Automated MES feedback loop: defect triggers line-stop within 200ms via OPC-UA",
+            "Continuous model retraining from operator-labeled corrections using active learning",
+            "Transfer learning: pre-trained on ImageNet, fine-tuned on 50K+ plant-specific defect images",
         ],
         "results": [("99.2%", "Detection Accuracy"), ("85%", "False Positive Reduction"),
                     ("$1.8M", "Annual Savings"), ("4-6 wk", "Deployment")],
+        "how_it_works": [
+            "Camera captures → Edge GPU (Jetson Orin) runs YOLOv8 inference in <2ms → Defect classification (scratch/dent/weld/paint)",
+            "Confidence >0.85 triggers auto-reject; 0.5-0.85 routes to operator review queue; <0.5 passes",
+            "Rejected parts logged to MES with defect image, location coordinates, and shift context for root-cause analysis",
+        ],
         "governance": [
             "Model validation per IEC 62443 industrial cybersecurity standard",
-            "Image data retention: 7 years for traceability, encrypted at rest",
-            "Edge device certificate rotation every 90 days, firmware signed",
+            "Image data retention: 7 years for traceability, encrypted at rest (AES-256)",
+            "Edge device certificate rotation every 90 days, firmware signed with HSM",
         ],
-        "yc": ["Overview (W19, 40 emp) — general MFG AI",
-               "Ocular AI (W24, 6 emp) — defect detection",
-               "Bucket Robotics (S24, 5 emp) — automated inspection",
-               "F4 Industries (S25) — factory floor CV"],
-        "stack": [("EDGE / CAPTURE", "Industrial cameras\nEdge GPU (Jetson)"),
-                  ("COMPUTE / AI", "YOLOv8\nCNN ensemble"),
-                  ("INTEGRATION", "SAP MES connector\nMQTT broker"),
-                  ("UX / DECISION", "Quality dashboard\nReal-time alerting")],
-        "systems": ["SAP MES", "Camera Systems", "Edge GPU", "TF Serving"],
+        "yc": ["Instrumental (W14, 80 emp) — manufacturing CV analytics platform",
+               "Ocular AI (W24, 6 emp) — real-time defect detection",
+               "Landing AI (founded by Andrew Ng) — visual inspection platform",
+               "Eigen Innovations — thermal + visual inspection for automotive"],
+        "stack": [("EDGE / CAPTURE", "GigE Vision cameras\nJetson Orin NX"),
+                  ("COMPUTE / AI", "YOLOv8 + EfficientNet\nONNX Runtime"),
+                  ("INTEGRATION", "OPC-UA → SAP MES\nMQTT broker"),
+                  ("UX / DECISION", "Quality dashboard\nDefect heatmap")],
+        "systems": ["SAP MES", "GigE Vision", "Jetson Orin", "TF Serving"],
         "users": "Quality Engineers | Line Supervisors | Plant Managers",
     },
     {
@@ -425,57 +437,73 @@ USE_CASES = [
             "3-5% assembly mismatch rate causing costly rework and warranty claims",
             "$500K average warranty cost per variant error across production batches",
             "Manual VIN validation bottleneck: 45-sec per unit slowing line throughput",
-            "BOM version sync lag between engineering and production floor",
+            "BOM version sync lag between engineering and production floor (avg 4-hr delay)",
+            "Hyundai's 200+ trim variants per model line multiply configuration complexity",
         ],
         "solution": [
-            "Automated VIN/barcode scanning with real-time BOM cross-validation",
-            "Variant mismatch alerting with instant operator HMI notification",
-            "Multi-source BOM reconciliation: engineering ECO, production BOM, supplier ASN",
-            "Historical mismatch pattern analysis for proactive fixture verification",
+            "Automated VIN/barcode scanning with real-time BOM cross-validation at every station",
+            "Variant mismatch alerting with instant operator HMI notification + audio alarm",
+            "Multi-source BOM reconciliation: engineering ECO, production BOM, supplier ASN in real-time",
+            "Historical mismatch pattern analysis for proactive fixture verification before shift start",
+            "Digital twin integration: virtual BOM validated against physical assembly sequence",
         ],
         "results": [("99.8%", "Variant Accuracy"), ("90%", "Mismatch Reduction"),
                     ("<2 sec", "Validation Time"), ("2-3 wk", "Deployment")],
-        "governance": [
-            "BOM version control: every scan logged with BOM revision hash",
-            "Recall-grade traceability: component-to-VIN linkage retained 15 years",
-            "Scanner calibration audit per ISO 15416 barcode quality standard",
+        "how_it_works": [
+            "VIN scanned at station entry → BOM lookup via SAP RFC call (<500ms) → Component list validated against pick sequence",
+            "Mismatch detected → HMI flashes red + audio alert → Operator confirms or overrides with supervisor PIN",
+            "Every scan event persisted to event store: VIN, station, BOM revision, timestamp — enables 15-year traceability",
         ],
-        "yc": None,
-        "stack": [("EDGE / CAPTURE", "Barcode readers\nRFID scanners"),
-                  ("COMPUTE / AI", "BOM validation\nPattern matching"),
-                  ("INTEGRATION", "SAP MES API\nECO sync service"),
-                  ("UX / DECISION", "Operator HMI alerts\nShift reports")],
-        "systems": ["SAP MES", "Barcode Scanners", "BOM Database", "ECO System"],
+        "governance": [
+            "BOM version control: every scan logged with BOM revision hash and ECO reference",
+            "Recall-grade traceability: component-to-VIN linkage retained 15 years per NHTSA",
+            "Scanner calibration audit per ISO 15416 barcode quality standard (quarterly)",
+        ],
+        "yc": ["Fictiv (S14, 300+ emp) — digital manufacturing platform",
+               "Tulip Interfaces (W15, 200+ emp) — manufacturing apps platform"],
+        "stack": [("EDGE / CAPTURE", "Cognex readers\nRFID UHF scanners"),
+                  ("COMPUTE / AI", "BOM validation engine\nAnomaly detection"),
+                  ("INTEGRATION", "SAP RFC + OData\nECO sync service"),
+                  ("UX / DECISION", "Operator HMI alerts\nShift dashboard")],
+        "systems": ["SAP MES", "Cognex Scanners", "BOM Database", "ECO System"],
         "users": "Assembly Operators | Quality Auditors | Production Engineers",
     },
     {
         "title": "UC03 | Seating & Component\nValidation",
         "photo": "uc03",
         "challenge": [
-            "Torque compliance failures undetected until end-of-line QA, causing rework",
+            "Torque compliance failures undetected until end-of-line QA, causing 12% rework rate",
             "Fitment issues cause line stops costing $15K/minute in lost throughput",
-            "Manual torque verification logs incomplete, creating audit gaps",
-            "Multi-variant seating configs increase error probability 3x",
+            "Manual torque verification logs incomplete — only 60% of fasteners digitally recorded",
+            "Multi-variant seating configs (leather/cloth/heated/cooled) increase error probability 3x",
+            "IATF 16949 audit findings: 23% of plants cited for incomplete torque documentation",
         ],
         "solution": [
-            "Vision-based fitment validation confirming correct component seating",
-            "Torque tool integration: digital values streamed and validated against spec",
-            "Real-time compliance dashboards aggregating torque, fitment, and sequence",
-            "Automated non-conformance reports generated within seconds",
+            "Vision-based fitment validation confirming correct component seating before fastening",
+            "Smart torque tools (Atlas Copco/Desoutter): digital values streamed via open protocol",
+            "Real-time compliance dashboards aggregating torque, fitment, sequence, and angle data",
+            "Automated non-conformance reports (NCRs) generated within seconds with root-cause hints",
+            "Statistical process control (SPC) with Cp/Cpk monitoring per fastener group",
         ],
         "results": [("60%", "Integration Effort ↓"), ("0", "Undetected Failures"),
                     ("Real-time", "Compliance Monitor"), ("<1 sec", "Validation Latency")],
-        "governance": [
-            "Torque data retention per IATF 16949 automotive quality management",
-            "Vision model validated against known-good reference images quarterly",
-            "Calibration records linked to torque tool serial numbers",
+        "how_it_works": [
+            "Camera verifies component placement → Torque tool activated only after vision OK → Value streamed to MES",
+            "SPC engine calculates Cpk in real-time; Cpk <1.33 triggers process alert to quality engineer",
+            "End-of-line QA receives pre-validated pass/fail per VIN — audit trail complete before vehicle exits station",
         ],
-        "yc": None,
-        "stack": [("EDGE / CAPTURE", "Vision cameras\nTorque sensors"),
-                  ("COMPUTE / AI", "Fitment ML models\nSpec validation"),
-                  ("INTEGRATION", "MES + torque APIs\nSCADA interface"),
-                  ("UX / DECISION", "Compliance dashboard\nNCR generator")],
-        "systems": ["Torque Tools", "MES", "Vision Cameras", "SCADA"],
+        "governance": [
+            "Torque data retention per IATF 16949 clause 8.5.2 — complete production records",
+            "Vision model validated against golden reference images quarterly (>99% match threshold)",
+            "Calibration records linked to torque tool serial numbers with ISO 6789 compliance",
+        ],
+        "yc": ["Arch Systems (S14) — manufacturing data platform",
+               "Pico MES (W21, 15 emp) — lightweight manufacturing execution"],
+        "stack": [("EDGE / CAPTURE", "Smart torque tools\nInline cameras"),
+                  ("COMPUTE / AI", "Fitment CV models\nSPC engine"),
+                  ("INTEGRATION", "MES + open protocol\nSCADA OPC-UA"),
+                  ("UX / DECISION", "SPC dashboard\nNCR generator")],
+        "systems": ["Atlas Copco", "MES", "Vision Cameras", "SCADA"],
         "users": "Assembly Technicians | Quality Engineers | Process Engineers",
     },
     {
@@ -483,28 +511,36 @@ USE_CASES = [
         "photo": "uc04",
         "challenge": [
             "12% SOP deviation rate undetected in manual observation audits",
-            "Safety incidents from skipped steps (avg 3.2 incidents/quarter)",
-            "Audit prep requires 80+ hours of manual video review per quarter",
-            "Inconsistent adherence across shifts with no real-time correction",
+            "Safety incidents from skipped steps: avg 3.2 recordable incidents/quarter per plant",
+            "Audit prep requires 80+ hours of manual video review per quarter per line",
+            "Inconsistent adherence across 3 shifts with no real-time correction mechanism",
+            "Training investment ($2.5M/yr) not translating to measurable compliance improvement",
         ],
         "solution": [
-            "Pose estimation + activity recognition for real-time SOP adherence",
-            "Step-sequence verification: alerts if operator skips critical steps",
-            "Automated audit evidence with timestamped video clips per procedure",
-            "Shift-level compliance scoring with trend analysis and coaching",
+            "Pose estimation (MediaPipe/OpenPose) + activity recognition for real-time SOP adherence",
+            "Step-sequence verification: alerts within 5 sec if operator skips critical safety steps",
+            "Automated audit evidence with timestamped video clips per procedure (MPEG-DASH)",
+            "Shift-level compliance scoring with trend analysis, coaching recommendations, and gamification",
+            "Integration with LMS: non-compliant patterns auto-trigger targeted retraining modules",
         ],
         "results": [("95%", "Compliance Detection"), ("70%", "Safety Deviation ↓"),
                     ("Hrs→Min", "Audit Prep Time"), ("Real-time", "Alert Delivery")],
-        "governance": [
-            "Worker privacy: pose data anonymized, no facial recognition, GDPR compliant",
-            "Video retention limited to 30 days unless flagged for incident review",
-            "Works council / union notification required in EU jurisdictions",
+        "how_it_works": [
+            "Edge GPU processes CCTV feed → Skeleton extraction (17 keypoints) → Activity classified against SOP model",
+            "Sequence engine validates step order: e.g., 'gloves on' must precede 'chemical handling' — violation = instant alert",
+            "Compliance score = (completed steps / required steps) × time-in-zone factor — aggregated per shift/line/plant",
         ],
-        "yc": None,
-        "stack": [("EDGE / CAPTURE", "CCTV cameras\nEdge compute"),
-                  ("COMPUTE / AI", "Pose estimation\nActivity recognition"),
-                  ("INTEGRATION", "EHS platform API\nLMS webhook"),
-                  ("UX / DECISION", "Supervisor alerts\nCoaching reports")],
+        "governance": [
+            "Worker privacy: pose data anonymized (no facial recognition), skeleton-only storage, GDPR Article 35 DPIA",
+            "Video retention limited to 30 days unless flagged for incident review (then 1 year)",
+            "Works council / union notification required in EU jurisdictions before deployment",
+        ],
+        "yc": ["Protex AI (S21, 5 emp) — workplace safety CV platform",
+               "Voxel (W18, 50 emp) — workplace analytics from cameras"],
+        "stack": [("EDGE / CAPTURE", "CCTV + Jetson\nMediaPipe pipeline"),
+                  ("COMPUTE / AI", "Pose estimation\nLSTM sequence model"),
+                  ("INTEGRATION", "EHS API + LMS\nAlert gateway"),
+                  ("UX / DECISION", "Supervisor mobile\nCompliance heatmaps")],
         "systems": ["CCTV", "EHS Platform", "Training LMS", "MES"],
         "users": "Line Supervisors | EHS Managers | Training Coordinators",
     },
@@ -512,92 +548,118 @@ USE_CASES = [
         "title": "UC05 | Predictive Quality\nAnalytics",
         "photo": "uc05",
         "challenge": [
-            "2-4% scrap rate from undetected process drift across 50+ variables",
-            "Root cause analysis takes 48+ hours of manual cross-correlation",
-            "Feature engineering bottleneck: data scientists spend 70% on data prep",
-            "Siloed sensor data prevents cross-process correlation insights",
+            "2-4% scrap rate from undetected process drift across 50+ sensor variables per station",
+            "Root cause analysis takes 48+ hours of manual cross-correlation by senior engineers",
+            "Feature engineering bottleneck: data scientists spend 70% of time on data prep, not modeling",
+            "Siloed sensor data (temperature, pressure, vibration) prevents cross-process correlation",
+            "Hyundai's 6-sigma quality target requires <3.4 DPMO — current: 15-25 DPMO on critical dims",
         ],
         "solution": [
-            "Sensor fusion: unified time-series from temperature, pressure, vibration",
-            "ML feature stores with automated feature engineering and selection",
-            "Explainability dashboards showing SHAP values for each prediction",
-            "Preemptive process adjustment recommendations before defects materialize",
+            "Sensor fusion: unified time-series from 200+ sensors across welding, stamping, painting",
+            "AutoML feature store with automated feature engineering, selection, and drift monitoring",
+            "Explainability dashboards showing SHAP values — operators understand why model flags risk",
+            "Preemptive process adjustment recommendations pushed to HMI before defects materialize",
+            "Federated learning: models train across plants without sharing raw sensor data",
         ],
         "results": [("40%", "Scrap Rate ↓"), ("48hr→15m", "Root Cause Analysis"),
                     ("Auto", "ML Pipeline Gen"), ("50+", "Cross-Variable Corr")],
-        "governance": [
-            "Feature store lineage: every feature traceable to raw sensor source",
-            "Model explainability required per ISO 22989",
-            "Sensor calibration validation, flagging drift > 2% from baseline",
+        "how_it_works": [
+            "IoT gateway aggregates 200+ sensor streams at 1Hz → Kafka → Feature store computes 500+ derived features",
+            "XGBoost ensemble predicts defect probability per part → SHAP waterfall explains top 5 contributing factors",
+            "Risk score >0.7 → HMI shows adjustment recommendation (e.g., 'reduce weld current 3A') → operator confirms",
         ],
-        "yc": None,
-        "stack": [("EDGE / CAPTURE", "IoT sensor array\nEdge aggregation"),
-                  ("COMPUTE / AI", "Sensor fusion\nXGBoost + SHAP"),
-                  ("INTEGRATION", "InfluxDB + feature store\nKafka streams"),
-                  ("UX / DECISION", "Explainability dashboard\nAlert engine")],
-        "systems": ["IoT Sensors", "InfluxDB", "Feature Store", "Data Lake"],
+        "governance": [
+            "Feature store lineage: every feature traceable to raw sensor source with transformation DAG",
+            "Model explainability required per ISO 22989 (AI concepts and terminology)",
+            "Sensor calibration validation automated: drift >2% from baseline triggers maintenance ticket",
+        ],
+        "yc": ["Sight Machine (S12, 100+ emp) — manufacturing analytics platform",
+               "Uptake (analytics) — industrial AI for asset performance",
+               "Arch Systems (S14) — manufacturing data infrastructure"],
+        "stack": [("EDGE / CAPTURE", "IoT gateway + OPC-UA\n200+ sensor array"),
+                  ("COMPUTE / AI", "XGBoost + SHAP\nAutoML feature store"),
+                  ("INTEGRATION", "Kafka → InfluxDB\nSAP MES writeback"),
+                  ("UX / DECISION", "SHAP dashboard\nHMI recommendations")],
+        "systems": ["IoT Sensors", "InfluxDB", "Kafka", "Feature Store"],
         "users": "Process Engineers | Data Scientists | Quality Managers",
     },
     {
         "title": "UC06 | Predictive\nMaintenance",
         "photo": "uc06",
         "challenge": [
-            "Unplanned downtime costs $260K/hour avg across automotive manufacturing",
-            "Reactive maintenance 3-5x costlier than predictive approaches",
-            "Maintenance scheduling based on fixed intervals, not equipment health",
-            "Vibration/acoustic anomaly patterns missed by periodic manual inspections",
+            "Unplanned downtime costs $260K/hour avg across automotive manufacturing lines",
+            "Reactive maintenance 3-5x costlier than predictive approaches (Deloitte 2024 study)",
+            "Maintenance scheduling based on fixed OEM intervals, not actual equipment health",
+            "Vibration/acoustic anomaly patterns missed by periodic manual inspections (monthly)",
+            "Hyundai's 20,000+ rotating assets across 12 plants — manual monitoring impossible at scale",
         ],
         "solution": [
-            "Vibration, acoustic, and temperature anomaly detection via LSTM autoencoders",
-            "Equipment health scoring: 0-100 composite from multi-sensor fusion",
-            "Auto-generated SAP PM work orders when health score drops below threshold",
-            "Remaining useful life (RUL) prediction with confidence intervals",
+            "Vibration (MEMS accelerometer) + acoustic (ultrasonic) + thermal anomaly detection via LSTM autoencoders",
+            "Equipment health scoring: 0-100 composite from multi-sensor fusion with trend extrapolation",
+            "Auto-generated SAP PM work orders when health score drops below configurable threshold",
+            "Remaining useful life (RUL) prediction with confidence intervals for maintenance planning",
+            "NASA CMAPSS-inspired degradation modeling adapted for automotive press/stamp/robot assets",
         ],
         "results": [("45%", "Downtime ↓"), ("25%", "Maintenance Cost ↓"),
                     ("0-100", "Health Score"), ("40%", "Faster Implementation")],
-        "governance": [
-            "Sensor data Level 2 (Internal), encrypted in transit via TLS 1.3",
-            "Maintenance decision audit trail: work order linked to model prediction",
-            "False alarm rate monitored: target <5%, retrained if exceeded",
+        "how_it_works": [
+            "Vibration sensor (10kHz sampling) → FFT spectrum analysis → LSTM autoencoder detects anomalous frequency patterns",
+            "Health score = weighted ensemble of vibration, thermal, acoustic, and operational (cycle count) signals",
+            "Score <70 → yellow alert (plan maintenance) → Score <40 → red alert (SAP PM work order auto-created)",
         ],
-        "yc": ["Inviscid AI (W26, 2 emp) — physics-informed ML",
-               "Palifer (S19, acquired) — predictive analytics",
-               "InfluxData (W13, 210 emp) — time-series DB"],
-        "stack": [("EDGE / CAPTURE", "Vibration sensors\nAcoustic sensors"),
-                  ("COMPUTE / AI", "LSTM autoencoder\nRUL prediction"),
-                  ("INTEGRATION", "SAP PM + IoT gateway\nMQTT broker"),
-                  ("UX / DECISION", "Maintenance console\nHealth dashboard")],
-        "systems": ["SAP PM", "IoT Gateways", "MQTT", "Edge Compute"],
+        "governance": [
+            "Sensor data Level 2 (Internal), encrypted in transit via TLS 1.3, at rest AES-256",
+            "Maintenance decision audit trail: work order linked to model prediction, sensor snapshot, and confidence",
+            "False alarm rate monitored continuously: target <5%, model retrained if exceeded for 2 consecutive weeks",
+        ],
+        "yc": ["Augury (W18, 200+ emp) — machine health diagnostics",
+               "Petasense (S16) — wireless vibration monitoring",
+               "InfluxData (W13, 210 emp) — time-series database",
+               "Inviscid AI (W26) — physics-informed ML for equipment"],
+        "stack": [("EDGE / CAPTURE", "MEMS accel + ultrasonic\nEdge gateway (Raspberry Pi 5)"),
+                  ("COMPUTE / AI", "LSTM autoencoder\nRUL regression model"),
+                  ("INTEGRATION", "SAP PM RFC\nMQTT → InfluxDB"),
+                  ("UX / DECISION", "Health dashboard\nMaintenance planner")],
+        "systems": ["SAP PM", "IoT Gateways", "InfluxDB", "Edge Compute"],
         "users": "Maintenance Technicians | Reliability Engineers | Plant Managers",
     },
     {
         "title": "UC07 | Safety Monitoring\n& PPE Detection",
         "photo": "uc07",
         "challenge": [
-            "PPE non-compliance observed in 8-12% of shift observations",
-            "Restricted zone violations undetected until post-incident review",
-            "Manual incident reports take 2+ hours, delaying corrective action",
-            "OSHA recordable rate stagnant despite increased training investment",
+            "PPE non-compliance observed in 8-12% of shift observations across auto plants",
+            "Restricted zone violations undetected until post-incident review (avg 6-hr delay)",
+            "Manual incident reports take 2+ hours per event, delaying corrective action",
+            "OSHA recordable rate stagnant at 4.2/100 workers despite $3M annual training spend",
+            "Thermal hazard zones near welding/painting require real-time proximity awareness",
         ],
         "solution": [
-            "Real-time PPE detection: hard hat, vest, goggles, gloves via edge CV",
-            "Geofenced zone intrusion alerts with <3 second supervisor notification",
-            "AI-generated incident reports from video evidence with auto-classification",
-            "Safety trend analytics: heatmaps by zone, shift, and role",
+            "Real-time PPE detection: hard hat, vest, goggles, gloves, ear protection via YOLOv8-seg",
+            "Geofenced zone intrusion alerts with <3 second supervisor SMS/push notification",
+            "AI-generated incident reports from video evidence with auto-classification (OSHA 300 log)",
+            "Safety trend analytics: heatmaps by zone, shift, role with weekly digest for EHS leadership",
+            "Thermal camera integration for heat stress monitoring near furnace/paint booth areas",
         ],
         "results": [("98%", "PPE Compliance"), ("100%", "Zone Violation Capture"),
                     ("80%", "Faster Documentation"), ("2-3 wk", "Deployment")],
-        "governance": [
-            "No facial recognition: PPE detection uses body-region segmentation only",
-            "Alert data retained 1 year per OSHA 1904 recordkeeping",
-            "Thermal camera data classified Level 2, not shared with HR systems",
+        "how_it_works": [
+            "CCTV feed → YOLOv8-seg model detects PPE items on body regions → Missing item triggers zone-specific alert",
+            "Geofence engine: GPS + BLE beacons define restricted zones → Worker badge enters zone → Supervisor notified <3s",
+            "Incident report auto-generated: video clip + PPE status + zone + worker role + timestamp → EHS platform API",
         ],
-        "yc": ["Protex AI (S21, 5 emp) — workplace safety CV"],
-        "stack": [("EDGE / CAPTURE", "CCTV + thermal cams\nEdge GPU nodes"),
-                  ("COMPUTE / AI", "Safety CV models\nZone geofencing"),
-                  ("INTEGRATION", "EHS platform API\nSMS/push alerts"),
+        "governance": [
+            "No facial recognition: PPE detection uses body-region segmentation only — fully anonymous",
+            "Alert data retained 1 year per OSHA 1904 recordkeeping requirements",
+            "Thermal camera data classified Level 2, not shared with HR systems, not used for performance",
+        ],
+        "yc": ["Protex AI (S21, 5 emp) — workplace safety CV",
+               "Voxel (W18, 50 emp) — workplace safety analytics",
+               "Intenseye (S21) — AI-powered EHS platform"],
+        "stack": [("EDGE / CAPTURE", "CCTV + FLIR thermal\nBLE beacons"),
+                  ("COMPUTE / AI", "YOLOv8-seg PPE model\nGeofence engine"),
+                  ("INTEGRATION", "EHS API + Twilio\nOSHA 300 formatter"),
                   ("UX / DECISION", "Supervisor mobile app\nSafety heatmaps")],
-        "systems": ["CCTV", "EHS Platform", "Alerting Systems", "Mobile MDM"],
+        "systems": ["CCTV", "EHS Platform", "Twilio", "BLE Beacons"],
         "users": "EHS Managers | Shift Supervisors | Safety Officers",
     },
     {
@@ -605,29 +667,37 @@ USE_CASES = [
         "photo": "uc08",
         "challenge": [
             "Recall investigation takes 2-4 weeks of manual component genealogy tracing",
-            "Component genealogy gaps across tier 1-3 suppliers create liability exposure",
-            "$35M average recall cost; scope overestimation adds 20-40%",
-            "Paper-based lot tracking prevents real-time genealogy queries",
+            "Component genealogy gaps across tier 1-3 suppliers create liability exposure ($100M+)",
+            "$35M average recall cost; scope overestimation adds 20-40% unnecessary remediation",
+            "Paper-based lot tracking prevents real-time genealogy queries for quality holds",
+            "NHTSA requires full traceability within 48 hours — current avg: 14 days",
         ],
         "solution": [
-            "Graph database (Neo4j) product genealogy: full component-to-vehicle lineage",
-            "RFID + barcode tracking at every station creating immutable production record",
-            "Automated recall scope analysis: pinpoint affected VINs in minutes",
-            "Supplier integration: ASN data linked to production genealogy",
+            "Neo4j graph database: full component-to-vehicle genealogy with 5-level supplier depth",
+            "RFID + barcode tracking at every station creating immutable production record (30M+ events/day)",
+            "Automated recall scope analysis: pinpoint affected VINs in minutes, not weeks",
+            "Supplier integration: ASN data linked to production genealogy via EDI 856 + API",
+            "Blockchain-anchored audit trail: cryptographic hash of daily genealogy state for tamper evidence",
         ],
         "results": [("75%", "Faster Recall"), ("Full", "Production Genealogy"),
                     ("Auto", "Recall Scope Analysis"), ("Audit-Ready", "Compliance")],
-        "governance": [
-            "Traceability data retained 15+ years per NHTSA TREAD Act",
-            "Immutable audit log: no genealogy deletion, append-only ledger",
-            "Supplier data governed by mutual NDA, classification Level 3",
+        "how_it_works": [
+            "RFID scan at station → Event stored: (part_id, VIN, station, operator, timestamp, supplier_lot) → Neo4j ingestion",
+            "Recall query: MATCH path from defective supplier lot → affected parts → installed VINs → owner records in <60 sec",
+            "Scope analyzer: statistical sampling validates recall boundaries — prevents over-recall (saves 20-40% of remediation cost)",
         ],
-        "yc": ["Cognitio Labs (S23) — supply chain intelligence",
-               "Autumn Labs (S24, 3 emp) — manufacturing traceability"],
-        "stack": [("EDGE / CAPTURE", "RFID readers\nBarcode scanners"),
-                  ("COMPUTE / AI", "Neo4j graph analytics\nLineage engine"),
-                  ("INTEGRATION", "SAP + supplier APIs\nASN ingestion"),
-                  ("UX / DECISION", "Traceability dashboard\nRecall analyzer")],
+        "governance": [
+            "Traceability data retained 15+ years per NHTSA TREAD Act and Hyundai corporate policy",
+            "Immutable audit log: append-only ledger with daily blockchain anchor hash",
+            "Supplier data governed by mutual NDA, classification Level 3, access audit logged",
+        ],
+        "yc": ["Fictiv (S14, 300+ emp) — digital manufacturing network",
+               "Cognitio Labs (S23) — supply chain intelligence",
+               "Autumn Labs (S24) — manufacturing traceability platform"],
+        "stack": [("EDGE / CAPTURE", "UHF RFID readers\nCognex scanners"),
+                  ("COMPUTE / AI", "Neo4j graph analytics\nRecall scope engine"),
+                  ("INTEGRATION", "SAP + EDI 856\nSupplier portal API"),
+                  ("UX / DECISION", "Genealogy explorer\nRecall simulator")],
         "systems": ["SAP", "RFID", "Neo4j", "Supplier Portal"],
         "users": "Quality Directors | Compliance Officers | Supply Chain Managers",
     },
@@ -637,132 +707,148 @@ USE_CASES = [
 
 ADDITIONAL_UCS = [
     {"title": "UC09 | Patient Intake\nAutomation", "photo": "uc09",
-     "challenge": ["15-minute avg intake time per patient creating bottlenecks", "23% form error rate from manual data entry causing billing issues", "Clinical staff spend 60% of time on admin vs patient care", "Multi-system data entry: same info keyed into EHR, billing, scheduling"],
-     "solution": ["AI-powered form validation with real-time error detection", "Auto EHR population via FHIR R4 API: demographics, insurance, history", "Intelligent scheduling via Calendly + provider availability matching", "SMS/voice intake via Twilio for patients without portal access"],
+     "challenge": ["15-minute avg intake time per patient creating bottlenecks and wait-time complaints", "23% form error rate from manual data entry causing billing rejections and claim denials", "Clinical staff spend 60% of time on admin vs patient care — burnout drives 35% annual turnover", "Multi-system data entry: same info keyed into EHR, billing, scheduling — 4x redundant effort", "No-show rate 18% without automated appointment reminders and pre-visit engagement"],
+     "solution": ["AI-powered form validation with real-time error detection and auto-correction suggestions", "Auto EHR population via FHIR R4 API: demographics, insurance, history, medications, allergies", "Intelligent scheduling via Calendly + provider availability matching + wait-time prediction", "SMS/voice intake via Twilio for patients without portal access — 95% mobile completion rate", "Pre-visit engagement: automated reminders, intake forms, insurance card photo upload"],
      "results": [("3 min", "Intake (from 15)"), ("95%", "Form Accuracy"), ("40%", "Admin Time ↓"), ("$3-5K/mo", "Savings per Practice")],
-     "governance": ["HIPAA BAA required; PHI encryption AES-256 at rest", "Audit logging per HITECH Act: every PHI access timestamped", "Patient consent management: opt-in/opt-out tracked per FHIR"],
+     "how_it_works": ["Patient receives SMS link 48hr before appointment → Completes intake on mobile → AI validates insurance + demographics", "FHIR R4 write-back: validated data auto-populates EHR patient record + scheduling system + billing module", "Incomplete forms flagged for staff follow-up call; 85% of patients complete without staff intervention"],
+     "governance": ["HIPAA BAA required; PHI encryption AES-256 at rest, TLS 1.3 in transit", "Audit logging per HITECH Act: every PHI access timestamped with user, action, and IP", "Patient consent management: opt-in/opt-out tracked per FHIR Consent resource"],
      "yc": ["Understood Care (S24) — patient engagement", "HealthKey (W25) — health records", "Morf Health (S22) — care coordination"],
-     "stack": [("EDGE / CAPTURE", "Web portal\nMobile + SMS"), ("COMPUTE / AI", "Claude NLP\nForm validation ML"), ("INTEGRATION", "FHIR + Twilio + Calendly\nEHR write-back"), ("UX / DECISION", "Patient dashboard\nStaff queue view")],
+     "stack": [("EDGE / CAPTURE", "Web portal\nMobile + SMS"), ("COMPUTE / AI", "Claude NLP\nForm validation ML"), ("INTEGRATION", "FHIR R4 + Twilio\nCalendly + EHR"), ("UX / DECISION", "Patient dashboard\nStaff queue view")],
      "systems": ["Epic/Cerner EHR", "FHIR R4 API", "Calendly", "Twilio"], "users": "Front Desk Staff | Clinical Coordinators | Practice Managers"},
     {"title": "UC10 | Insurance\nVerification", "photo": "uc10",
-     "challenge": ["30% claim denial rate from eligibility errors", "48-hour avg verification turnaround delays scheduling", "$25 cost per manual verification call, 12 min per call", "Prior auth requirements change frequently; staff miss updates"],
-     "solution": ["Pre-appointment AI eligibility verification against payer feeds", "Automated prior auth submission with clinical documentation", "Denial prediction model: flags high-risk claims before submission", "Payer rule change monitoring: auto-updates workflows within 24hrs"],
+     "challenge": ["30% claim denial rate from eligibility errors — $262B in denied claims annually (US)", "48-hour avg verification turnaround delays patient scheduling and revenue recognition", "$25 cost per manual verification call, 12 min per call — 15 calls/day per FTE", "Prior auth requirements change frequently; staff miss updates causing retroactive denials", "Multiple payer portals: staff toggle between 8-12 different systems daily"],
+     "solution": ["Pre-appointment AI eligibility verification against real-time payer feeds (EDI 270/271)", "Automated prior auth submission with clinical documentation auto-attached from EHR", "Denial prediction model: flags high-risk claims before submission — prevents denials proactively", "Payer rule change monitoring: scrapes payer bulletins, auto-updates workflow rules within 24hrs", "Batch verification: entire next-day schedule verified overnight — staff reviews exceptions only"],
      "results": [("85%", "First-Pass Approval"), ("5 min", "Verification (from 48hr)"), ("$5", "Cost per Verif (from $25)"), ("60%", "Denial Rate ↓")],
-     "governance": ["EDI 270/271 compliance per HIPAA X12 standards", "Claims data Level 3 (Confidential), encrypted end-to-end", "Denial prediction audited for demographic bias quarterly"],
+     "how_it_works": ["Scheduler triggers nightly batch → EDI 270 sent per patient → Payer responds 271 → AI parses coverage details", "High-risk claims scored by denial prediction model (XGBoost on 500K+ historical claims) → Staff reviews flagged items", "Prior auth: clinical notes auto-extracted → Medical necessity letter generated → Submitted via payer portal API"],
+     "governance": ["EDI 270/271 compliance per HIPAA X12 standards — all transactions logged", "Claims data Level 3 (Confidential), encrypted end-to-end with per-payer isolation", "Denial prediction model audited for demographic bias quarterly — disparate impact <5% threshold"],
      "yc": ["Stream (S22) — claims processing", "Avallon AI (Sp25) — insurance verification", "Curacel (W22) — claims AI"],
      "stack": [("EDGE / CAPTURE", "Payer EDI feeds\nFax OCR ingestion"), ("COMPUTE / AI", "Claims ML models\nDenial prediction"), ("INTEGRATION", "Payer API + EHR\nClearinghouse EDI"), ("UX / DECISION", "Verification dashboard\nDenial analytics")],
      "systems": ["Payer EDI/APIs", "EHR", "Billing System", "Clearinghouse"], "users": "Billing Staff | Prior Auth Specialists | Revenue Cycle Managers"},
     {"title": "UC11 | HIPAA Compliance\nPortal", "photo": "uc11",
-     "challenge": ["Manual audit prep consumes 120+ staff-hours per year", "PHI access logging gaps: 15% of access events untracked", "$1.5M avg HIPAA breach penalty; $6.3M for willful neglect", "Risk assessments annual but threats evolve continuously"],
-     "solution": ["Automated audit trail aggregation from EHR, IAM, email, storage", "Real-time PHI access monitoring with anomaly detection", "Continuous compliance scoring with gap identification", "Breach risk scoring: quantified risk per system, updated daily"],
+     "challenge": ["Manual audit prep consumes 120+ staff-hours per year across compliance team", "PHI access logging gaps: 15% of access events untracked across EHR, email, file shares", "$1.5M avg HIPAA breach penalty; $6.3M for willful neglect — 725+ breaches reported in 2024", "Risk assessments annual but threats evolve continuously — gap between audits is blind spot", "Business associate (BA) management: 50+ BAs per health system, each requiring BAA tracking"],
+     "solution": ["Automated audit trail aggregation from EHR, IAM, email, cloud storage into unified view", "Real-time PHI access monitoring with anomaly detection — flags unusual access patterns in <5 min", "Continuous compliance scoring with gap identification mapped to HIPAA Security Rule safeguards", "Breach risk scoring: quantified risk per system, updated daily, with remediation priority ranking", "BA management automation: BAA tracking, annual review reminders, termination workflow triggers"],
      "results": [("80%", "Audit Prep Time ↓"), ("100%", "PHI Access Logging"), ("Real-time", "Compliance Status"), ("Daily", "Breach Risk Scoring")],
-     "governance": ["HIPAA Security Rule: admin, physical, tech safeguards automated", "HITECH Breach Notification: 60-day automated workflow", "BA management: BAA tracking, annual review, termination workflow"],
+     "how_it_works": ["Log collectors ingest from EHR audit logs + Okta/Azure AD + email DLP + S3 access logs → Unified compliance lake", "Anomaly detection: baseline access patterns per role → Flag deviations (e.g., billing staff accessing clinical notes at 2am)", "Compliance score = (controls_met / controls_required) per HIPAA safeguard category — drill-down to individual control gaps"],
+     "governance": ["HIPAA Security Rule: admin, physical, tech safeguards automated with evidence collection", "HITECH Breach Notification: 60-day automated workflow with OCR-assisted notification letter generation", "BA management: BAA tracking, annual review, termination workflow with automated reminders"],
      "yc": None,
      "stack": [("EDGE / CAPTURE", "Access log collectors\nSIEM feeds"), ("COMPUTE / AI", "Anomaly detection ML\nCompliance rules"), ("INTEGRATION", "IAM + EHR + email\nS3 audit storage"), ("UX / DECISION", "Compliance dashboard\nRisk heat map")],
      "systems": ["EHR", "IAM (Okta/Azure AD)", "S3 Storage", "SIEM"], "users": "Compliance Officers | HIPAA Privacy Officers | IT Security"},
     {"title": "UC12 | Contract Generation\n& Review", "photo": "uc12",
-     "challenge": ["4-6 hours per contract draft for routine agreements", "Inconsistent clause usage creating enforceability risks", "$350/hr attorney time on routine document assembly", "15% of contracts sent with outdated clause libraries"],
-     "solution": ["AI drafting from firm-specific templates + clause library", "Automated review: risk scoring per clause, deviation flagged", "Clause recommendation based on deal type and jurisdiction", "DocuSign integration for seamless review-sign workflow"],
+     "challenge": ["4-6 hours per contract draft for routine agreements — 60% of associate billable time", "Inconsistent clause usage creating enforceability risks across 500+ active templates", "$350/hr attorney time on routine document assembly that AI can handle in minutes", "15% of contracts sent with outdated clause libraries — liability exposure per engagement", "Cross-jurisdictional complexity: 50-state variations for employment, lease, NDA agreements"],
+     "solution": ["AI drafting from firm-specific templates + Git-versioned clause library with approval workflow", "Automated review: risk scoring per clause with deviation flagging against firm standards", "Clause recommendation engine based on deal type, jurisdiction, counterparty risk profile", "DocuSign integration for seamless review-sign workflow with parallel routing", "Redline comparison: AI highlights substantive changes vs formatting noise in counterparty edits"],
      "results": [("45 min", "Draft Time (from 4-6h)"), ("90%", "Clause Consistency"), ("75%", "Attorney Time ↓"), ("$3-5K/mo", "Savings per Firm")],
-     "governance": ["Attorney-client privilege: generated drafts access-controlled", "Clause library Git-backed, partner-approved changes only", "Output always marked draft; human sign-off required"],
+     "how_it_works": ["Attorney selects deal type + jurisdiction → AI pulls matching template + clause variants → Draft generated with firm-standard language", "Risk scoring: each clause analyzed for deviation from firm baseline → RED/YELLOW/GREEN per section → Attorney focuses on RED", "Counterparty redline: AI compares incoming vs sent version → Highlights substantive changes → Ignores formatting deltas"],
+     "governance": ["Attorney-client privilege: generated drafts access-controlled per matter, audit logged", "Clause library Git-backed: partner-approved changes only, semantic versioning, rollback capability", "Output always marked DRAFT; human sign-off required before client delivery — no autonomous sending"],
      "yc": ["Ironclad (S15, 700 emp) — contract lifecycle", "Draftwise (S20, 50 emp) — contract drafting", "General Legal (W26) — AI legal assistant"],
      "stack": [("EDGE / CAPTURE", "Document upload\nOCR ingestion"), ("COMPUTE / AI", "Claude + templates\nRisk scoring"), ("INTEGRATION", "DocuSign + DMS APIs\nEmail integration"), ("UX / DECISION", "Attorney review portal\nClause library UI")],
      "systems": ["DocuSign", "iManage", "Gmail", "Billing"], "users": "Associates | Partners | Paralegals | Legal Ops"},
     {"title": "UC13 | Legal Research\nSummarization", "photo": "uc13",
-     "challenge": ["8-12 hours per research task for junior associates", "Manual search covers only 60-70% of relevant case law", "65% of billable hours on research vs analysis", "Citation verification manual; hallucinated citations a known risk"],
-     "solution": ["AI precedent search across Westlaw, LexisNexis, brief archives", "Structured summaries with jurisdiction-specific relevance scoring", "Citation-linked outputs: every claim traced to source", "Collaborative research workspace for shared briefs"],
+     "challenge": ["8-12 hours per research task for junior associates — $350/hr average cost", "Manual search covers only 60-70% of relevant case law — critical precedents missed", "65% of billable hours spent on research vs actual legal analysis and strategy", "Citation verification manual; LLM hallucinated citations are a documented professional risk", "Multi-jurisdictional research multiplies effort 3-5x for interstate or federal matters"],
+     "solution": ["AI precedent search across Westlaw, LexisNexis, firm brief archives simultaneously", "Structured summaries with jurisdiction-specific relevance scoring and authority ranking", "Citation-linked outputs: every claim traced to source document with pinpoint paragraph reference", "Collaborative research workspace: multiple attorneys can build on shared research threads", "Shepard's/KeyCite integration: auto-checks if cited cases are still good law"],
      "results": [("2 hrs", "Research (from 8-12)"), ("95%", "Precedent Coverage"), ("70%", "Junior Workload ↓"), ("Verified", "Citation Accuracy")],
-     "governance": ["Every citation validated against source database", "Research memos marked AI-assisted per bar disclosure rules", "No client data to external models; on-premise RAG for privileged"],
+     "how_it_works": ["Attorney enters research question → RAG pipeline searches firm briefs + Westlaw + LexisNexis → Ranked results by relevance", "Claude reasoning: synthesizes findings into structured memo with headings, holdings, and distinguishing factors", "Every citation auto-validated: Shepard's check confirms case is still good law → Bad citations flagged RED"],
+     "governance": ["Every citation validated against source database — zero tolerance for hallucinated references", "Research memos marked AI-assisted per state bar disclosure rules (ABA Formal Opinion 512)", "No client data sent to external models; on-premise RAG pipeline for privileged materials"],
      "yc": ["Vector Legal (W26) — AI legal research", "Docsum (S23) — document summarization"],
      "stack": [("EDGE / CAPTURE", "Legal DB connectors\nBrief bank indexer"), ("COMPUTE / AI", "RAG pipeline\nClaude reasoning"), ("INTEGRATION", "Westlaw + LexisNexis\nDMS search"), ("UX / DECISION", "Brief generator\nCitation viewer")],
      "systems": ["Westlaw", "LexisNexis", "iManage DMS", "Brief Bank"], "users": "Junior Associates | Senior Associates | Research Librarians"},
     {"title": "UC14 | Legal Billing\nAutomation", "photo": "uc14",
-     "challenge": ["15-20% revenue leakage from unbilled time entries", "Manual timesheet reconciliation: 5+ hrs/week per coordinator", "30-day avg invoice cycle from capture to payment", "8% of invoices rejected for LEDES/UTBMS formatting errors"],
-     "solution": ["AI activity capture from calendar, email, document edits", "Auto timesheet generation with matter-code assignment", "LEDES-compliant invoice automation with client rate cards", "Expense auto-categorization from receipts and travel"],
+     "challenge": ["15-20% revenue leakage from unbilled time entries — $50K+/yr per attorney lost", "Manual timesheet reconciliation: 5+ hrs/week per billing coordinator", "30-day avg invoice cycle from capture to payment — cash flow impact on smaller firms", "8% of invoices rejected for LEDES/UTBMS formatting errors — delays payment by 30+ days", "Expense categorization: receipts pile up, 25% of reimbursable expenses go unclaimed"],
+     "solution": ["AI activity capture from calendar, email, document edits — reconstructs billable day", "Auto timesheet generation with matter-code assignment based on email subject + doc metadata", "LEDES-compliant invoice automation with client rate cards and volume discount rules", "Expense auto-categorization from receipt OCR and travel booking confirmations", "Narrative generation: AI writes time entry descriptions matching firm's billing guidelines"],
      "results": [("95%", "Billable Capture"), ("15%", "Revenue Recovery"), ("5 days", "Invoice Cycle (from 30)"), ("Auto", "Expense Categorization")],
-     "governance": ["Billing data Level 3, SOX-adjacent controls for >$10M firms", "Time entry audit: AI suggestion vs attorney-approved entry", "LEDES/UTBMS validation before submission"],
+     "how_it_works": ["Calendar + email + doc edits monitored → AI reconstructs daily activity log → Suggests time entries with matter codes", "Attorney reviews AI suggestions in 5 min (vs 30 min manual entry) → Approves/edits → Timesheet submitted", "Month-end: LEDES formatter validates all entries → Client rate card applied → Invoice generated and emailed"],
+     "governance": ["Billing data Level 3, SOX-adjacent controls for >$10M revenue firms", "Time entry audit trail: AI suggestion vs attorney-approved final entry preserved", "LEDES/UTBMS validation before submission — rejected entries flagged for correction"],
      "yc": ["JustPaid (W23, 20 emp) — invoice automation", "Peakflo (W22, 45 emp) — accounts receivable"],
      "stack": [("EDGE / CAPTURE", "Email/calendar monitors\nDoc edit tracking"), ("COMPUTE / AI", "Activity classification\nNarrative generation"), ("INTEGRATION", "QB + Stripe APIs\nLEDES formatter"), ("UX / DECISION", "Billing dashboard\nClient portal")],
      "systems": ["QuickBooks", "Gmail", "Calendar", "Stripe"], "users": "Associates | Billing Coordinators | Managing Partners"},
     {"title": "UC15 | Lease Document\nGeneration", "photo": "uc15",
-     "challenge": ["2-3 hours per lease with manual clause selection", "$45K avg litigation cost per lease dispute", "Inconsistent terms across agents creating liability", "Jurisdiction requirements missed in 6% of leases"],
-     "solution": ["AI lease generation pulling property/tenant data from CRM", "Jurisdiction-aware clause library by state/county", "E-signature via DocuSign with tenant identity verification", "Lease comparison tool: highlights deviations from standard"],
+     "challenge": ["2-3 hours per lease with manual clause selection from 200+ clause variants", "$45K avg litigation cost per lease dispute — preventable with consistent language", "Inconsistent terms across 50+ agents creating uneven liability exposure", "Jurisdiction requirements missed in 6% of leases — state/county disclosure laws vary widely", "Lease renewals: 30% of renewals processed late due to manual calendar tracking"],
+     "solution": ["AI lease generation pulling property/tenant data from CRM + county-specific requirements", "Jurisdiction-aware clause library by state/county with auto-disclosure attachment", "E-signature via DocuSign with tenant identity verification and income validation", "Lease comparison tool: highlights deviations from brokerage standard in counterparty edits", "Renewal automation: 90-day notice triggers, terms adjustment recommendations based on market data"],
      "results": [("15 min", "Generation (from 2-3h)"), ("98%", "Clause Accuracy"), ("0", "Jurisdiction Errors"), ("$2-4K/mo", "Savings per Brokerage")],
-     "governance": ["PII handling: tenant SSN/income encrypted AES-256, purged after signing", "State-specific rules updated quarterly from legal database", "Fair housing compliance: AI terms audited for discriminatory language"],
+     "how_it_works": ["Agent enters property + tenant info → AI selects jurisdiction template → Clauses auto-populated with market-rate terms", "County disclosure check: cross-references property against county requirements → Auto-attaches lead paint, mold, flood zone disclosures", "DocuSign envelope created → Tenant reviews + signs on mobile → Executed lease filed to DMS + CRM automatically"],
+     "governance": ["PII handling: tenant SSN/income encrypted AES-256, purged 30 days after lease execution", "State-specific rules updated quarterly from legal database — Lexis state survey integration", "Fair housing compliance: AI terms audited quarterly for discriminatory language patterns"],
      "yc": ["Clau (S20, 90 emp) — real estate AI", "Homeflow (W23) — property management", "Goldbridge (F25) — RE technology"],
      "stack": [("EDGE / CAPTURE", "CRM data feed\nProperty DB"), ("COMPUTE / AI", "Claude + lease templates\nClause selector"), ("INTEGRATION", "DocuSign + CRM APIs\nCounty lookup"), ("UX / DECISION", "Agent portal\nTenant self-service")],
      "systems": ["CRM", "DocuSign", "Zillow API", "County Records"], "users": "Leasing Agents | Property Managers | Broker Compliance"},
     {"title": "UC16 | Lead Scoring &\nSmart Routing", "photo": "uc16",
-     "challenge": ["40% of leads receive first response >4 hours after inquiry", "Unqualified leads consume 60% of agent follow-up time", "Manual CRM entry: 45 min/day on data entry vs engagement", "Lead source attribution broken: marketing ROI unmeasurable"],
-     "solution": ["AI lead scoring using interest signals and financial readiness", "Smart routing to best-fit agent by expertise and geography", "Auto CRM enrichment from Zillow views, ad clicks, emails", "Campaign trigger automation for high-score leads"],
+     "challenge": ["40% of leads receive first response >4 hours — industry benchmark: <5 min for 9x conversion", "Unqualified leads consume 60% of agent follow-up time — $200+ wasted per dead-end lead", "Manual CRM entry: 45 min/day per agent on data entry vs client engagement", "Lead source attribution broken across 8+ channels: marketing ROI unmeasurable", "Round-robin routing ignores agent expertise — luxury lead goes to starter-home specialist"],
+     "solution": ["AI lead scoring using 30+ interest signals: Zillow saves, ad clicks, email opens, price range, pre-approval", "Smart routing to best-fit agent by expertise, geography, availability, and historical conversion rate", "Auto CRM enrichment from Zillow views, Meta ad interactions, email engagement, website behavior", "Campaign trigger automation: high-score leads get immediate SMS + agent notification + property matches", "Lead nurture sequences: automated drip campaigns personalized by property preference and timeline"],
      "results": [("15 min", "Response (from 4 hrs)"), ("35%", "Conversion Lift"), ("50%", "Unqualified ↓"), ("Auto", "CRM Enrichment")],
-     "governance": ["Fair housing: scoring audited for demographic bias quarterly", "Lead data: 2yr active, 5yr archived per broker compliance", "CAN-SPAM and TCPA compliance for automated outreach"],
+     "how_it_works": ["Lead submits form/calls → 30+ signals scored by XGBoost model → Score 0-100 with confidence interval", "Score >70 → Instant SMS to best-match agent + auto-CRM entry → Agent sees lead profile + property matches on mobile", "Score 30-70 → Nurture sequence activated → Weekly property updates + market insights → Re-scored on engagement"],
+     "governance": ["Fair housing: scoring model audited for demographic bias quarterly — disparate impact <5%", "Lead data: 2yr active retention, 5yr archived per broker compliance requirements", "CAN-SPAM and TCPA compliance for all automated outreach — opt-out honored within 24 hours"],
      "yc": ["PropReturns (S21, 40 emp) — RE analytics", "Smart Alto (W17) — lead qualification"],
      "stack": [("EDGE / CAPTURE", "Lead capture forms\nZillow API"), ("COMPUTE / AI", "XGBoost scoring\nBehavioral ML"), ("INTEGRATION", "CRM + Meta + email\nZapier triggers"), ("UX / DECISION", "Agent assignment UI\nLead pipeline view")],
      "systems": ["CRM", "Zillow", "Meta Ads", "Email/SMS"], "users": "Listing Agents | Buyer Agents | Team Leads | Marketing"},
     {"title": "UC17 | Commission Analytics\n& Reporting", "photo": "uc17",
-     "challenge": ["Month-end calculations take 3+ days of manual spreadsheet work", "12% of agents dispute commissions monthly", "No real-time visibility into earned vs pending vs paid", "Split commission scenarios miscalculated 8% of the time"],
-     "solution": ["Auto commission engine with configurable splits, tiers, bonuses", "Deal attribution: listing agreements linked to closing and payment", "Real-time financial dashboards for agents and management", "Agent performance ranking with trend analysis"],
+     "challenge": ["Month-end calculations take 3+ days of manual spreadsheet work across 50+ agents", "12% of agents dispute commissions monthly — trust erosion and admin overhead", "No real-time visibility into earned vs pending vs paid — agents can't forecast income", "Split commission scenarios (co-listing, referral, team) miscalculated 8% of the time", "1099 preparation: year-end reconciliation takes 2 weeks of dedicated accounting time"],
+     "solution": ["Auto commission engine with configurable splits, tiers, bonuses, and override rules", "Deal attribution: listing agreements linked to closing, payment, and commission disbursement", "Real-time financial dashboards for agents (earnings) and management (P&L, agent economics)", "Agent performance ranking with trend analysis, conversion funnels, and coaching insights", "Automated 1099 generation from commission data with IRS e-filing integration"],
      "results": [("Same-day", "Commission Reports"), ("99.5%", "Calculation Accuracy"), ("80%", "Dispute Reduction"), ("Live", "Performance Ranking")],
-     "governance": ["Financial data Level 3, SOX-adjacent controls for >$10M revenue", "Commission audit trail: every step logged with rule version", "1099 generation from commission data, IRS-compliant"],
+     "how_it_works": ["Closing data from MLS/title company → Commission rules engine applies split/tier/bonus formulas → Agent sees earnings instantly", "Dispute resolution: agent clicks disputed entry → System shows calculation trace with rule version + input data → Transparent resolution", "Year-end: 1099 data pre-compiled from disbursements → Accounting reviews → IRS e-file submitted with one click"],
+     "governance": ["Financial data Level 3, SOX-adjacent controls for >$10M revenue brokerages", "Commission audit trail: every calculation step logged with rule version and input values", "1099 generation from commission data, IRS-compliant with e-filing and agent portal access"],
      "yc": None,
      "stack": [("EDGE / CAPTURE", "Transaction feeds\nMLS closing data"), ("COMPUTE / AI", "Commission rules\nSplit calculator"), ("INTEGRATION", "QB + Stripe + CRM\n1099 generator"), ("UX / DECISION", "Financial dashboard\nAgent leaderboard")],
      "systems": ["CRM", "QuickBooks", "Stripe", "MLS"], "users": "Agents | Brokerage Managers | Accounting | Team Leads"},
     {"title": "UC18 | SEO Audit &\nOptimization", "photo": "uc18",
-     "challenge": ["Manual SEO audits take 20+ hours per client site", "Recommendations outdated by publish time: 2-week lag", "No competitive position tracking: flying blind on SERPs", "Technical SEO issues missed without engineering support"],
-     "solution": ["Automated crawl with technical SEO scoring (Core Web Vitals)", "AI content recommendations: keyword gaps, topical authority", "Weekly competitive position monitoring with SERP tracking", "Prioritized fix list with estimated traffic impact"],
+     "challenge": ["Manual SEO audits take 20+ hours per client site — limits agency to 5-8 clients per strategist", "Recommendations outdated by publish time: 2-week lag between audit and implementation", "No competitive position tracking: flying blind on SERP movements and competitor content strategy", "Technical SEO issues (Core Web Vitals, crawlability, schema) missed without engineering support", "Content gap analysis: manual keyword research covers <30% of opportunity space"],
+     "solution": ["Automated crawl with technical SEO scoring: Core Web Vitals, mobile usability, schema validation", "AI content recommendations: keyword gaps, topical authority mapping, content cannibalization detection", "Weekly competitive position monitoring with SERP tracking and movement alerts", "Prioritized fix list with estimated traffic impact per recommendation — ROI-ranked actions", "Content brief generation: AI creates detailed briefs with target keywords, structure, and competitor analysis"],
      "results": [("2 hrs", "Audit (from 20+)"), ("Per-page", "Recommendations"), ("Weekly", "Competitive Tracking"), ("$2-4K/mo", "Revenue per Client")],
-     "governance": ["Crawl rate limiting: respects robots.txt, max 5 req/sec", "Competitor data from public SERPs only, no gated scraping", "Client data isolated: multi-tenant with per-client encryption"],
-     "yc": ["Positional (S21, acquired) — SEO tooling"],
+     "how_it_works": ["Crawler scans site (respecting robots.txt) → Technical issues scored → Content analyzed for keyword gaps and authority", "AI generates prioritized fix list: each item has estimated traffic impact + implementation difficulty → ROI ranking", "Weekly SERP tracker: monitors 500+ keywords per client → Alerts on position changes >5 → Competitor content flagged"],
+     "governance": ["Crawl rate limiting: respects robots.txt, max 5 req/sec, polite user-agent identification", "Competitor data from public SERPs only, no scraping behind authentication or paywalls", "Client data isolated: multi-tenant architecture with per-client encryption keys"],
+     "yc": ["Positional (S21, acquired) — SEO tooling", "Clearscope — content optimization platform"],
      "stack": [("EDGE / CAPTURE", "Web crawler\nSitemap parser"), ("COMPUTE / AI", "NLP content analysis\nKeyword gap ML"), ("INTEGRATION", "GA + Search Console\nSERP tracker"), ("UX / DECISION", "SEO dashboard\nClient report gen")],
      "systems": ["Google Analytics", "Search Console", "WordPress", "Screaming Frog"], "users": "SEO Specialists | Content Strategists | Agency Managers"},
     {"title": "UC19 | Campaign Performance\nDashboard", "photo": "uc19",
-     "challenge": ["8+ hrs/week per account manager on manual reporting", "Inconsistent metrics: each platform defines conversion differently", "Client reporting delays: 3-5 days from period end", "Anomaly detection manual: budget overspend caught late"],
-     "solution": ["Automated ingestion from Google Ads, Meta, LinkedIn, TikTok", "Unified metric normalization: standardized attribution model", "AI insight generation: auto-surfaces trends and anomalies", "White-label client dashboards with auto report generation"],
+     "challenge": ["8+ hrs/week per account manager on manual reporting across 4-6 ad platforms", "Inconsistent metrics: each platform defines conversion, attribution, and ROAS differently", "Client reporting delays: 3-5 days from period end — clients demand real-time visibility", "Anomaly detection manual: budget overspend and CPA spikes caught 24-48 hrs late", "Cross-channel attribution: customer journey spans 5+ touchpoints — no unified view"],
+     "solution": ["Automated ingestion from Google Ads, Meta, LinkedIn, TikTok, programmatic DSPs", "Unified metric normalization: standardized attribution model across all channels", "AI insight generation: auto-surfaces trends, anomalies, and actionable optimization recommendations", "White-label client dashboards with auto report generation (PDF, email digest, Slack alerts)", "Budget pacing: real-time spend tracking with automated bid adjustments when pacing off-target"],
      "results": [("Real-time", "Unified Dashboard"), ("90%", "Reporting Time ↓"), ("Auto", "Client Reports"), ("Instant", "Anomaly Detection")],
-     "governance": ["Platform API usage within rate limits and ToS", "Client ad spend data Level 2, segregated per client", "GDPR: no PII in analytics; all data aggregated"],
+     "how_it_works": ["Platform APIs polled every 15 min → ETL normalizes metrics to unified schema → Data warehouse (BigQuery/Snowflake)", "Anomaly engine: statistical process control on CPA, CTR, spend → Alert if >2σ deviation from 7-day rolling avg", "Weekly AI digest: Claude summarizes performance, highlights top/bottom campaigns, recommends budget reallocation"],
+     "governance": ["Platform API usage within rate limits and ToS — OAuth tokens rotated per platform policy", "Client ad spend data Level 2, segregated per client with row-level security in warehouse", "GDPR: no PII in analytics; all data aggregated — individual user journeys anonymized"],
      "yc": None,
      "stack": [("EDGE / CAPTURE", "Platform API connectors\nETL pipelines"), ("COMPUTE / AI", "Analytics aggregation\nAnomaly detection"), ("INTEGRATION", "Multi-platform APIs\nData warehouse"), ("UX / DECISION", "Client dashboard\nReport PDF generator")],
      "systems": ["Google Analytics", "Meta Ads API", "LinkedIn Ads", "Buffer"], "users": "Account Managers | Media Buyers | Agency Directors"},
     {"title": "UC20 | Content Pipeline\nAutomation", "photo": "uc20",
-     "challenge": ["5-day avg content cycle from brief to publish", "Approval bottlenecks: content sits 2+ days in review queues", "Inconsistent brand voice across blog, social, email, ad copy", "Manual A/B testing: 3+ hrs per test limiting experimentation"],
-     "solution": ["AI content generation from structured briefs + brand voice model", "Automated approval workflows with parallel reviewer routing", "Multi-channel publishing: one brief → blog, social, email, ad", "Auto A/B variant generation with performance-based selection"],
+     "challenge": ["5-day avg content cycle from brief to publish — competitors publish daily", "Approval bottlenecks: content sits 2+ days in review queues across 3-4 stakeholders", "Inconsistent brand voice across blog, social, email, ad copy — 5 writers, 5 styles", "Manual A/B testing: 3+ hrs per test setup limiting experimentation volume", "Content repurposing: blog → social → email done manually — 2hrs per piece per channel"],
+     "solution": ["AI content generation from structured briefs + fine-tuned brand voice model", "Automated approval workflows with parallel reviewer routing and deadline escalation", "Multi-channel publishing: one brief → blog post + 5 social variants + email + ad copy", "Auto A/B variant generation with performance-based winner selection after 48hr test", "Content calendar: AI suggests topics based on trending keywords, competitor gaps, seasonal patterns"],
      "results": [("1 day", "Cycle (from 5 days)"), ("80%", "Faster Approvals"), ("Consistent", "Brand Voice"), ("Auto", "A/B Variants")],
-     "governance": ["Brand guidelines enforced via style model", "Content audit trail: every generation and approval timestamped", "FTC compliance: AI-generated content flagged for disclosure"],
+     "how_it_works": ["Content brief submitted → Claude generates draft + 3 headline variants + social adaptations → Brand voice score checked", "Parallel approval: content, legal, and brand reviewers notified simultaneously → Majority approval = proceed → Escalation at 24hr", "A/B engine: 2 variants published → Performance measured for 48hr → Winner auto-promoted → Loser paused"],
+     "governance": ["Brand guidelines enforced via fine-tuned style model — voice consistency score >85% required", "Content audit trail: every generation, edit, and approval timestamped with reviewer identity", "FTC compliance: AI-generated content flagged for disclosure where required by advertising standards"],
      "yc": None,
      "stack": [("EDGE / CAPTURE", "Content brief input\nAsset library"), ("COMPUTE / AI", "Claude generation\nBrand voice model"), ("INTEGRATION", "CMS + social APIs\nEmail platform"), ("UX / DECISION", "Editorial dashboard\nPublishing scheduler")],
      "systems": ["WordPress", "Buffer", "CMS", "Slack"], "users": "Content Managers | Copywriters | Brand Managers"},
     {"title": "UC21 | AI-Powered Code\nGeneration", "photo": "uc21",
-     "challenge": ["30-40% of engineering hours on routine bug fixes", "PR review bottleneck: avg 2-day cycle time from issue to merge", "Legacy codebases accumulate 200+ open issues with no bandwidth", "Junior onboarding takes 3-6 months before meaningful contributions"],
-     "solution": ["OpenHands autonomous agents: analyze issues, write fixes, open PRs", "Sandboxed execution: every agent in isolated Docker container", "Event-sourced architecture: deterministic replay, full audit trail", "Self-improving: 37% of agent's own commits written by agent"],
-     "results": [("77.6%", "SWE-Bench Resolve"), ("~$3", "Cost per PR"), ("37%", "Self-Written Commits"), ("2-4 wk", "Deployment")],
-     "governance": ["All AI code marked AI-assisted; human approval before merge", "Sandboxed execution prevents host access; secrets masked", "SecurityAnalyzer rates tool calls LOW/MEDIUM/HIGH risk"],
-     "yc": ["OpenHands (74.6k★) — open-source autonomous dev", "Devin/Cognition ($175M) — commercial AI developer", "Factory AI (S24) — autonomous code agents"],
-     "stack": [("AGENT / SDK", "OpenHands SDK\nCodeAct agent"), ("COMPUTE / AI", "Claude 4.5 Opus\nGPT-5.2 Codex"), ("INTEGRATION", "GitHub Actions\nMCP connectors"), ("UX / DECISION", "PR review portal\nAgent dashboard")],
+     "challenge": ["30-40% of engineering hours on routine bug fixes and boilerplate code", "PR review bottleneck: avg 2-day cycle time from issue to merge across teams", "Legacy codebases accumulate 200+ open issues with no bandwidth to address", "Junior onboarding takes 3-6 months before meaningful contributions to production", "Engineering hiring costs $150-250K/yr per dev — autonomous agents offer 10x leverage"],
+     "solution": ["OpenHands (68.6k★, $18.8M Series A) autonomous agents: analyze issues, write fixes, open PRs end-to-end", "CodeAct agent framework: agents execute bash, Python, and browser actions in natural language loop", "Event-sourced architecture: every action/observation logged as typed event — deterministic replay and full audit trail", "Sandboxed execution: every agent runs in isolated Docker container — no host access, secrets masked", "Model-agnostic: Claude Opus 4.6 (80.8% SWE-Bench), GPT-5.2 (80.0%), or self-hosted Qwen/DeepSeek"],
+     "results": [("80.8%", "SWE-Bench Verified"), ("~$3", "Cost per PR"), ("68.6k★", "GitHub Stars"), ("6 Providers", "Git Platform Support")],
+     "how_it_works": ["GitHub issue created → OpenHands resolver agent reads issue + codebase → CodeAct generates fix → Runs tests in sandbox → Opens PR", "EventStream hub: User Message → LLM → Action (bash/code/browser) → Runtime sandbox → Observation → next cycle", "AgentHub registry: CodeActAgent (generalist), BrowsingAgent (web tasks), micro-agents (from natural language specs)"],
+     "governance": ["All AI-generated code marked AI-assisted per GitHub metadata; human approval required before merge", "Sandboxed runtime: Docker container with no host filesystem access, network restricted, secrets never exposed", "SecurityAnalyzer rates every tool call LOW/MEDIUM/HIGH risk — HIGH requires human confirmation"],
+     "yc": ["OpenHands (68.6k★, $18.8M) — open-source AI dev platform", "Devin/Cognition ($175M raised) — commercial autonomous developer", "Cursor (background agents, 65.7% SWE-Bench) — AI-native IDE", "Codex (GPT-5.5, 56.8% SWE-Bench Pro) — OpenAI's coding agent"],
+     "stack": [("AGENT / SDK", "OpenHands SDK\nCodeAct + AgentHub"), ("COMPUTE / AI", "Claude Opus 4.6\nGPT-5.2 / Qwen"), ("INTEGRATION", "GitHub/GitLab/Bitbucket\nMCP + FastMCP"), ("UX / DECISION", "PR review portal\nEventStream viewer")],
      "systems": ["GitHub", "GitLab", "Docker", "CI/CD"], "users": "Engineering Leads | DevOps Managers | VP Engineering"},
     {"title": "UC22 | Automated Test\nGeneration", "photo": "uc22",
-     "challenge": ["Legacy codebases average 35% test coverage", "15% of deployments cause incidents in first 24 hours", "Test maintenance: 20% of suites break with each refactor", "Security testing requires specialized expertise most lack"],
-     "solution": ["AI agents generate comprehensive test suites (SWT-Bench validated)", "Multi-agent fan-out: parallel generation across unit/integration/E2E", "Automated test maintenance: detect broken tests, auto-fix after refactor", "Security-focused: OWASP Top 10 coverage with pen-test scenarios"],
+     "challenge": ["Legacy codebases average 35% test coverage — most critical paths untested", "15% of deployments cause incidents in first 24 hours due to missing regression tests", "Test maintenance: 20% of test suites break with each major refactor — flaky tests ignored", "Security testing requires specialized expertise most teams lack — OWASP coverage <20%", "Manual test writing: senior engineer produces ~15 test cases/day at $150/hr"],
+     "solution": ["OpenHands agents generate comprehensive test suites validated on SWT-Bench (testing benchmark)", "Multi-agent fan-out: parallel generation across unit/integration/E2E layers simultaneously", "Automated test maintenance: detect broken tests post-refactor, auto-fix assertions and mocks", "Security-focused generation: OWASP Top 10 coverage with pen-test scenarios auto-generated", "OpenHands Index testing category: measures real-world test generation quality across models"],
      "results": [("35→85%", "Test Coverage ↑"), ("60%", "Fewer Prod Regressions"), ("10x", "Test Gen Speed"), ("1-2 wk", "Setup")],
-     "governance": ["Generated tests reviewed by senior engineer before CI", "No production PII in fixtures; synthetic data generation", "Coverage metrics: minimum 80% threshold enforced via CI gates"],
-     "yc": ["QA Wolf (W19, 80 emp) — E2E testing as service", "Carbonate (S23) — AI test generation", "Momentic (S23) — autonomous E2E testing"],
-     "stack": [("AGENT / SDK", "OpenHands agents\nSWT-Bench model"), ("COMPUTE / AI", "Claude reasoning\nCode analysis"), ("INTEGRATION", "CI/CD hooks\nCoverage APIs"), ("UX / DECISION", "Coverage dashboard\nRisk heatmap")],
+     "how_it_works": ["Agent reads source code + existing tests → Identifies untested paths via coverage gap analysis → Generates test files", "SWT-Bench validation: generated tests verified against known-buggy code — must catch the bug to pass benchmark", "CI integration: agent opens PR with test files → Coverage diff shown → Human reviews → Merge adds to CI pipeline"],
+     "governance": ["Generated tests reviewed by senior engineer before inclusion in CI pipeline", "No production PII in test fixtures; synthetic data generation via Faker/factory patterns", "Coverage metrics: minimum 80% threshold enforced via CI gates — PR blocked below threshold"],
+     "yc": ["QA Wolf (W19, 80 emp) — E2E testing as service ($4M ARR)", "Carbonate (S23) — AI test generation from user flows", "Momentic (S23) — autonomous E2E testing with self-healing", "CodiumAI (now Qodo) — AI test generation IDE extension"],
+     "stack": [("AGENT / SDK", "OpenHands agents\nSWT-Bench model"), ("COMPUTE / AI", "Claude reasoning\nCoverage analysis"), ("INTEGRATION", "CI/CD hooks\nCoverage APIs (lcov)"), ("UX / DECISION", "Coverage dashboard\nRisk heatmap")],
      "systems": ["GitHub", "Jest/Pytest", "CI/CD", "SAST Tools"], "users": "QA Engineers | Engineering Managers | Security Teams"},
     {"title": "UC23 | Code Modernization\n& Tech Debt", "photo": "uc23",
-     "challenge": ["40% of dev time navigating and working around legacy code", "Framework migrations (Angular→React) take 6-18 months manually", "Average enterprise has 200+ outdated packages deferred due to risk", "Monolith decomposition requires deep knowledge often lost to attrition"],
-     "solution": ["AI multi-repo dependency upgrades at ~$3 per PR across hundreds of services", "Autonomous framework migration: generates idiomatic code in target framework", "Monolith decomposition: identifies service boundaries, extracts and tests", "Greenfield scaffolding: commit0-validated development from specs"],
+     "challenge": ["40% of dev time spent navigating and working around legacy code (Stripe 2023 study)", "Framework migrations (Angular→React, Python 2→3) take 6-18 months manually", "Average enterprise has 200+ outdated packages deferred due to risk of breaking changes", "Monolith decomposition requires deep institutional knowledge often lost to attrition", "Technical debt costs the average company $3.6M/yr in lost productivity (McKinsey)"],
+     "solution": ["OpenHands multi-repo dependency upgrades at ~$3 per PR across hundreds of services automatically", "Autonomous framework migration: CodeAct agent generates idiomatic code in target framework with tests", "Monolith decomposition: agent analyzes dependency graph, identifies service boundaries, extracts and tests", "Commit0 benchmark: validates greenfield development quality — agent builds working app from spec", "Dead code elimination: agent identifies unused exports, unreachable branches, and orphaned files"],
      "results": [("~$3", "Cost per Migration PR"), ("80%", "Tech Debt ↓"), ("6→1 mo", "Migration Timeline"), ("100+", "Repos per Sprint")],
-     "governance": ["All migration PRs include automated regression test results", "Security patches auto-merged; major versions require human approval", "ADRs auto-generated for each decomposition step"],
-     "yc": ["Grit.io (W22) — automated code migrations", "Moderne (S21, 50 emp) — large-scale refactoring", "Sourcegraph Cody (S14, 300+) — code intelligence"],
-     "stack": [("ANALYSIS", "Dependency graph\nDead code scan"), ("COMPUTE / AI", "Claude Opus\nMulti-agent chain"), ("INTEGRATION", "Package registries\nCI validation"), ("UX / DECISION", "Migration tracker\nRisk scoring")],
+     "how_it_works": ["Dependency scanner identifies outdated packages → Agent creates branch → Updates package + fixes breaking changes → Runs tests → Opens PR", "Migration: agent reads source in framework A → Generates equivalent in framework B → Validates output matches behavioral tests", "Commit0 pipeline: spec document → Agent scaffolds project → Builds features iteratively → Integration tests validate completeness"],
+     "governance": ["All migration PRs include automated regression test results and diff size metrics", "Security patches (CVE fixes) auto-merged after CI pass; major versions require human approval", "Architecture Decision Records (ADRs) auto-generated for each decomposition or migration step"],
+     "yc": ["Grit.io (W22) — automated code migrations at scale", "Moderne (S21, 50 emp) — large-scale refactoring platform", "Sourcegraph Cody (S14, 300+) — code intelligence + search", "CodeRabbit — AI-powered code review and refactoring"],
+     "stack": [("ANALYSIS", "Dependency graph\nDead code scanner"), ("COMPUTE / AI", "Claude Opus 4.6\nMulti-agent chain"), ("INTEGRATION", "npm/pip/maven registries\nCI validation"), ("UX / DECISION", "Migration tracker\nRisk scoring board")],
      "systems": ["GitHub", "npm/pip/maven", "Docker", "Terraform"], "users": "Platform Engineers | Tech Leads | CTOs"},
     {"title": "UC24 | DevOps & Incident\nResponse", "photo": "uc24",
-     "challenge": ["MTTR averages 4+ hours for production incidents", "On-call spends 60% of incident time on log correlation", "CI/CD pipeline failures block 15-20% of deployments", "Terraform state diverges from reality across 50+ microservices"],
-     "solution": ["AI agents analyze logs, pinpoint root causes, generate fix PRs", "Automated CI/CD debugging: reads build logs, identifies failures, pushes fixes", "IaC auto-remediation: drift detection → Terraform PR → validated apply", "Runbook automation: executes playbooks with human escalation"],
+     "challenge": ["MTTR averages 4+ hours for production incidents — 65% of time spent on log correlation", "On-call engineers spend 60% of incident time correlating logs across 10+ services", "CI/CD pipeline failures block 15-20% of deployments — most are config/dependency issues", "Terraform state diverges from reality across 50+ microservices — drift detected monthly, not daily", "Alert fatigue: avg SRE receives 200+ alerts/week — 85% are non-actionable noise"],
+     "solution": ["OpenHands agents analyze logs + metrics, pinpoint root causes, generate fix PRs autonomously", "Automated CI/CD debugging: agent reads build logs, identifies failure cause, pushes fix within minutes", "IaC auto-remediation: drift detection → Terraform PR → validated plan → human-approved apply", "Runbook automation: agent executes playbook steps with human escalation for destructive actions", "Alert triage: agent classifies alerts, correlates with recent deploys, auto-resolves known patterns"],
      "results": [("4hr→15m", "MTTR"), ("70%", "Auto-Resolved"), ("85%", "CI/CD Fix Rate"), ("24/7", "Always-On Coverage")],
-     "governance": ["Production access read-only for agents; writes require approval", "Every agent action logged with timestamp and rationale", "Blast radius controls: auto-remediation limited to non-critical"],
-     "yc": ["Rootly (S21, 45 emp) — incident management", "incident.io (S21, 120 emp) — incident response", "Firehydrant (W20, 90 emp) — incident management"],
-     "stack": [("OBSERVE", "DataDog logs\nPagerDuty alerts"), ("COMPUTE / AI", "Log analysis LLM\nRoot cause agent"), ("INTEGRATION", "Terraform API\nK8s API"), ("UX / DECISION", "Incident dashboard\nRunbook executor")],
+     "how_it_works": ["PagerDuty alert fires → Agent reads alert context + recent deploys + logs → Identifies root cause → Generates fix PR or rollback", "CI failure: agent reads build log → Classifies error (dep/config/test/compile) → Pushes targeted fix → Re-triggers pipeline", "Terraform drift: daily plan comparison → Drift detected → Agent generates corrective PR with plan output → Human approves apply"],
+     "governance": ["Production access read-only for agents; all write operations require human approval via Slack/PagerDuty", "Every agent action logged with timestamp, rationale, confidence score, and blast radius assessment", "Blast radius controls: auto-remediation limited to non-critical services; critical services require human-in-the-loop"],
+     "yc": ["Rootly (S21, 45 emp) — incident management platform", "incident.io (S21, 120 emp) — incident response automation", "Firehydrant (W20, 90 emp) — reliability platform", "Shoreline.io (acquired by DataDog) — incident automation"],
+     "stack": [("OBSERVE", "DataDog + Loki logs\nPagerDuty alerts"), ("COMPUTE / AI", "OpenHands agent\nLog analysis LLM"), ("INTEGRATION", "Terraform API + K8s\nGitHub Actions"), ("UX / DECISION", "Incident dashboard\nRunbook executor")],
      "systems": ["PagerDuty", "DataDog", "Terraform", "GitHub Actions"], "users": "SRE Teams | DevOps Engineers | Incident Commanders"},
 ]
 
@@ -832,14 +918,14 @@ def main():
         build_uc_slide(prs, 5 + i, TOTAL_SLIDES, uc["title"], uc["photo"],
                        uc["challenge"], uc["solution"], uc["results"],
                        uc["stack"], uc["governance"], uc["yc"],
-                       uc["systems"], uc["users"])
+                       uc["systems"], uc["users"], uc.get("how_it_works"))
 
     # Slides 13-28: Additional UCs
     for i, uc in enumerate(ADDITIONAL_UCS):
         build_uc_slide(prs, 13 + i, TOTAL_SLIDES, uc["title"], uc["photo"],
                        uc["challenge"], uc["solution"], uc["results"],
                        uc["stack"], uc["governance"], uc["yc"],
-                       uc["systems"], uc["users"])
+                       uc["systems"], uc["users"], uc.get("how_it_works"))
 
     # Slide 29: YC Competitive Landscape
     build_content_slide(prs, 29, TOTAL_SLIDES, "YC Competitive\nLandscape", "yc",
