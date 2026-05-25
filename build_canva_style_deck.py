@@ -243,85 +243,86 @@ def build_uc_slide(prs, page_num, total, title, photo_key,
     # ── Left teal panel ─────────────────────────────────────────────────
     add_rect(slide, 0, 0, PANEL_W, SLIDE_H, TEAL)
 
-    # Title
-    add_text_box(slide, Inches(0.5), Inches(0.3), PANEL_W - Inches(0.8), Inches(1.0),
-                 title, font_size=32, color=WHITE, bold=True, font_name="Calibri")
+    # Title — replace \n with space to avoid overlap, use single-line
+    clean_title = title.replace("\n", " — ")
+    add_text_box(slide, Inches(0.4), Inches(0.25), PANEL_W - Inches(0.7), Inches(0.6),
+                 clean_title, font_size=24, color=WHITE, bold=True, font_name="Calibri")
 
     # Accent line under title
-    add_rect(slide, Inches(0.5), Inches(1.2), Inches(2), Inches(0.04), DARK_NAVY)
+    add_rect(slide, Inches(0.4), Inches(0.85), Inches(2), Inches(0.03), DARK_NAVY)
 
     # ── CHALLENGE section ───────────────────────────────────────────────
-    y = Inches(1.45)
-    add_text_box(slide, Inches(0.5), y, Inches(1.5), Inches(0.3),
-                 "CHALLENGE", font_size=10, color=DARK_NAVY, bold=True,
+    y = Inches(1.0)
+    add_text_box(slide, Inches(0.4), y, Inches(1.5), Inches(0.25),
+                 "CHALLENGE", font_size=9, color=DARK_NAVY, bold=True,
                  font_name="Calibri")
-    y += Inches(0.3)
+    y += Inches(0.22)
     col_w = Inches(3.8)
-    challenge_text = "\n".join(f"• {l}" for l in challenge_lines)
-    add_text_box(slide, Inches(0.5), y, col_w, Inches(1.2),
-                 challenge_text, font_size=9, color=DARK_NAVY, font_name="Calibri")
+    challenge_text = "\n".join(f"• {l}" for l in challenge_lines[:3])
+    add_text_box(slide, Inches(0.4), y, col_w, Inches(1.1),
+                 challenge_text, font_size=8, color=DARK_NAVY, font_name="Calibri")
 
     # ── SOLUTION section ────────────────────────────────────────────────
-    sol_x = Inches(4.5)
-    add_text_box(slide, sol_x, Inches(1.45), Inches(1.5), Inches(0.3),
-                 "SOLUTION", font_size=10, color=DARK_NAVY, bold=True,
+    sol_x = Inches(4.4)
+    add_text_box(slide, sol_x, Inches(1.0), Inches(1.5), Inches(0.25),
+                 "SOLUTION", font_size=9, color=DARK_NAVY, bold=True,
                  font_name="Calibri")
-    solution_text = "\n".join(f"• {l}" for l in solution_lines)
-    add_text_box(slide, sol_x, Inches(1.75), col_w, Inches(1.2),
-                 solution_text, font_size=9, color=DARK_NAVY, font_name="Calibri")
+    solution_text = "\n".join(f"• {l}" for l in solution_lines[:3])
+    add_text_box(slide, sol_x, Inches(1.22), col_w, Inches(1.1),
+                 solution_text, font_size=8, color=DARK_NAVY, font_name="Calibri")
 
     # ── Results stat boxes ──────────────────────────────────────────────
-    stat_y = Inches(3.2)
+    stat_y = Inches(2.55)
     if results:
         for i, (num, label) in enumerate(results[:4]):
-            stat_x = Inches(0.5) + Inches(i * 2.05)
+            stat_x = Inches(0.4) + Inches(i * 2.05)
             add_stat_box(slide, stat_x, stat_y, num, label)
 
     # ── GOVERNANCE / YC section ─────────────────────────────────────────
-    gov_y = Inches(4.35)
+    gov_y = Inches(3.65)
     if governance_lines:
-        add_text_box(slide, Inches(0.5), gov_y, Inches(3), Inches(0.25),
-                     "GOVERNANCE & SECURITY", font_size=9, color=DARK_NAVY,
+        add_text_box(slide, Inches(0.4), gov_y, Inches(3.5), Inches(0.22),
+                     "GOVERNANCE & SECURITY", font_size=8, color=DARK_NAVY,
                      bold=True, font_name="Calibri")
-        gov_text = "\n".join(f"• {l}" for l in governance_lines[:3])
-        add_text_box(slide, Inches(0.5), gov_y + Inches(0.25), Inches(3.8), Inches(0.9),
-                     gov_text, font_size=8, color=DARK_NAVY, font_name="Calibri")
+        gov_text = "\n".join(f"• {l}" for l in governance_lines[:2])
+        add_text_box(slide, Inches(0.4), gov_y + Inches(0.22), Inches(3.8), Inches(0.7),
+                     gov_text, font_size=7, color=DARK_NAVY, font_name="Calibri")
 
     if yc_lines:
-        add_text_box(slide, sol_x, gov_y, Inches(3), Inches(0.25),
-                     "YC COMPETITIVE LANDSCAPE", font_size=9, color=DARK_NAVY,
+        add_text_box(slide, sol_x, gov_y, Inches(3.5), Inches(0.22),
+                     "YC COMPETITIVE LANDSCAPE", font_size=8, color=DARK_NAVY,
                      bold=True, font_name="Calibri")
-        yc_text = "\n".join(f"• {l}" for l in yc_lines[:4])
-        add_text_box(slide, sol_x, gov_y + Inches(0.25), Inches(3.8), Inches(0.9),
-                     yc_text, font_size=8, color=DARK_NAVY, font_name="Calibri")
+        yc_text = "\n".join(f"• {l}" for l in yc_lines[:3])
+        add_text_box(slide, sol_x, gov_y + Inches(0.22), Inches(3.8), Inches(0.7),
+                     yc_text, font_size=7, color=DARK_NAVY, font_name="Calibri")
 
     # ── Solution stack bar ──────────────────────────────────────────────
-    stack_y = Inches(5.5)
+    stack_y = Inches(4.7)
     if stack_lines:
-        add_rect(slide, Inches(0.3), stack_y, PANEL_W - Inches(0.6), Inches(0.9), DARK_NAVY)
-        add_text_box(slide, Inches(0.5), stack_y + Inches(0.05), Inches(2), Inches(0.25),
-                     "SOLUTION STACK", font_size=9, color=TEAL, bold=True,
+        add_rect(slide, Inches(0.3), stack_y, PANEL_W - Inches(0.5), Inches(0.85), DARK_NAVY)
+        add_text_box(slide, Inches(0.4), stack_y + Inches(0.05), Inches(2), Inches(0.2),
+                     "SOLUTION STACK", font_size=8, color=TEAL, bold=True,
                      font_name="Calibri")
         for i, (layer, detail) in enumerate(stack_lines[:4]):
-            col_x = Inches(0.5) + Inches(i * 2.05)
-            add_text_box(slide, col_x, stack_y + Inches(0.3), Inches(1.9), Inches(0.2),
-                         layer, font_size=8, color=TEAL, bold=True, font_name="Calibri")
-            add_text_box(slide, col_x, stack_y + Inches(0.5), Inches(1.9), Inches(0.35),
+            col_x = Inches(0.4) + Inches(i * 2.05)
+            add_text_box(slide, col_x, stack_y + Inches(0.25), Inches(1.9), Inches(0.2),
+                         layer, font_size=7, color=TEAL, bold=True, font_name="Calibri")
+            add_text_box(slide, col_x, stack_y + Inches(0.45), Inches(1.9), Inches(0.35),
                          detail, font_size=7, color=WHITE, font_name="Calibri")
 
     # ── Systems + Target Users bar ──────────────────────────────────────
-    bar_y = Inches(6.55)
+    bar_y = Inches(5.7)
     if systems:
-        add_rect(slide, Inches(0.3), bar_y, Inches(4), Inches(0.4), ACCENT_TEAL)
+        add_rect(slide, Inches(0.3), bar_y, Inches(4), Inches(0.35), ACCENT_TEAL)
         sys_text = "SYSTEMS: " + "  |  ".join(systems[:4])
-        add_text_box(slide, Inches(0.5), bar_y + Inches(0.05), Inches(3.8), Inches(0.3),
-                     sys_text, font_size=8, color=WHITE, bold=True, font_name="Calibri")
+        add_text_box(slide, Inches(0.4), bar_y + Inches(0.04), Inches(3.8), Inches(0.28),
+                     sys_text, font_size=7, color=WHITE, bold=True, font_name="Calibri")
 
     if target_users:
-        add_rect(slide, Inches(4.5), bar_y, Inches(4), Inches(0.4), DARK_TEAL)
+        add_rect(slide, Inches(4.5), bar_y, Inches(4), Inches(0.35), DARK_TEAL)
         usr_text = "USERS: " + target_users
-        add_text_box(slide, Inches(4.7), bar_y + Inches(0.05), Inches(3.8), Inches(0.3),
-                     usr_text, font_size=8, color=WHITE, bold=True, font_name="Calibri")
+        add_text_box(slide, Inches(4.6), bar_y + Inches(0.04), Inches(3.8), Inches(0.28),
+                     usr_text, font_size=7, color=WHITE, bold=True, font_name="Calibri")
 
     # ── Right photo strip ───────────────────────────────────────────────
     photo = download_photo(photo_key)
@@ -340,36 +341,37 @@ def build_content_slide(prs, page_num, total, title, photo_key,
 
     add_rect(slide, 0, 0, PANEL_W, SLIDE_H, TEAL)
 
-    # Title
-    add_text_box(slide, Inches(0.5), Inches(0.3), PANEL_W - Inches(0.8), Inches(0.9),
-                 title, font_size=30, color=WHITE, bold=True, font_name="Calibri")
-    add_rect(slide, Inches(0.5), Inches(1.1), Inches(2), Inches(0.04), DARK_NAVY)
+    # Title — flatten multi-line
+    clean_title = title.replace("\n", " — ")
+    add_text_box(slide, Inches(0.4), Inches(0.25), PANEL_W - Inches(0.7), Inches(0.55),
+                 clean_title, font_size=22, color=WHITE, bold=True, font_name="Calibri")
+    add_rect(slide, Inches(0.4), Inches(0.8), Inches(2), Inches(0.03), DARK_NAVY)
 
     # Column 1
-    add_text_box(slide, Inches(0.5), Inches(1.35), Inches(3.5), Inches(0.3),
-                 col1_title, font_size=11, color=DARK_NAVY, bold=True, font_name="Calibri")
+    add_text_box(slide, Inches(0.4), Inches(1.0), Inches(3.5), Inches(0.25),
+                 col1_title, font_size=10, color=DARK_NAVY, bold=True, font_name="Calibri")
     c1_text = "\n".join(f"• {l}" for l in col1_lines)
-    add_text_box(slide, Inches(0.5), Inches(1.65), Inches(3.8), Inches(3.5),
-                 c1_text, font_size=9, color=DARK_NAVY, font_name="Calibri")
+    add_text_box(slide, Inches(0.4), Inches(1.25), Inches(3.8), Inches(3.8),
+                 c1_text, font_size=8, color=DARK_NAVY, font_name="Calibri")
 
     # Column 2
-    add_text_box(slide, Inches(4.5), Inches(1.35), Inches(3.5), Inches(0.3),
-                 col2_title, font_size=11, color=DARK_NAVY, bold=True, font_name="Calibri")
+    add_text_box(slide, Inches(4.4), Inches(1.0), Inches(3.5), Inches(0.25),
+                 col2_title, font_size=10, color=DARK_NAVY, bold=True, font_name="Calibri")
     c2_text = "\n".join(f"• {l}" for l in col2_lines)
-    add_text_box(slide, Inches(4.5), Inches(1.65), Inches(3.8), Inches(3.5),
-                 c2_text, font_size=9, color=DARK_NAVY, font_name="Calibri")
+    add_text_box(slide, Inches(4.4), Inches(1.25), Inches(3.8), Inches(3.8),
+                 c2_text, font_size=8, color=DARK_NAVY, font_name="Calibri")
 
     # Bottom bar
     if bottom_items:
-        bar_y = Inches(5.8)
-        add_rect(slide, Inches(0.3), bar_y, PANEL_W - Inches(0.6), Inches(1.0), DARK_NAVY)
+        bar_y = Inches(5.6)
+        add_rect(slide, Inches(0.3), bar_y, PANEL_W - Inches(0.5), Inches(0.9), DARK_NAVY)
         for i, (num, label) in enumerate(bottom_items[:4]):
-            bx = Inches(0.5) + Inches(i * 2.05)
-            add_text_box(slide, bx, bar_y + Inches(0.1), Inches(1.9), Inches(0.4),
-                         num, font_size=18, color=GOLD, bold=True,
+            bx = Inches(0.4) + Inches(i * 2.05)
+            add_text_box(slide, bx, bar_y + Inches(0.08), Inches(1.9), Inches(0.38),
+                         num, font_size=16, color=GOLD, bold=True,
                          alignment=PP_ALIGN.CENTER, font_name="Calibri")
-            add_text_box(slide, bx, bar_y + Inches(0.55), Inches(1.9), Inches(0.35),
-                         label, font_size=8, color=WHITE,
+            add_text_box(slide, bx, bar_y + Inches(0.48), Inches(1.9), Inches(0.3),
+                         label, font_size=7, color=WHITE,
                          alignment=PP_ALIGN.CENTER, font_name="Calibri")
 
     photo = download_photo(photo_key)
