@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UC05 Predictive Quality Demo</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Hyundai SDF pilot · UC05</p>
+        <h1 id="page-title">Predictive Quality Control Tower</h1>
+        <p class="lede">
+          A concrete demo for the 90-day Ulsan Plant 5 pilot: variant-aware
+          quality thresholds, station anomaly scoring, line-gate decisions, and
+          an OpenHands-style agent workflow that shows how the demo would be
+          built faster with source-code context and skills.
+        </p>
+      </div>
+      <div class="hero-card">
+        <span class="hero-metric">$13M</span>
+        <span class="hero-label">annual value modeled for 1% defect reduction</span>
+        <div class="hero-row">
+          <span>Edge SLA</span>
+          <strong>&lt;200ms</strong>
+        </div>
+        <div class="hero-row">
+          <span>Pilot window</span>
+          <strong>90 days</strong>
+        </div>
+        <div class="hero-row">
+          <span>Line scope</span>
+          <strong>3 variants</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="control-strip" aria-label="Simulation controls">
+      <label>
+        <span>Active model variant</span>
+        <select id="variantSelect"></select>
+      </label>
+      <label>
+        <span>Line speed</span>
+        <input id="lineSpeed" type="range" min="42" max="68" value="54" />
+      </label>
+      <button class="primary" type="button" id="runLine">Run line</button>
+      <button class="secondary" type="button" id="scoreNext">Score next unit</button>
+      <button class="primary" type="button" id="simulateShift">Simulate shift</button>
+      <button class="secondary" type="button" id="injectDrift">Inject transition drift</button>
+      <button class="secondary" type="button" id="retrainModel">Retrain model</button>
+    </section>
+
+    <section class="dashboard-grid">
+      <article class="panel quality-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Real-time quality</p>
+            <h2>Variant-aware station risk</h2>
+          </div>
+          <span class="status-pill" id="gateStatus">Gate clear</span>
+        </div>
+        <div class="station-grid" id="stationGrid"></div>
+      </article>
+
+      <article class="panel decision-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">MES decision</p>
+            <h2>Closed-loop quality gate</h2>
+          </div>
+        </div>
+        <div class="decision-stack">
+          <div class="decision-score">
+            <span id="riskScore">18%</span>
+            <p>predicted quality escape risk</p>
+          </div>
+          <div class="action-box" id="mesAction">
+            Continue production. Monitor station deltas.
+          </div>
+          <div class="mini-metrics">
+            <div><span id="detectionRate">94.1%</span><p>detection rate</p></div>
+            <div><span id="falsePositive">3.8%</span><p>false positive</p></div>
+            <div><span id="latency">126ms</span><p>edge latency</p></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel agent-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">OpenHands-inspired build</p>
+            <h2>Agent build console</h2>
+          </div>
+          <button class="secondary compact" type="button" id="advanceAgents">Run next agent step</button>
+        </div>
+        <div class="agent-list" id="agentList"></div>
+        <div class="build-console" id="buildConsole"></div>
+      </article>
+
+      <article class="panel context-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Context engineering</p>
+            <h2>Reference pack for the coding agent</h2>
+          </div>
+        </div>
+        <div class="context-list" id="contextList"></div>
+        <pre id="starterPrompt"></pre>
+      </article>
+    </section>
+
+    <section class="artifact-layout" aria-label="Generated artifacts and model versions">
+      <article class="panel artifact-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Generated artifact</p>
+            <h2>Incident and retraining reports</h2>
+          </div>
+          <div class="button-row">
+            <button class="secondary compact" type="button" id="generateIncident">Incident report</button>
+            <button class="secondary compact" type="button" id="generateRetraining">Retraining brief</button>
+          </div>
+        </div>
+        <div class="artifact-tabs" id="artifactTabs"></div>
+        <pre id="artifactPreview"></pre>
+      </article>
+
+      <article class="panel version-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Model governance</p>
+            <h2>Threshold versions</h2>
+          </div>
+          <span class="status-pill" id="modelVersionPill">v1.0 baseline</span>
+        </div>
+        <div class="version-list" id="versionList"></div>
+      </article>
+    </section>
+
+    <section class="wide-panel" aria-labelledby="backend-title">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">Real backend</p>
+          <h2 id="backend-title">API and persisted plant data</h2>
+        </div>
+        <div class="button-row">
+          <button class="secondary compact" type="button" id="checkBackend">Check API</button>
+          <button class="secondary compact" type="button" id="scoreBackend">Score via backend</button>
+          <button class="secondary compact" type="button" id="loadBackendEvents">Load events</button>
+        </div>
+      </div>
+      <div class="backend-grid">
+        <div class="backend-card">
+          <strong id="backendStatus">Not checked</strong>
+          <p>Backend: http://127.0.0.1:8025</p>
+        </div>
+        <div class="backend-card">
+          <strong id="backendEventCount">0</strong>
+          <p>persisted events loaded</p>
+        </div>
+        <div class="backend-card">
+          <strong id="backendIncidentCount">0</strong>
+          <p>persisted incidents</p>
+        </div>
+      </div>
+      <pre id="backendPreview">Start the backend with: python3 backend/server.py</pre>
+    </section>
+
+    <section class="wide-panel" aria-labelledby="events-title">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">Live implementation</p>
+          <h2 id="events-title">Scored vehicle events</h2>
+        </div>
+        <button class="secondary compact" type="button" id="exportLog">Export JSON</button>
+      </div>
+      <div class="event-summary">
+        <div><span id="eventCount">0</span><p>units scored</p></div>
+        <div><span id="inspectedCount">0</span><p>inspection routes</p></div>
+        <div><span id="holdCount">0</span><p>line holds</p></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Unit</th>
+              <th>Variant</th>
+              <th>Escape risk</th>
+              <th>MES action</th>
+            </tr>
+          </thead>
+          <tbody id="unitLog"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="wide-panel" aria-labelledby="timeline-title">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">Demo storyline</p>
+          <h2 id="timeline-title">What the buyer sees in five minutes</h2>
+        </div>
+      </div>
+      <div class="timeline">
+        <div><strong>1</strong><span>Select active variant on the SDF line.</span></div>
+        <div><strong>2</strong><span>Show thresholds recalibrating per model.</span></div>
+        <div><strong>3</strong><span>Inject model-transition drift.</span></div>
+        <div><strong>4</strong><span>Watch MES gate recommend hold/rework before escape.</span></div>
+        <div><strong>5</strong><span>Show how OpenHands-style agents produce the pipeline.</span></div>
+      </div>
+    </section>
+  </main>
+  <script src="./demo-data.js"></script>
+  <script src="./quality-engine.js"></script>
+  <script src="./artifact-service.js"></script>
+  <script src="./backend-client.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

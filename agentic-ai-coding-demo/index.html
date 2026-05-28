@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agentic AI Coding Lab</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Workflow demo</p>
+        <h1 id="page-title">Agentic AI Coding Lab</h1>
+        <p class="lede">
+          Practice the loop from Michael Shimeles' public skills: focused context,
+          small implementation passes, code-structure cleanup, review feedback,
+          and objective verification.
+        </p>
+      </div>
+      <div class="hero-visual" aria-label="Agentic engineering workflow map">
+        <div class="orbit center-node">Human<br />intent</div>
+        <div class="orbit node node-a">Context</div>
+        <div class="orbit node node-b">Build</div>
+        <div class="orbit node node-c">Cleanup</div>
+        <div class="orbit node node-d">Review</div>
+        <div class="orbit node node-e">Ship</div>
+      </div>
+    </section>
+
+    <section class="workspace" aria-label="Agentic coding demo workspace">
+      <aside class="rail">
+        <button class="nav-button is-active" type="button" data-panel="workflow">Workflow</button>
+        <button class="nav-button" type="button" data-panel="context">Context</button>
+        <button class="nav-button" type="button" data-panel="prompt">Prompt</button>
+        <button class="nav-button" type="button" data-panel="review">Review</button>
+      </aside>
+
+      <section class="panel is-active" id="workflow" aria-labelledby="workflow-title">
+        <div class="panel-heading">
+          <p class="eyebrow">Operating system</p>
+          <h2 id="workflow-title">One reviewable unit at a time</h2>
+        </div>
+        <div class="workflow-grid" id="workflowGrid"></div>
+      </section>
+
+      <section class="panel" id="context" aria-labelledby="context-title">
+        <div class="panel-heading">
+          <p class="eyebrow">Source as context</p>
+          <h2 id="context-title">Build a precise context pack</h2>
+        </div>
+        <div class="context-layout">
+          <div class="reference-list" id="referenceList"></div>
+          <div class="context-output">
+            <div>
+              <p class="eyebrow">Selected references</p>
+              <h3>Context pack</h3>
+            </div>
+            <pre id="contextPack" aria-live="polite"></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="prompt" aria-labelledby="prompt-title">
+        <div class="panel-heading">
+          <p class="eyebrow">Prompt composer</p>
+          <h2 id="prompt-title">Turn intent into an agent-ready task</h2>
+        </div>
+        <div class="prompt-layout">
+          <label class="field">
+            <span>Feature or fix</span>
+            <textarea id="taskInput" rows="7">Add a small demo feature that helps a user compare agentic coding workflows against normal chatbot prompting.</textarea>
+          </label>
+          <div class="prompt-output">
+            <div class="prompt-actions">
+              <button class="primary-action" type="button" id="generatePrompt">Generate prompt</button>
+              <button class="secondary-action" type="button" id="resetPrompt">Reset</button>
+            </div>
+            <pre id="promptText" aria-live="polite"></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="review" aria-labelledby="review-title">
+        <div class="panel-heading">
+          <p class="eyebrow">Grep loop</p>
+          <h2 id="review-title">Simulate review feedback until merge-ready</h2>
+        </div>
+        <div class="review-layout">
+          <div class="review-score">
+            <span id="scoreValue">2/5</span>
+            <p id="scoreLabel">Needs focused fixes</p>
+          </div>
+          <div class="review-board">
+            <ul id="reviewItems"></ul>
+            <button class="primary-action" type="button" id="runLoop">Run next loop</button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="sources" aria-labelledby="sources-title">
+      <div>
+        <p class="eyebrow">Reference repositories</p>
+        <h2 id="sources-title">What this demo is based on</h2>
+      </div>
+      <ul>
+        <li><a href="https://github.com/pawel-cell/micky-podcast-agentic-engineering/blob/main/skills/agentic-engineering-workflow/SKILL.md">Agentic Engineering Workflow</a></li>
+        <li><a href="https://github.com/pawel-cell/micky-podcast-agentic-engineering/blob/main/skills/code-structure-cleanup/SKILL.md">Code Structure Cleanup</a></li>
+        <li><a href="https://github.com/pawel-cell/micky-podcast-agentic-engineering/blob/main/skills/grep-loop-review-workflow/SKILL.md">Grep Loop Review Workflow</a></li>
+        <li><a href="https://github.com/michaelshimeles/skills/tree/main">Michael Shimeles' Skills Repo</a></li>
+      </ul>
+    </section>
+  </main>
+  <script src="./app.js"></script>
+</body>
+</html>

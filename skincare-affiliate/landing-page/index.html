@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glass Skin Routine — K-Beauty Essentials</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blush: #E8B4B8;
+  --cream: #FDF8F5;
+  --gold: #C4956A;
+  --text: #2D2326;
+  --text-light: #7A6B6E;
+  --rose: #D4838F;
+  --sage: #A8B5A0;
+  --white: #FFFFFF;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* Nav */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 18px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(253,248,245,0.95); backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(45,35,38,0.06);
+}
+.logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--text); letter-spacing: 1px; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--text-light); font-size: 0.8rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
+.nav-links a:hover { color: var(--rose); }
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  background: linear-gradient(160deg, var(--cream) 0%, #F5E6E8 40%, #EDD5C8 100%);
+  position: relative; overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute; top: -20%; right: -10%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(232,180,184,0.3), transparent 70%);
+  border-radius: 50%;
+}
+.hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 120px 0 80px; }
+.hero-text { z-index: 2; }
+.hero-eyebrow {
+  display: inline-block; padding: 6px 16px; background: rgba(212,131,143,0.12);
+  border-radius: 100px; font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--rose); margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 600;
+  line-height: 1.1; color: var(--text); margin-bottom: 20px;
+}
+.hero h1 em { font-style: italic; color: var(--rose); }
+.hero p { font-size: 1.05rem; color: var(--text-light); line-height: 1.7; margin-bottom: 36px; max-width: 440px; }
+.btn {
+  display: inline-block; padding: 14px 36px;
+  background: var(--text); color: var(--cream);
+  text-decoration: none; font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  border-radius: 100px; transition: all 0.3s;
+}
+.btn:hover { background: var(--rose); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,131,143,0.3); }
+.hero-visual {
+  width: 100%; aspect-ratio: 4/5; border-radius: 200px 200px 24px 24px;
+  background: linear-gradient(160deg, #F5E6E8, #E8B4B8, #D4838F);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 100px; z-index: 2;
+  box-shadow: 0 30px 60px rgba(212,131,143,0.2);
+  position: relative; overflow: hidden;
+}
+.hero-visual::before {
+  content: '✨'; position: absolute; top: 20%; left: 20%;
+  font-size: 40px; opacity: 0.5; animation: float 3s ease-in-out infinite;
+}
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+/* Products */
+.products { padding: 100px 0; background: var(--white); }
+.section-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--rose); margin-bottom: 12px; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 600; color: var(--text); margin-bottom: 12px; }
+.section-desc { font-size: 0.95rem; color: var(--text-light); max-width: 500px; line-height: 1.7; margin-bottom: 48px; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+.product-card {
+  background: var(--cream); border-radius: 20px; padding: 32px 24px;
+  text-align: center; transition: transform 0.3s, box-shadow 0.3s;
+}
+.product-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(45,35,38,0.08); }
+.product-img {
+  width: 120px; height: 160px; margin: 0 auto 20px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px;
+}
+.pc-1 { background: linear-gradient(145deg, #E8D5C8, #D4A574); }
+.pc-2 { background: linear-gradient(145deg, #D4838F, #E8B4B8); }
+.pc-3 { background: linear-gradient(145deg, #A8B5A0, #C8D5C0); }
+.pc-4 { background: linear-gradient(145deg, #C4956A, #E8D5C8); }
+.product-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+.product-card .price { font-size: 1.1rem; font-weight: 700; color: var(--rose); margin-bottom: 4px; }
+.product-card .commission { font-size: 0.75rem; color: var(--sage); font-weight: 600; letter-spacing: 1px; }
+
+/* Routine */
+.routine { padding: 100px 0; background: var(--cream); }
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; counter-reset: step; }
+.step {
+  counter-increment: step; padding: 32px 24px;
+  background: var(--white); border-radius: 16px;
+  position: relative; transition: transform 0.3s;
+}
+.step:hover { transform: translateY(-4px); }
+.step::before {
+  content: counter(step);
+  display: block; width: 36px; height: 36px; border-radius: 50%;
+  background: var(--rose); color: white;
+  font-size: 0.85rem; font-weight: 700;
+  line-height: 36px; text-align: center;
+  margin-bottom: 16px;
+}
+.step h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; }
+.step p { font-size: 0.85rem; color: var(--text-light); line-height: 1.6; }
+
+/* Testimonial */
+.testimonial {
+  padding: 120px 0;
+  background: linear-gradient(135deg, var(--text) 0%, #4A3438 100%);
+  text-align: center;
+}
+.testimonial blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--cream); max-width: 640px;
+  margin: 0 auto; line-height: 1.5; font-style: italic;
+}
+.testimonial cite {
+  display: block; margin-top: 20px;
+  font-family: 'Inter', sans-serif; font-style: normal;
+  font-size: 0.8rem; color: var(--blush);
+  letter-spacing: 2px; text-transform: uppercase;
+}
+.stars { font-size: 1.2rem; margin-bottom: 20px; color: var(--gold); letter-spacing: 4px; }
+
+/* CTA */
+.cta {
+  padding: 80px 0; background: var(--white); text-align: center;
+}
+.cta-box {
+  background: linear-gradient(135deg, #F5E6E8, var(--cream));
+  border-radius: 24px; padding: 60px 40px;
+  max-width: 700px; margin: 0 auto;
+}
+.cta-box h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; margin-bottom: 12px; }
+.cta-box p { color: var(--text-light); margin-bottom: 28px; font-size: 0.95rem; }
+.cta-box .total { font-size: 1.8rem; font-weight: 700; color: var(--rose); margin-bottom: 8px; }
+.cta-box .savings { font-size: 0.85rem; color: var(--sage); font-weight: 600; margin-bottom: 24px; }
+.disclosure { font-size: 0.7rem; color: var(--text-light); margin-top: 16px; }
+
+/* Footer */
+footer { padding: 40px 0; background: var(--cream); text-align: center; }
+footer .logo { margin-bottom: 8px; display: block; }
+footer p { color: var(--text-light); font-size: 0.75rem; }
+
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .hero-inner { grid-template-columns: 1fr; text-align: center; }
+  .hero p { margin: 0 auto 36px; }
+  .hero-visual { max-width: 300px; margin: 0 auto; }
+  .product-grid { grid-template-columns: 1fr 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Glass Skin</div>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#routine">Routine</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#shop">Shop</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-eyebrow">K-Beauty Essentials</div>
+        <h1>Your <em>Glass Skin</em> Routine Starts Here</h1>
+        <p>The exact Korean skincare products I use daily for that lit-from-within glow. Curated, tested, and under $150 for the complete set.</p>
+        <a href="#shop" class="btn">Shop My Routine</a>
+      </div>
+      <div class="hero-visual fade-in">🧴</div>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="container">
+    <div class="section-label fade-in">The Lineup</div>
+    <h2 class="section-title fade-in">Everything I use, every day.</h2>
+    <p class="section-desc fade-in">Four products. Five minutes. Glass skin that lasts all day. Each one earns me a commission when you shop through my links — supporting this page at no extra cost to you.</p>
+    <div class="product-grid">
+      <div class="product-card fade-in">
+        <div class="product-img pc-1">💧</div>
+        <h3>Dr. Melaxin Collagen Boost Set</h3>
+        <div class="price">$60.00</div>
+        <div class="commission">15% commission</div>
+      </div>
+      <div class="product-card fade-in">
+        <div class="product-img pc-2">✨</div>
+        <h3>Glow Recipe Niacinamide Drops</h3>
+        <div class="price">$35.00</div>
+        <div class="commission">10-15% commission</div>
+      </div>
+      <div class="product-card fade-in">
+        <div class="product-img pc-3">🌿</div>
+        <h3>Medicube Glass Glow Set</h3>
+        <div class="price">$88.00</div>
+        <div class="commission">15% commission</div>
+      </div>
+      <div class="product-card fade-in">
+        <div class="product-img pc-4">☀️</div>
+        <h3>tarte BB Blur SPF 30</h3>
+        <div class="price">$39.00</div>
+        <div class="commission">20% commission</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="routine" id="routine">
+  <div class="container">
+    <div class="section-label fade-in">The Routine</div>
+    <h2 class="section-title fade-in">5 steps. 5 minutes. Glass skin.</h2>
+    <p class="section-desc fade-in">This is my exact morning routine — nothing skipped, nothing added.</p>
+    <div class="steps">
+      <div class="step fade-in">
+        <h4>Cleanse</h4>
+        <p>Micellar water on a cotton pad. Fresh canvas for everything that follows.</p>
+      </div>
+      <div class="step fade-in">
+        <h4>Collagen Boost</h4>
+        <p>Dr. Melaxin ampoule — 3 drops, pat into skin. The foundation of the glow.</p>
+      </div>
+      <div class="step fade-in">
+        <h4>Glow Drops</h4>
+        <p>Glow Recipe niacinamide — mix 2 drops with your moisturizer for that lit-from-within effect.</p>
+      </div>
+      <div class="step fade-in">
+        <h4>Glass Serum</h4>
+        <p>Medicube serum layer — this is the glass skin secret. Pat, don't rub.</p>
+      </div>
+      <div class="step fade-in">
+        <h4>SPF + Base</h4>
+        <p>tarte BB Blur — sun protection + skin-like coverage. The finishing touch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial" id="results">
+  <div class="container">
+    <div class="stars fade-in">★★★★★</div>
+    <blockquote class="fade-in">
+      "I've tried everything — 10-step routines, expensive serums, dermatologist recommendations. This simple K-beauty routine is the first thing that actually gave me glass skin. Day 5 was when I saw the difference."
+    </blockquote>
+    <cite class="fade-in">— Day 5 results, real customer</cite>
+  </div>
+</section>
+
+<section class="cta" id="shop">
+  <div class="container">
+    <div class="cta-box fade-in">
+      <h2>Get the Complete Glass Skin Set</h2>
+      <p>All four products I use daily, linked below. Shop through my links to support this page.</p>
+      <div class="total">Under $150</div>
+      <div class="savings">Save vs. buying 10+ random products that don't work</div>
+      <a href="#" class="btn">Shop My Exact Routine</a>
+      <div class="disclosure">#affiliate — I earn a commission on qualifying purchases at no extra cost to you.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="logo">Glass Skin</div>
+    <p>&copy; 2026 Glass Skin Routine. K-beauty essentials curated with love. #affiliate</p>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

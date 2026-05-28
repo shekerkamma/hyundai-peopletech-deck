@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autonomous Coding Pipeline</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0F1419;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    color: #FFFFFF;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .header {
+    text-align: center;
+    padding: 40px 20px 10px;
+  }
+  .header h1 {
+    font-size: 42px;
+    font-weight: 800;
+    color: #E8C872;
+    letter-spacing: -1px;
+  }
+  .header p {
+    font-size: 16px;
+    color: #9CA3AF;
+    margin-top: 8px;
+  }
+
+  /* Stats row */
+  .stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 28px auto 10px;
+    padding: 0 30px;
+    flex-wrap: wrap;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-value {
+    font-size: 28px;
+    font-weight: 800;
+    color: #E8C872;
+  }
+  .stat-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #9CA3AF;
+    margin-top: 4px;
+  }
+
+  /* Pipeline container */
+  .pipeline {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 0 30px;
+  }
+
+  /* Cards */
+  .card {
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+    flex: 1;
+    min-width: 0;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  }
+  .card.dimmed {
+    opacity: 0.2;
+    filter: grayscale(0.6);
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .card-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+  .card-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .card-subtitle {
+    font-size: 13px;
+    color: #9CA3AF;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  /* Arrow connector */
+  .arrow-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    min-width: 48px;
+    position: relative;
+  }
+  .arrow-connector svg {
+    width: 48px;
+    height: 24px;
+    overflow: visible;
+  }
+  .arrow-line {
+    stroke-dasharray: 6 4;
+    animation: flowRight 1s linear infinite;
+  }
+  @keyframes flowRight {
+    to { stroke-dashoffset: -10; }
+  }
+  .arrow-dot {
+    animation: pulseDot 1.5s ease-in-out infinite;
+  }
+  @keyframes pulseDot {
+    0%, 100% { opacity: 0.4; r: 3; }
+    50% { opacity: 1; r: 4; }
+  }
+
+  /* Card color themes */
+  .card-trigger {
+    background: linear-gradient(135deg, #1a1a0e 0%, #1f1b10 100%);
+    border: 1px solid #E8C87233;
+  }
+  .card-trigger .card-label { color: #E8C872; }
+  .card-trigger .card-title { color: #E8C872; }
+
+  .card-agent {
+    background: linear-gradient(135deg, #0e1a2a 0%, #101f30 100%);
+    border: 1px solid #4A9EDE33;
+  }
+  .card-agent .card-label { color: #4A9EDE; }
+  .card-agent .card-title { color: #4A9EDE; }
+
+  .card-execution {
+    background: linear-gradient(135deg, #0e1a12 0%, #101f16 100%);
+    border: 1px solid #81C78433;
+  }
+  .card-execution .card-label { color: #81C784; }
+  .card-execution .card-title { color: #81C784; }
+
+  .card-validation {
+    background: linear-gradient(135deg, #1a0e0e 0%, #201414 100%);
+    border: 1px solid #E5737333;
+  }
+  .card-validation .card-label { color: #E57373; }
+  .card-validation .card-title { color: #E57373; }
+
+  .card-delivery {
+    background: linear-gradient(135deg, #160e1f 0%, #1a1028 100%);
+    border: 1px solid #A78BFA33;
+  }
+  .card-delivery .card-label { color: #A78BFA; }
+  .card-delivery .card-title { color: #A78BFA; }
+
+  /* Mini items inside cards */
+  .mini-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    transition: background 0.2s;
+    font-size: 12px;
+    color: #ddd;
+    line-height: 1.4;
+  }
+  .mini-item .mi-icon { font-size: 15px; flex-shrink: 0; }
+
+  .card-trigger .mini-item { background: #E8C87210; }
+  .card-trigger .mini-item:hover { background: #E8C87225; }
+
+  .card-agent .mini-item { background: #4A9EDE10; }
+  .card-agent .mini-item:hover { background: #4A9EDE20; }
+
+  .card-execution .mini-item { background: #81C78410; }
+  .card-execution .mini-item:hover { background: #81C78420; }
+
+  .card-validation .mini-item { background: #E5737310; }
+  .card-validation .mini-item:hover { background: #E5737320; }
+
+  .card-delivery .mini-item { background: #A78BFA10; }
+  .card-delivery .mini-item:hover { background: #A78BFA20; }
+
+  /* Badges */
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+  }
+  .badge-blue {
+    background: #4A9EDE20;
+    color: #4A9EDE;
+    border: 1px solid #4A9EDE40;
+  }
+  .badge-green {
+    background: #81C78420;
+    color: #81C784;
+    border: 1px solid #81C78440;
+  }
+  .badge-purple {
+    background: #A78BFA20;
+    color: #A78BFA;
+    border: 1px solid #A78BFA40;
+  }
+
+  /* Callout */
+  .callout {
+    max-width: 1400px;
+    margin: 10px auto 40px;
+    padding: 0 30px;
+  }
+  .callout-inner {
+    background: #E8C87210;
+    border: 2px solid #E8C872;
+    border-radius: 12px;
+    padding: 20px 28px;
+    text-align: center;
+  }
+  .callout-inner p {
+    font-size: 17px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.6;
+  }
+  .callout-inner span {
+    color: #E8C872;
+  }
+
+  /* Tooltip */
+  .tooltip {
+    position: fixed;
+    background: #1E2530;
+    border: 1px solid #3A4250;
+    border-radius: 10px;
+    padding: 14px 18px;
+    max-width: 280px;
+    font-size: 12px;
+    color: #ddd;
+    line-height: 1.5;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 100;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  }
+  .tooltip.show { opacity: 1; }
+  .tooltip strong { color: #E8C872; }
+
+  /* Responsive */
+  @media (max-width: 1100px) {
+    .pipeline {
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+    .card { width: 100%; max-width: 420px; }
+    .arrow-connector {
+      width: 24px;
+      min-width: 24px;
+      height: 48px;
+      transform: rotate(90deg);
+    }
+    .stats-row { gap: 24px; }
+    .stat-value { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Autonomous Coding Pipeline</h1>
+  <p>How AI agents handle software engineering tasks end-to-end, from issue to merged PR</p>
+</div>
+
+<!-- STATS ROW -->
+<div class="stats-row">
+  <div class="stat">
+    <div class="stat-value">77.6%</div>
+    <div class="stat-label">SWE-Bench Resolve Rate</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">~$3</div>
+    <div class="stat-label">Cost per PR</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">37%</div>
+    <div class="stat-label">Self-Written Commits</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">74.6k</div>
+    <div class="stat-label">GitHub Stars</div>
+  </div>
+</div>
+
+<!-- PIPELINE -->
+<div class="pipeline">
+
+  <!-- CARD 1: TRIGGER -->
+  <div class="card card-trigger" data-tooltip="<strong>Trigger</strong><br><br>Any event can kick off an autonomous coding session. Label a GitHub issue, mention the bot in Slack, or let a CI failure auto-assign it. No human has to click 'start'.">
+    <div class="card-label">Trigger</div>
+    <div class="card-title">Issue Created</div>
+    <div class="card-subtitle">Any event can start an autonomous agent session</div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>GitHub Issue labeled <code style="background:#E8C87220;padding:1px 5px;border-radius:4px;font-size:11px;color:#E8C872;">fix-me</code></span>
+    </div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>Slack message to <code style="background:#E8C87220;padding:1px 5px;border-radius:4px;font-size:11px;color:#E8C872;">@openhands</code></span>
+    </div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>CI/CD failure alert</span>
+    </div>
+  </div>
+
+  <!-- ARROW 1-2 -->
+  <div class="arrow-connector">
+    <svg viewBox="0 0 48 24">
+      <line class="arrow-line" x1="0" y1="12" x2="40" y2="12" stroke="#E8C872" stroke-width="2"/>
+      <circle class="arrow-dot" cx="42" cy="12" r="3" fill="#4A9EDE"/>
+      <polygon points="38,6 48,12 38,18" fill="#4A9EDE" opacity="0.7"/>
+    </svg>
+  </div>
+
+  <!-- CARD 2: AGENT -->
+  <div class="card card-agent" data-tooltip="<strong>CodeAct Agent</strong><br><br>The agent reads the full repo context, forms a plan via chain-of-thought reasoning, writes the code and tests, then executes everything inside a sandboxed container. Scores 77.6% on the SWE-Bench benchmark.">
+    <div class="card-label">Agent</div>
+    <div class="card-title">CodeAct Agent</div>
+    <div class="card-subtitle">Autonomous reasoning + code generation</div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>Reads codebase context</span>
+    </div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>Plans approach (chain-of-thought)</span>
+    </div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>Writes code + tests</span>
+    </div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>Runs in sandboxed Docker container</span>
+    </div>
+    <div class="badge badge-blue">77.6% SWE-Bench</div>
+  </div>
+
+  <!-- ARROW 2-3 -->
+  <div class="arrow-connector">
+    <svg viewBox="0 0 48 24">
+      <line class="arrow-line" x1="0" y1="12" x2="40" y2="12" stroke="#4A9EDE" stroke-width="2"/>
+      <circle class="arrow-dot" cx="42" cy="12" r="3" fill="#81C784"/>
+      <polygon points="38,6 48,12 38,18" fill="#81C784" opacity="0.7"/>
+    </svg>
+  </div>
+
+  <!-- CARD 3: EXECUTION -->
+  <div class="card card-execution" data-tooltip="<strong>Sandboxed Runtime</strong><br><br>Every agent session runs inside an ephemeral Docker container. The agent has a full Linux environment, Python interpreter, file system access, a headless Chromium browser, and a VS Code editor. Containers are destroyed after each session.">
+    <div class="card-label">Execution</div>
+    <div class="card-title">Sandboxed Runtime</div>
+    <div class="card-subtitle">Isolated environment per session</div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>Linux bash shell</span>
+    </div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>Python interpreter</span>
+    </div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>File read/write</span>
+    </div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>Web browser (Chromium)</span>
+    </div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>VS Code editor</span>
+    </div>
+    <div class="badge badge-green">Isolated &bull; Audited &bull; Ephemeral</div>
+  </div>
+
+  <!-- ARROW 3-4 -->
+  <div class="arrow-connector">
+    <svg viewBox="0 0 48 24">
+      <line class="arrow-line" x1="0" y1="12" x2="40" y2="12" stroke="#81C784" stroke-width="2"/>
+      <circle class="arrow-dot" cx="42" cy="12" r="3" fill="#E57373"/>
+      <polygon points="38,6 48,12 38,18" fill="#E57373" opacity="0.7"/>
+    </svg>
+  </div>
+
+  <!-- CARD 4: VALIDATION -->
+  <div class="card card-validation" data-tooltip="<strong>Quality Gates</strong><br><br>Before any code ships, it passes through automated tests, security scans (SAST/DAST), lint and type checks, and a confidence score. If confidence is below 0.7, a human is pulled in for review.">
+    <div class="card-label">Validation</div>
+    <div class="card-title">Quality Gates</div>
+    <div class="card-subtitle">Automated checks before any code ships</div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>Automated test suite passes</span>
+    </div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>Security scan (SAST/DAST)</span>
+    </div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>Lint + type check</span>
+    </div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>Confidence scoring (&gt;0.7 threshold)</span>
+    </div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>Human-in-the-loop escalation</span>
+    </div>
+  </div>
+
+  <!-- ARROW 4-5 -->
+  <div class="arrow-connector">
+    <svg viewBox="0 0 48 24">
+      <line class="arrow-line" x1="0" y1="12" x2="40" y2="12" stroke="#E57373" stroke-width="2"/>
+      <circle class="arrow-dot" cx="42" cy="12" r="3" fill="#A78BFA"/>
+      <polygon points="38,6 48,12 38,18" fill="#A78BFA" opacity="0.7"/>
+    </svg>
+  </div>
+
+  <!-- CARD 5: DELIVERY -->
+  <div class="card card-delivery" data-tooltip="<strong>PR + Deploy</strong><br><br>The agent opens a pull request with a clear summary linked to the original issue. CI/CD runs automatically, and if approved, the PR auto-merges. Average cost: ~$3 per resolved issue.">
+    <div class="card-label">Delivery</div>
+    <div class="card-title">PR + Deploy</div>
+    <div class="card-subtitle">Ship with full traceability</div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>Pull request with summary</span>
+    </div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>Linked to original issue</span>
+    </div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>CI/CD pipeline triggered</span>
+    </div>
+    <div class="mini-item">
+      <span class="mi-icon">&#9679;</span>
+      <span>Auto-merge if approved</span>
+    </div>
+    <div class="badge badge-purple">~$3 per PR</div>
+  </div>
+
+</div>
+
+<!-- CALLOUT -->
+<div class="callout">
+  <div class="callout-inner">
+    <p>From issue to merged PR in <span>minutes, not days</span>. Every action <span>logged</span>, every decision <span>auditable</span>, every environment <span>sandboxed</span>.</p>
+  </div>
+</div>
+
+<!-- TOOLTIP -->
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+  const tooltip = document.getElementById('tooltip');
+  const cards = document.querySelectorAll('.card');
+
+  // Hover tooltips
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', e => {
+      const html = card.getAttribute('data-tooltip');
+      if (!html) return;
+      tooltip.innerHTML = html;
+      tooltip.classList.add('show');
+    });
+    card.addEventListener('mousemove', e => {
+      const x = e.clientX + 16;
+      const y = e.clientY + 16;
+      const maxX = window.innerWidth - 300;
+      const maxY = window.innerHeight - 200;
+      tooltip.style.left = Math.min(x, maxX) + 'px';
+      tooltip.style.top = Math.min(y, maxY) + 'px';
+    });
+    card.addEventListener('mouseleave', () => {
+      tooltip.classList.remove('show');
+    });
+  });
+
+  // Click to highlight
+  let activeCard = null;
+  cards.forEach(card => {
+    card.addEventListener('click', e => {
+      e.stopPropagation();
+      if (activeCard === card) {
+        cards.forEach(c => c.classList.remove('dimmed'));
+        activeCard = null;
+      } else {
+        cards.forEach(c => c.classList.add('dimmed'));
+        card.classList.remove('dimmed');
+        activeCard = card;
+      }
+    });
+  });
+
+  document.addEventListener('click', () => {
+    cards.forEach(c => c.classList.remove('dimmed'));
+    activeCard = null;
+  });
+</script>
+
+</body>
+</html>

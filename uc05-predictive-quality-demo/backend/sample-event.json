@@ -1,0 +1,35 @@
+{
+  "event_id": "NE-12345-demo",
+  "timestamp": "2026-05-24T14:18:22.421Z",
+  "plant": "Ulsan Plant 5",
+  "line_id": "SDF-LINE-03",
+  "vin": "KM8DEMO0000012345",
+  "model_variant": "IONIQ 5 · EV crossover",
+  "work_order": "WO-882104",
+  "shift": "B",
+  "line_speed": 58,
+  "drift_level": 1.4,
+  "station_results": [
+    {
+      "station_id": "body-weld",
+      "station_name": "Body weld",
+      "metric": "gap_variance_mm",
+      "value": 0.382,
+      "limit": 0.34,
+      "score": 87,
+      "z_score": 5.771,
+      "status": "hold"
+    }
+  ],
+  "prediction": {
+    "escape_risk": 84,
+    "status": "hold",
+    "model_version": "body-weld-risk-v1.0",
+    "reason_codes": ["gap_variance_mm_above_limit"]
+  },
+  "mes_action": {
+    "action": "HOLD_AND_REWORK",
+    "quality_gate": "QG-SDF-03",
+    "ticket_id": "RWK-900001"
+  }
+}
