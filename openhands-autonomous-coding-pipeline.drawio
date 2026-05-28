@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" version="24.0.0">
+  <diagram name="OpenHands Autonomous Coding Pipeline" id="openhands-pipeline-001">
+    <mxGraphModel dx="1400" dy="1000" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="OpenHands Autonomous Coding Pipeline"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=24;fontStyle=1;fontFamily=Helvetica;fontColor=#1F3B6E;"
+          vertex="1" parent="1">
+          <mxGeometry x="50" y="14" width="600" height="36" as="geometry" />
+        </mxCell>
+
+        <!-- Subtitle -->
+        <mxCell id="subtitle" value="End-to-end: issue created → code written → PR merged — every action sandboxed, logged, auditable"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=12;fontFamily=Helvetica;fontColor=#6B7280;"
+          vertex="1" parent="1">
+          <mxGeometry x="50" y="50" width="700" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ═══ ZONE: Trigger Layer ═══ -->
+        <mxCell id="zone-trigger" value=""
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F7FA;strokeColor=#D0D5DD;strokeWidth=1;arcSize=4;fontFamily=Helvetica;"
+          vertex="1" parent="1">
+          <mxGeometry x="50" y="86" width="440" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="zone-trigger-label" value="TRIGGER"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontStyle=1;fontFamily=Helvetica;fontColor=#1F3B6E;"
+          vertex="1" parent="1">
+          <mxGeometry x="60" y="90" width="80" height="18" as="geometry" />
+        </mxCell>
+
+        <mxCell id="gh-issue" value="&lt;b&gt;GitHub Issue&lt;/b&gt;&#xa;label: fix-me"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="65" y="114" width="125" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="gh-webhook" value="&lt;b&gt;Webhook Listener&lt;/b&gt;&#xa;issue / PR events"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="210" y="114" width="130" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="agent-server" value="&lt;b&gt;Agent Server&lt;/b&gt;&#xa;FastAPI + WebSocket"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0D3B5E;strokeColor=#0D3B5E;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#FFFFFF;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="358" y="114" width="120" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ═══ ZONE: Agent Core ═══ -->
+        <mxCell id="zone-agent" value=""
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F7FA;strokeColor=#D0D5DD;strokeWidth=1;arcSize=4;fontFamily=Helvetica;"
+          vertex="1" parent="1">
+          <mxGeometry x="510" y="86" width="440" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="zone-agent-label" value="AGENT CORE"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontStyle=1;fontFamily=Helvetica;fontColor=#1F3B6E;"
+          vertex="1" parent="1">
+          <mxGeometry x="520" y="90" width="100" height="18" as="geometry" />
+        </mxCell>
+
+        <mxCell id="codeact" value="&lt;b&gt;CodeAct Agent&lt;/b&gt;&#xa;stateless event processor"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0D3B5E;strokeColor=#0D3B5E;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#FFFFFF;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="525" y="114" width="140" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="llm-router" value="&lt;b&gt;LLM Router&lt;/b&gt;&#xa;LiteLLM · 100+ providers"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="683" y="114" width="130" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="llms" value="&lt;b&gt;Claude 4.5 Opus&lt;/b&gt;&#xa;&lt;b&gt;GPT-5.2 Codex&lt;/b&gt;"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FDF4;strokeColor=#BBF7D0;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#166534;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="830" y="114" width="110" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ═══ ZONE: Execution Sandbox ═══ -->
+        <mxCell id="zone-sandbox" value=""
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F7FA;strokeColor=#D0D5DD;strokeWidth=1;arcSize=4;fontFamily=Helvetica;"
+          vertex="1" parent="1">
+          <mxGeometry x="50" y="210" width="580" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="zone-sandbox-label" value="SANDBOXED EXECUTION"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontStyle=1;fontFamily=Helvetica;fontColor=#1F3B6E;"
+          vertex="1" parent="1">
+          <mxGeometry x="60" y="214" width="180" height="18" as="geometry" />
+        </mxCell>
+
+        <mxCell id="docker" value="&lt;b&gt;Docker Sandbox&lt;/b&gt;&#xa;isolated per agent"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0D3B5E;strokeColor=#0D3B5E;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#FFFFFF;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="65" y="238" width="120" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bash-py" value="&lt;b&gt;Bash + Python&lt;/b&gt;&#xa;interactive shells"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="200" y="238" width="115" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="browser" value="&lt;b&gt;Chromium&lt;/b&gt;&#xa;web browsing"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="330" y="238" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="fs-overlay" value="&lt;b&gt;File System&lt;/b&gt;&#xa;overlay mount"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="445" y="238" width="100" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="vscode" value="&lt;b&gt;VS Code&lt;/b&gt;&#xa;editor"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="560" y="238" width="60" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ═══ ZONE: Tools & Integration ═══ -->
+        <mxCell id="zone-tools" value=""
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F7FA;strokeColor=#D0D5DD;strokeWidth=1;arcSize=4;fontFamily=Helvetica;"
+          vertex="1" parent="1">
+          <mxGeometry x="650" y="210" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="zone-tools-label" value="TOOL REGISTRY"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontStyle=1;fontFamily=Helvetica;fontColor=#1F3B6E;"
+          vertex="1" parent="1">
+          <mxGeometry x="660" y="214" width="100" height="18" as="geometry" />
+        </mxCell>
+
+        <mxCell id="native-tools" value="&lt;b&gt;Native Tools&lt;/b&gt;&#xa;file ops, shell, git"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="665" y="238" width="130" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="mcp-tools" value="&lt;b&gt;MCP Tools&lt;/b&gt;&#xa;JSON-RPC 2.0"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="810" y="238" width="125" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ═══ ZONE: Output Pipeline ═══ -->
+        <mxCell id="zone-output" value=""
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F7FA;strokeColor=#D0D5DD;strokeWidth=1;arcSize=4;fontFamily=Helvetica;"
+          vertex="1" parent="1">
+          <mxGeometry x="50" y="334" width="900" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="zone-output-label" value="OUTPUT PIPELINE"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontStyle=1;fontFamily=Helvetica;fontColor=#1F3B6E;"
+          vertex="1" parent="1">
+          <mxGeometry x="60" y="338" width="120" height="18" as="geometry" />
+        </mxCell>
+
+        <mxCell id="git-ops" value="&lt;b&gt;Git Operations&lt;/b&gt;&#xa;branch · commit · push"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0D3B5E;strokeColor=#0D3B5E;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#FFFFFF;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="65" y="362" width="140" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="pr-gen" value="&lt;b&gt;PR Generator&lt;/b&gt;&#xa;summary · issue link"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="230" y="362" width="130" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cicd" value="&lt;b&gt;CI/CD Pipeline&lt;/b&gt;&#xa;tests · SAST · lint"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="385" y="362" width="130" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="review-gate" value="&lt;b&gt;Review Gate&lt;/b&gt;"
+          style="rhombus;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#C7D2FE;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#1F3B6E;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="545" y="352" width="110" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="auto-merge" value="&lt;b&gt;Auto-Merge&lt;/b&gt;&#xa;confidence ≥ 0.7"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FDF4;strokeColor=#BBF7D0;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#166534;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="685" y="342" width="115" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="human-review" value="&lt;b&gt;Human Review&lt;/b&gt;&#xa;confidence &lt; 0.7"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#E31837;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#E31837;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="685" y="397" width="115" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="deployed" value="&lt;b&gt;Deployed&lt;/b&gt;"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FDF4;strokeColor=#166534;strokeWidth=2;fontFamily=Helvetica;fontSize=12;fontColor=#166534;fontStyle=1;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="830" y="362" width="100" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ═══ CROSS-CUTTING: Security & Observability ═══ -->
+        <mxCell id="zone-cross" value=""
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F7FA;strokeColor=#D0D5DD;strokeWidth=1;arcSize=4;fontFamily=Helvetica;"
+          vertex="1" parent="1">
+          <mxGeometry x="975" y="86" width="390" height="348" as="geometry" />
+        </mxCell>
+        <mxCell id="zone-cross-label" value="CROSS-CUTTING"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontStyle=1;fontFamily=Helvetica;fontColor=#1F3B6E;"
+          vertex="1" parent="1">
+          <mxGeometry x="985" y="90" width="120" height="18" as="geometry" />
+        </mxCell>
+
+        <mxCell id="event-store" value="&lt;b&gt;Event Store&lt;/b&gt;&#xa;append-only log&#xa;deterministic replay"
+          style="shape=mxgraph.flowchart.database;whiteSpace=wrap;html=1;fillColor=#F0F9FF;strokeColor=#BAE6FD;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#1F3B6E;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="995" y="116" width="110" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="security-analyzer" value="&lt;b&gt;SecurityAnalyzer&lt;/b&gt;&#xa;LOW / MEDIUM / HIGH&#xa;ConfirmationPolicy"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#E31837;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#E31837;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="1120" y="116" width="130" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="condenser" value="&lt;b&gt;Condenser&lt;/b&gt;&#xa;context window mgmt&#xa;2× cost reduction"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D0D5DD;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="995" y="206" width="110" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="secret-registry" value="&lt;b&gt;Secret Registry&lt;/b&gt;&#xa;per-conversation&#xa;masked outputs"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#92400E;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#92400E;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="1120" y="206" width="130" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="audit-logger" value="&lt;b&gt;Audit Logger&lt;/b&gt;&#xa;every action timestamped&#xa;compliance-ready"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#92400E;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#92400E;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="995" y="296" width="110" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="multi-agent" value="&lt;b&gt;Multi-Agent&lt;/b&gt;&#xa;sub-agent delegation&#xa;parallel execution"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEF2FF;strokeColor=#C7D2FE;strokeWidth=1.5;fontFamily=Helvetica;fontSize=10;fontColor=#1F3B6E;align=center;verticalAlign=middle;"
+          vertex="1" parent="1">
+          <mxGeometry x="1120" y="296" width="130" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ═══ NUMBERED ARROWS (data flows 1-12) ═══ -->
+
+        <!-- 1: Issue → Webhook -->
+        <mxCell id="arr-1" value=""
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#9CA3AF;strokeWidth=2;fontFamily=Helvetica;"
+          edge="1" source="gh-issue" target="gh-webhook" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="num-1" value="1"
+          style="ellipse;whiteSpace=wrap;html=1;fillColor=#E31837;strokeColor=#E31837;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=10;fontStyle=1;aspect=fixed;"
+          vertex="1" parent="1">
+          <mxGeometry x="193" y="130" width="22" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- 2: Webhook → Agent Server -->
+        <mxCell id="arr-2" value=""
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#9CA3AF;strokeWidth=2;fontFamily=Helvetica;"
+          edge="1" source="gh-webhook" target="agent-server" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="num-2" value="2"
+          style="ellipse;whiteSpace=wrap;html=1;fillColor=#E31837;strokeColor=#E31837;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=10;fontStyle=1;aspect=fixed;"
+          vertex="1" parent="1">
+          <mxGeometry x="343" y="130" width="22" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- 3: Agent Server → CodeAct -->
+        <mxCell id="arr-3" value=""
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#9CA3AF;strokeWidth=2;fontFamily=Helvetica;"
+          edge="1" source="agent-server" target="codeact" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="num-3" value="3"
+          style="ellipse;whiteSpace=wrap;html=1;fillColor=#E31837;strokeColor=#E31837;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=10;fontStyle=1;aspect=fixed;"
+          vertex="1" parent="1">
+          <mxGeometry x="490" y="130" width="22" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- 4: CodeAct → LLM Router -->
+        <mxCell id="arr-4" value=""
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#9CA3AF;strokeWidth=2;fontFamily=Helvetica;"
+          edge="1" source="codeact" target="llm-router" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="num-4" value="4"
+          style="ellipse;whiteSpace=wrap;html=1;fillColor=#E31837;strokeColor=#E31837;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=10;fontStyle=1;aspect=fixed;"
+          vertex="1" parent="1">
+          <mxGeometry x="670" y="130" width="22" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- 5: LLM Router → LLMs -->
+        <mxCell id="arr-5" value=""
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#9CA3AF;strokeWidth=2;fontFamily=Helvetica;"
+          edge="1" source="llm-router" target="llms" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="num-5" value="5"
+          style="ellipse;whiteSpace=wrap;html=1;fillColor=#1F3B6E;strokeColor=#1F3B6E;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=10;fontStyle=1;aspect=fixed;"
+          vertex="1" parent="1">
+          <mxGeometry x="820" y="130" width="22" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- 6: CodeAct → Docker Sandbox -->
+        <mxCell id="arr-6" value=""
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#9CA3AF;strokeWidth=2;fontFamily=Helvetica;"
+          edge="1" source="codeact" target="docker" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="num-6" value="6"
+          style="ellipse;whiteSpace=wrap;html=1;fillColor=#E31837;strokeColor=#E31837;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=10;fontStyle=1;aspect=fixed;"
+          vertex="1" parent="1">
+          <mxGeometry x="440" y="195" width="22" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- 7: CodeAct → Tool Registry (via right side) -->
+        <mxCell id="arr-7" value=""
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#9CA3AF;strokeWidth=2;fontFamily=Helvetica;"
+          edge="1" source="codeact" target="native-tools" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="num-7" value="7"
+          style="ellipse;whiteSpace=wrap;html=1;fillColor=#1F3B6E;strokeColor=#1F3B6E;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=10;fontStyle=1;aspect=fixed;"
+          vertex="1" parent="1">
+          <mxGeometry x="718" y="195" width="22" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- 8: Sandbox → Git Ops -->
+        <mxCell id="arr-8" value=""
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#9CA3AF;strokeWidth=2;fontFamily=Helvetica;"
+          edge="1" source="docker" target="git-ops" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="num-8" value="8"
+          style="ellipse;whiteSpace=wrap;html=1;fillColor=#E31837;strokeColor=#E31837;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=10;fontStyle=1;aspect=fixed;"
+          vertex="1" parent="1">
+          <mxGeometry x="114" y="319" width="22" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- 9: Git Ops → PR Gen -->
+        <mxCell id="arr-9" value=""
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#9CA3AF;strokeWidth=2;fontFamily=Helvetica;"
+          edge="1" source="git-ops" target="pr-gen" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="num-9" value="9"
+          style="ellipse;whiteSpace=wrap;html=1;fillColor=#E31837;strokeColor=#E31837;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=10;fontStyle=1;aspect=fixed;"
+          vertex="1" parent="1">
+          <mxGeometry x="213" y="378" width="22" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- 10: PR Gen → CI/CD -->
+        <mxCell id="arr-10" value=""
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#9CA3AF;strokeWidth=2;fontFamily=Helvetica;"
+          edge="1" source="pr-gen" target="cicd" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="num-10" value="10"
+          style="ellipse;whiteSpace=wrap;html=1;fillColor=#E31837;strokeColor=#E31837;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=10;fontStyle=1;aspect=fixed;"
+          vertex="1" parent="1">
+          <mxGeometry x="368" y="378" width="22" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- 11: CI/CD → Review Gate -->
+        <mxCell id="arr-11" value=""
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#9CA3AF;strokeWidth=2;fontFamily=Helvetica;"
+          edge="1" source="cicd" target="review-gate" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="num-11" value="11"
+          style="ellipse;whiteSpace=wrap;html=1;fillColor=#E31837;strokeColor=#E31837;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=10;fontStyle=1;aspect=fixed;"
+          vertex="1" parent="1">
+          <mxGeometry x="524" y="376" width="22" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- 12a: Review Gate → Auto-Merge -->
+        <mxCell id="arr-12a" value=""
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#166534;strokeWidth=2;fontFamily=Helvetica;"
+          edge="1" source="review-gate" target="auto-merge" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 12b: Review Gate → Human Review -->
+        <mxCell id="arr-12b" value=""
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#E31837;strokeWidth=2;fontFamily=Helvetica;"
+          edge="1" source="review-gate" target="human-review" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="num-12" value="12"
+          style="ellipse;whiteSpace=wrap;html=1;fillColor=#E31837;strokeColor=#E31837;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=10;fontStyle=1;aspect=fixed;"
+          vertex="1" parent="1">
+          <mxGeometry x="660" y="376" width="22" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- Auto-Merge → Deployed -->
+        <mxCell id="arr-deploy-a" value=""
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.35;entryDx=0;entryDy=0;strokeColor=#166534;strokeWidth=2;fontFamily=Helvetica;"
+          edge="1" source="auto-merge" target="deployed" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Human Review → Deployed -->
+        <mxCell id="arr-deploy-b" value=""
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.65;entryDx=0;entryDy=0;strokeColor=#9CA3AF;strokeWidth=2;dashed=1;fontFamily=Helvetica;"
+          edge="1" source="human-review" target="deployed" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Cross-cutting: Event Store ← CodeAct -->
+        <mxCell id="arr-event" value=""
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#BAE6FD;strokeWidth=1.5;dashed=1;fontFamily=Helvetica;"
+          edge="1" source="llms" target="event-store" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Cross-cutting: SecurityAnalyzer ← Docker -->
+        <mxCell id="arr-security" value=""
+          style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;strokeColor=#E31837;strokeWidth=1.5;dashed=1;fontFamily=Helvetica;"
+          edge="1" source="mcp-tools" target="security-analyzer" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ═══ KEY / LEGEND ═══ -->
+        <mxCell id="legend-title" value="Data Flow Key"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontStyle=1;fontFamily=Helvetica;fontColor=#1F3B6E;"
+          vertex="1" parent="1">
+          <mxGeometry x="975" y="454" width="100" height="16" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend-1" value="① Issue event triggers webhook"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=9;fontFamily=Helvetica;fontColor=#6B7280;"
+          vertex="1" parent="1">
+          <mxGeometry x="975" y="472" width="200" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-2" value="② Webhook routes to Agent Server"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=9;fontFamily=Helvetica;fontColor=#6B7280;"
+          vertex="1" parent="1">
+          <mxGeometry x="975" y="488" width="200" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-3" value="③ Server spawns CodeAct Agent"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=9;fontFamily=Helvetica;fontColor=#6B7280;"
+          vertex="1" parent="1">
+          <mxGeometry x="975" y="504" width="200" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-4" value="④ Agent queries LLM via LiteLLM"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=9;fontFamily=Helvetica;fontColor=#6B7280;"
+          vertex="1" parent="1">
+          <mxGeometry x="975" y="520" width="200" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-5" value="⑤ LLM returns reasoning + actions"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=9;fontFamily=Helvetica;fontColor=#6B7280;"
+          vertex="1" parent="1">
+          <mxGeometry x="975" y="536" width="200" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-6" value="⑥ Actions execute in Docker sandbox"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=9;fontFamily=Helvetica;fontColor=#6B7280;"
+          vertex="1" parent="1">
+          <mxGeometry x="975" y="552" width="200" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-7" value="⑦ Agent invokes registered tools"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=9;fontFamily=Helvetica;fontColor=#6B7280;"
+          vertex="1" parent="1">
+          <mxGeometry x="1180" y="472" width="200" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-8" value="⑧ Code changes committed to git"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=9;fontFamily=Helvetica;fontColor=#6B7280;"
+          vertex="1" parent="1">
+          <mxGeometry x="1180" y="488" width="200" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-9" value="⑨ PR generated with summary"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=9;fontFamily=Helvetica;fontColor=#6B7280;"
+          vertex="1" parent="1">
+          <mxGeometry x="1180" y="504" width="200" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-10" value="⑩ CI/CD runs tests + SAST + lint"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=9;fontFamily=Helvetica;fontColor=#6B7280;"
+          vertex="1" parent="1">
+          <mxGeometry x="1180" y="520" width="200" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-11" value="⑪ Confidence scoring at review gate"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=9;fontFamily=Helvetica;fontColor=#6B7280;"
+          vertex="1" parent="1">
+          <mxGeometry x="1180" y="536" width="200" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-12" value="⑫ Auto-merge or human review"
+          style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=9;fontFamily=Helvetica;fontColor=#6B7280;"
+          vertex="1" parent="1">
+          <mxGeometry x="1180" y="552" width="200" height="14" as="geometry" />
+        </mxCell>
+
+        <!-- ═══ STATS BAR ═══ -->
+        <mxCell id="stats-bg" value=""
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0D3B5E;strokeColor=#0D3B5E;arcSize=4;"
+          vertex="1" parent="1">
+          <mxGeometry x="50" y="460" width="900" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="stat-1" value="77.6% SWE-Bench Resolve Rate"
+          style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontStyle=1;fontFamily=Helvetica;fontColor=#FFFFFF;"
+          vertex="1" parent="1">
+          <mxGeometry x="55" y="462" width="220" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="stat-2" value="~$3 Cost per PR"
+          style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontStyle=1;fontFamily=Helvetica;fontColor=#FFFFFF;"
+          vertex="1" parent="1">
+          <mxGeometry x="280" y="462" width="150" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="stat-3" value="37% Self-Written Commits"
+          style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontStyle=1;fontFamily=Helvetica;fontColor=#FFFFFF;"
+          vertex="1" parent="1">
+          <mxGeometry x="445" y="462" width="200" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="stat-4" value="74.6k ★ Open Source"
+          style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontStyle=1;fontFamily=Helvetica;fontColor=#FFFFFF;"
+          vertex="1" parent="1">
+          <mxGeometry x="660" y="462" width="180" height="36" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

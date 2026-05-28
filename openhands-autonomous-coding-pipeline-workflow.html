@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenHands Autonomous Coding Pipeline — Workflow</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0f0f0f;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  color: #ffffff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.header {
+  text-align: center;
+  padding: 32px 20px 8px;
+}
+.header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+.header p {
+  font-size: 14px;
+  color: #888;
+  margin-top: 6px;
+}
+
+/* Stats bar */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 16px 20px 24px;
+}
+.stat { text-align: center; }
+.stat-val {
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #3B82F6, #10B981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stat-label { font-size: 11px; color: #888; margin-top: 2px; }
+
+/* Diagram container */
+.diagram {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px 20px;
+}
+
+/* Pipeline rows */
+.pipeline-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 8px;
+}
+
+.row-label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #555;
+  width: 24px;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.row-nodes {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+}
+
+/* Nodes */
+.node {
+  min-width: 155px;
+  max-width: 170px;
+  border-radius: 12px;
+  padding: 16px 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.3s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+.node:hover {
+  transform: scale(1.06);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+.node.dimmed {
+  opacity: 0.12;
+  filter: grayscale(0.6);
+  transform: none !important;
+  box-shadow: none !important;
+}
+.node-icon { font-size: 24px; margin-bottom: 6px; }
+.node-label { font-size: 13px; font-weight: 700; color: #fff; }
+.node-sub { font-size: 10px; color: #aaa; margin-top: 3px; line-height: 1.3; }
+
+/* Node type colors */
+.node-trigger { background: #1e3a5f; border: 2px solid #3B82F6; }
+.node-process { background: #1a3d2e; border: 2px solid #10B981; }
+.node-tool    { background: #3d2e1a; border: 2px solid #F59E0B; }
+.node-output  { background: #3d1a1a; border: 2px solid #EF4444; }
+.node-data    { background: #1a1a2e; border: 2px solid #6366F1; }
+.node-decision{ background: #2e1a3d; border: 2px solid #A855F7; }
+
+/* Arrows */
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  flex-shrink: 0;
+  position: relative;
+}
+.arrow-h {
+  width: 40px;
+  height: 2px;
+  background: #444;
+  position: relative;
+}
+.arrow-h::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: -4px;
+  border: 5px solid transparent;
+  border-left: 7px solid #444;
+}
+.arrow-h.blue { background: #3B82F6; }
+.arrow-h.blue::after { border-left-color: #3B82F6; }
+.arrow-h.green { background: #10B981; }
+.arrow-h.green::after { border-left-color: #10B981; }
+.arrow-h.amber { background: #F59E0B; }
+.arrow-h.amber::after { border-left-color: #F59E0B; }
+.arrow-h.red { background: #EF4444; }
+.arrow-h.red::after { border-left-color: #EF4444; }
+
+.arrow-label {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  color: #666;
+  white-space: nowrap;
+}
+
+/* Vertical connectors */
+.v-connector {
+  display: flex;
+  justify-content: center;
+  padding: 4px 0;
+  margin-left: 24px;
+}
+.v-arrow {
+  width: 2px;
+  height: 28px;
+  background: #444;
+  position: relative;
+}
+.v-arrow::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: -4px;
+  border: 5px solid transparent;
+  border-top: 7px solid #444;
+}
+
+/* Cross-cutting sidebar */
+.main-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.pipeline-col { flex: 1; }
+.cross-col {
+  width: 185px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 0;
+}
+.cross-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #555;
+  text-align: center;
+  margin-bottom: 4px;
+}
+.cross-node {
+  border-radius: 10px;
+  padding: 12px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.25s, opacity 0.3s;
+}
+.cross-node:hover { transform: scale(1.05); }
+.cross-node.dimmed { opacity: 0.12; filter: grayscale(0.6); transform: none !important; }
+.cross-node .node-icon { font-size: 20px; margin-bottom: 4px; }
+.cross-node .node-label { font-size: 11px; }
+.cross-node .node-sub { font-size: 9px; }
+
+/* Decision split */
+.decision-split {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.split-branch {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.branch-label {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 6px;
+}
+.branch-yes { background: #10B98130; color: #10B981; }
+.branch-no  { background: #EF444430; color: #EF4444; }
+
+/* Legend */
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #888;
+}
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+/* Callout */
+.callout {
+  max-width: 1320px;
+  margin: 8px auto 32px;
+  padding: 0 24px;
+}
+.callout-inner {
+  background: #10B98115;
+  border: 2px solid #10B981;
+  border-radius: 10px;
+  padding: 16px 24px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+@media (max-width: 1100px) {
+  .main-layout { flex-direction: column; }
+  .cross-col { flex-direction: row; flex-wrap: wrap; width: 100%; justify-content: center; }
+  .cross-col .cross-node { width: 160px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>OpenHands Autonomous Coding Pipeline</h1>
+  <p>End-to-end: GitHub issue → AI agent writes code in sandbox → PR merged — every action auditable</p>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-val">77.6%</div><div class="stat-label">SWE-Bench Resolve</div></div>
+  <div class="stat"><div class="stat-val">~$3</div><div class="stat-label">Cost per PR</div></div>
+  <div class="stat"><div class="stat-val">37%</div><div class="stat-label">Self-Written Commits</div></div>
+  <div class="stat"><div class="stat-val">74.6k★</div><div class="stat-label">Open Source</div></div>
+</div>
+
+<div class="diagram">
+  <div class="main-layout">
+    <div class="pipeline-col">
+
+      <!-- Row 1: Trigger -->
+      <div class="pipeline-row">
+        <div class="row-label">Trigger</div>
+        <div class="row-nodes">
+          <div class="node node-trigger" data-id="1" data-connections="2">
+            <div class="node-icon">⚡</div>
+            <div class="node-label">GitHub Issue</div>
+            <div class="node-sub">Labeled fix-me or<br>@openhands mention</div>
+          </div>
+          <div class="arrow"><div class="arrow-h blue"><span class="arrow-label">event</span></div></div>
+          <div class="node node-trigger" data-id="2" data-connections="1,3">
+            <div class="node-icon">🔗</div>
+            <div class="node-label">Webhook Listener</div>
+            <div class="node-sub">Filters + normalizes<br>GitHub event payload</div>
+          </div>
+          <div class="arrow"><div class="arrow-h blue"><span class="arrow-label">HTTP POST</span></div></div>
+          <div class="node node-process" data-id="3" data-connections="2,4">
+            <div class="node-icon">🖥️</div>
+            <div class="node-label">Agent Server</div>
+            <div class="node-sub">FastAPI + WebSocket<br>session management</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="v-connector"><div class="v-arrow"></div></div>
+
+      <!-- Row 2: Agent Core -->
+      <div class="pipeline-row">
+        <div class="row-label">Agent</div>
+        <div class="row-nodes">
+          <div class="node node-process" data-id="4" data-connections="3,5,6,7">
+            <div class="node-icon">🧠</div>
+            <div class="node-label">CodeAct Agent</div>
+            <div class="node-sub">Stateless event processor<br>reasoning + execution</div>
+          </div>
+          <div class="arrow"><div class="arrow-h green"><span class="arrow-label">query</span></div></div>
+          <div class="node node-tool" data-id="5" data-connections="4,5b">
+            <div class="node-icon">🔀</div>
+            <div class="node-label">LLM Router</div>
+            <div class="node-sub">LiteLLM unified API<br>100+ providers</div>
+          </div>
+          <div class="arrow"><div class="arrow-h amber"><span class="arrow-label">inference</span></div></div>
+          <div class="node node-tool" data-id="5b" data-connections="5">
+            <div class="node-icon">✨</div>
+            <div class="node-label">Claude / GPT</div>
+            <div class="node-sub">Claude 4.5 Opus<br>GPT-5.2 Codex</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="v-connector"><div class="v-arrow"></div></div>
+
+      <!-- Row 3: Execution -->
+      <div class="pipeline-row">
+        <div class="row-label">Execute</div>
+        <div class="row-nodes">
+          <div class="node node-process" data-id="6" data-connections="4,8">
+            <div class="node-icon">🐳</div>
+            <div class="node-label">Docker Sandbox</div>
+            <div class="node-sub">Isolated container<br>per agent session</div>
+          </div>
+          <div class="arrow"><div class="arrow-h green"><span class="arrow-label">exec</span></div></div>
+          <div class="node node-process" data-id="6b" data-connections="6">
+            <div class="node-icon">⌨️</div>
+            <div class="node-label">Bash + Python</div>
+            <div class="node-sub">Interactive shells<br>+ Chromium + VS Code</div>
+          </div>
+          <div class="arrow"><div class="arrow-h green"><span class="arrow-label">tools</span></div></div>
+          <div class="node node-tool" data-id="7" data-connections="4">
+            <div class="node-icon">🔧</div>
+            <div class="node-label">Tool Registry</div>
+            <div class="node-sub">Native tools + MCP<br>JSON-RPC 2.0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="v-connector"><div class="v-arrow"></div></div>
+
+      <!-- Row 4: Output -->
+      <div class="pipeline-row">
+        <div class="row-label">Output</div>
+        <div class="row-nodes">
+          <div class="node node-output" data-id="8" data-connections="6,9">
+            <div class="node-icon">📝</div>
+            <div class="node-label">Git Ops + PR</div>
+            <div class="node-sub">Branch, commit, push<br>PR with summary</div>
+          </div>
+          <div class="arrow"><div class="arrow-h red"><span class="arrow-label">trigger</span></div></div>
+          <div class="node node-process" data-id="9" data-connections="8,10">
+            <div class="node-icon">🔄</div>
+            <div class="node-label">CI/CD Pipeline</div>
+            <div class="node-sub">Tests + SAST scan<br>+ lint checks</div>
+          </div>
+          <div class="arrow"><div class="arrow-h red"><span class="arrow-label">score</span></div></div>
+          <div class="node node-decision" data-id="10" data-connections="9,11,12">
+            <div class="node-icon">⚖️</div>
+            <div class="node-label">Review Gate</div>
+            <div class="node-sub">Confidence scoring<br>threshold: 0.7</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-left:8px;">
+            <div class="split-branch">
+              <span class="branch-label branch-yes">≥ 0.7</span>
+              <div class="arrow" style="width:30px"><div class="arrow-h green" style="width:30px"></div></div>
+              <div class="node node-output" data-id="11" data-connections="10" style="min-width:120px;max-width:130px;padding:10px;">
+                <div class="node-icon" style="font-size:18px">✅</div>
+                <div class="node-label" style="font-size:11px">Auto-Merge</div>
+              </div>
+            </div>
+            <div class="split-branch">
+              <span class="branch-label branch-no">< 0.7</span>
+              <div class="arrow" style="width:30px"><div class="arrow-h red" style="width:30px"></div></div>
+              <div class="node node-output" data-id="12" data-connections="10" style="min-width:120px;max-width:130px;padding:10px;">
+                <div class="node-icon" style="font-size:18px">👤</div>
+                <div class="node-label" style="font-size:11px">Human Review</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Cross-cutting column -->
+    <div class="cross-col">
+      <div class="cross-label">Cross-Cutting</div>
+      <div class="cross-node node-data" data-id="c1">
+        <div class="node-icon">📀</div>
+        <div class="node-label">Event Store</div>
+        <div class="node-sub">Append-only log<br>deterministic replay</div>
+      </div>
+      <div class="cross-node node-output" data-id="c2">
+        <div class="node-icon">🛡️</div>
+        <div class="node-label">SecurityAnalyzer</div>
+        <div class="node-sub">LOW / MEDIUM / HIGH<br>risk rating per action</div>
+      </div>
+      <div class="cross-node node-data" data-id="c3">
+        <div class="node-icon">🗜️</div>
+        <div class="node-label">Condenser</div>
+        <div class="node-sub">Context window mgmt<br>2× cost reduction</div>
+      </div>
+      <div class="cross-node node-tool" data-id="c4">
+        <div class="node-icon">🔑</div>
+        <div class="node-label">Secret Registry</div>
+        <div class="node-sub">Per-conversation<br>masked outputs</div>
+      </div>
+      <div class="cross-node node-data" data-id="c5">
+        <div class="node-icon">📋</div>
+        <div class="node-label">Audit Logger</div>
+        <div class="node-sub">Every action timestamped<br>compliance-ready</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#3B82F6"></div>Trigger</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#10B981"></div>Processing</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#F59E0B"></div>Tool / Service</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#EF4444"></div>Output</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#6366F1"></div>Data Store</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#A855F7"></div>Decision</div>
+</div>
+
+<!-- Callout -->
+<div class="callout">
+  <div class="callout-inner">
+    From issue to merged PR in minutes, not days. Every action logged, every decision auditable, every environment sandboxed.
+  </div>
+</div>
+
+<script>
+// Click-to-highlight interactivity
+const allNodes = document.querySelectorAll('.node, .cross-node');
+let activeNode = null;
+
+allNodes.forEach(node => {
+  node.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const id = node.dataset.id;
+
+    if (activeNode === id) {
+      // Deselect
+      allNodes.forEach(n => n.classList.remove('dimmed'));
+      activeNode = null;
+      return;
+    }
+
+    activeNode = id;
+    const connections = (node.dataset.connections || '').split(',').map(s => s.trim());
+
+    allNodes.forEach(n => {
+      const nid = n.dataset.id;
+      if (nid === id || connections.includes(nid)) {
+        n.classList.remove('dimmed');
+      } else {
+        n.classList.add('dimmed');
+      }
+    });
+  });
+});
+
+document.addEventListener('click', () => {
+  allNodes.forEach(n => n.classList.remove('dimmed'));
+  activeNode = null;
+});
+</script>
+</body>
+</html>
